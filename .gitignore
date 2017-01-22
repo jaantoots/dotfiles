@@ -4,6 +4,7 @@
 # Unignore metafiles for the repository
 !/.gitignore
 !/README.md
+!/LICENSE
 !/setup
 
 ### Unignore configuration files to be tracked ###
