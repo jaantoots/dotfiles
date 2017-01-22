@@ -1,0 +1,43 @@
+# Ignore everything.
+/*
+
+# Unignore metafiles for the repository
+!/.gitignore
+!/README.md
+!/setup
+
+### Unignore configuration files to be tracked ###
+
+# Git
+!/.gitconfig
+!/.gitignore_global
+
+# Bash
+!/.bash_profile
+!/.bashrc
+
+# Emacs
+!/.emacs
+
+# i3
+!/.i3
+!/.i3status.conf
+!/.fehbg
+
+# Profile
+!/.profile
+!/.zprofile
+
+# Tmux
+!/.tmux.conf
+
+# X
+!/.xinitrc
+!/.Xresources
+
+# ZSH
+!/.zshrc
+
+### Unignore bin directory ###
+
+!/bin
