@@ -6,6 +6,6 @@ fi
 export ALTERNATE_EDITOR=''
 export EDITOR='emacsclient'
 
-if [ -f "$HOME/.profile" ]; then
+if [ -f "$HOME/.profile.local" ]; then
     . ~/.profile.local
 fi
