@@ -42,10 +42,10 @@ chmod 440 $sudof
 visudo -c || exit 1
 
 # Configure user
-sudo -u $user wget -O ~$user/.zshrc http://git.grml.org/f/grml-etc-core/etc/zsh/zshrc
-sudo -u $user mkdir -pm 700 ~$user/.ssh
-cp .ssh/authorized_keys ~$user/.ssh/
-chown $user: ~$user/.ssh/authorized_keys
+sudo -u $user wget -O /home/$user/.zshrc http://git.grml.org/f/grml-etc-core/etc/zsh/zshrc
+sudo -u $user mkdir -m 700 /home/$user/.ssh
+cp .ssh/authorized_keys /home/$user/.ssh/
+chown $user: /home/$user/.ssh/authorized_keys
 sudo -u $user sh -c 'sudo true' || exit 1
 
 # Configure SSH
