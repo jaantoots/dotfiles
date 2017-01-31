@@ -29,6 +29,9 @@
 !/.profile
 !/.zprofile
 
+# Slate
+!/.slate
+
 # Tmux
 !/.tmux.conf
 
