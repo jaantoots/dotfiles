@@ -1,3 +1,0 @@
-#!/bin/sh
-
-exec nohup VirtualBox --startvm "$1" >/dev/null 2>&1 &

@@ -13,6 +13,12 @@ fi
 alias e='emacsclient -t'
 alias ec='emacsclient -c'
 
+# Start VirtualBox VM in the background
+startvm(){
+    [[ "$#" -eq 1 ]] || return 1
+    VirtualBox --startvm "$1" &
+}
+
 # If oh-my-zsh is not installed, stop here
 [[ ! -d $HOME/.oh-my-zsh ]] && return
 # Path to your oh-my-zsh installation.
