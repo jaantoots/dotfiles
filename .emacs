@@ -12,8 +12,7 @@
  '(ns-right-alternate-modifier (quote none))
  '(package-selected-packages
    (quote
-    (less-css-mode jade-mode jade lua-mode exec-path-from-shell markdown-mode json-mode cdlatex auctex flycheck magit use-package)))
- )
+    (gnuplot-mode less-css-mode jade-mode jade lua-mode exec-path-from-shell markdown-mode json-mode cdlatex auctex flycheck magit use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
