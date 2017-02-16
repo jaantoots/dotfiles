@@ -45,3 +45,7 @@
 ### Unignore bin directory ###
 
 !/bin
+
+### Unignore templates ###
+
+!/latex
