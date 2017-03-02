@@ -1,9 +1,9 @@
 #!/bin/bash
 #
 # Initialisation script for cloud instances
-# Ubuntu 16.04.1 x64
+# Ubuntu 16.10.1 x64
 
-user="thorium"
+user="uranium"
 
 if [ "$(id -u)" -ne 0 ]; then
     echo "error: please run as root" >&2
