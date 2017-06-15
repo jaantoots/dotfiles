@@ -18,6 +18,5 @@ if [ $decrypt = true ]; then
     tr -Cd '.,!?' | tr '.,!?' '0123' | ./groot.out -d | xxd -r -p | gzip -d
 else
     gzip | xxd -p | tr -d '\n' | ./groot.out |\
-        sed 's/0/I am Groot. /g' | sed 's/1/I am Groot, /g' |\
-        sed 's/2/I am Groot! /g' | sed 's/3/I am Groot? /g'
+        tr '0123' '.,!?' | sed 's/\(.\)/I am Groot\1 /g'
 fi
