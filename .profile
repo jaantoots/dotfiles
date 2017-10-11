@@ -28,3 +28,11 @@ export EDITOR='emacsclient'
 if [ -f "$HOME/.profile.local" ]; then
     . "$HOME/.profile.local"
 fi
+
+# if running bash
+if [ -n "$BASH_VERSION" ]; then
+    # include iterm2 integration if it exists
+    if [ -f "$HOME/.iterm2_shell_integration.bash" ]; then
+        . "$HOME/.iterm2_shell_integration.bash"
+    fi
+fi
