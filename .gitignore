@@ -16,6 +16,8 @@
 # Bash
 !/.bash_profile
 !/.bashrc
+!/.bash_aliases
+!/.alias.sh
 
 # Emacs
 !/.emacs
