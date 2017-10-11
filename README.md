@@ -5,11 +5,6 @@ are maintained to work on both Linux and macOS hosts (with
 occasionally inelegant solutions). Everything should fail gracefully,
 it is safe to check out this repository into a new home directory.
 
-## Notes
-
-- Set `git config custom.nostatusprompt true` to disable git status
-  prompt in repositories where running this is expensive
-
 ## Non-trivial packages
 
 Brew:
@@ -17,9 +12,17 @@ Brew:
 ```
 awscli
 emacs
+gist
+git-annex
+git-annex-remote-rclone
 htop
 mpv
-speedtest_cli
+pass
+rclone
+speedtest-cli
+syncthing
+syncthing-inotify
+tesseract
 tmux
 transmission
 vnstat
@@ -30,18 +33,18 @@ zsh
 Cask:
 
 ```
-1password
 chromium
-caskroom/eid/eid-ee
+eid-ee
 firefox
 google-chrome
-google-drive
+handbrake
 inkscape
 iterm2
 mactex
 osxfuse
-rescuetime
-shiftit
+slate
+tunnelblick
+virtualbox
 xquartz
 ```
 
@@ -49,7 +52,6 @@ Ideas:
 
 ```
 feh
-gist
 mpd
 steghide
 zathura
