@@ -1,11 +1,5 @@
 # custom alias
-if [[ "$(uname)" = "Darwin" ]]; then
-    alias ls='ls -FG'
-    alias l='ls -laFG'
-else
-    alias lock='i3lock -fe -r 16 -s 4'
-fi
-
+alias lock='i3lock -fe -r 16 -s 4'
 alias e='emacsclient -t'
 alias ec='emacsclient -c'
 
