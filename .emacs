@@ -12,7 +12,7 @@
  '(ns-right-alternate-modifier (quote none))
  '(package-selected-packages
    (quote
-    (gnuplot-mode less-css-mode jade-mode jade lua-mode exec-path-from-shell markdown-mode json-mode cdlatex auctex flycheck magit use-package)))
+    (gnuplot-mode less-css-mode jade-mode lua-mode exec-path-from-shell markdown-mode json-mode cdlatex auctex flycheck magit use-package)))
  '(show-trailing-whitespace t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
