@@ -9,7 +9,7 @@ fi
 alias e='emacsclient -t'
 alias ec='emacsclient -c'
 
-# Start VirtualBox VM in the background
+# start VirtualBox VM in the background
 startvm(){
     [[ "$#" -eq 1 ]] || return 1
     VirtualBox --startvm "$1" &
