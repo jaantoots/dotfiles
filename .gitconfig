@@ -13,3 +13,5 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = emacsclient -t
+[push]
+	default = simple
