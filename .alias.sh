@@ -2,6 +2,7 @@
 alias lock='i3lock -fe -r 16 -s 4'
 alias e='emacsclient -t'
 alias ec='emacsclient -c'
+alias wgetu="wget -U 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/61.0.3163.100 Chrome/61.0.3163.100 Safari/537.36'"
 
 # start VirtualBox VM in the background
 startvm(){
