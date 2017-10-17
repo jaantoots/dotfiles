@@ -5,6 +5,11 @@ are maintained to work on both Linux and macOS hosts (with
 occasionally inelegant solutions). Everything should fail gracefully,
 it is safe to check out this repository into a new home directory.
 
+## To-do
+
+- Use `head -1 | awk 'BEGIN {FS=""}; {print $n};'` to print n-th
+  character
+
 ## Non-trivial packages
 
 Brew:
