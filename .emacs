@@ -10,9 +10,10 @@
  '(ispell-dictionary "en_GB-ise-w_accents")
  '(ispell-program-name "aspell")
  '(ns-right-alternate-modifier (quote none))
+ '(org-special-ctrl-a/e t)
  '(package-selected-packages
    (quote
-    (gnuplot-mode less-css-mode jade-mode lua-mode exec-path-from-shell markdown-mode json-mode cdlatex auctex flycheck magit use-package)))
+    (org-ref helm-bibtex helm gnuplot-mode less-css-mode jade-mode lua-mode exec-path-from-shell markdown-mode json-mode cdlatex auctex flycheck magit use-package)))
  '(show-trailing-whitespace t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -39,6 +40,26 @@
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize) ;; You might already have this line
+
+;; Use helm
+(require 'helm-config)
+
+;; helm-bibtex
+(setq bibtex-completion-library-path '("~/dphil/sync/papers"))
+(setq bibtex-completion-notes-path "~/dphil/notes/papers.org")
+(setq bibtex-completion-bibliography "~/dphil/notes/references.bib")
+
+;; org-ref
+(require 'org-ref)
+(setq reftex-default-bibliography '("~/dphil/notes/references.bib"))
+(setq org-ref-bibliography-notes "~/dphil/notes/papers.org"
+      org-ref-default-bibliography '("~/dphil/notes/references.bib")
+      org-ref-pdf-directory "~/dphil/sync/papers")
+
+;; open pdf with system pdf viewer (works on mac)
+(setq bibtex-completion-pdf-open-function
+  (lambda (fpath)
+    (start-process "open" "*open*" "open" fpath)))
 
 ;; Use packages
 (setq use-package-always-ensure t)
