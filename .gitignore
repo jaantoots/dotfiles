@@ -43,6 +43,7 @@
 
 # ZSH
 !/.zshrc
+!/antigen
 
 ### Unignore bin directory ###
 
