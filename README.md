@@ -16,7 +16,8 @@ Brew:
 
 ```
 awscli
-emacs
+emacs --with-gnutls
+ffmpeg --with-x265
 gist
 git-annex
 git-annex-remote-rclone
@@ -27,7 +28,7 @@ rclone
 speedtest-cli
 syncthing
 syncthing-inotify
-tesseract
+tesseract --with-all-languages
 tmux
 transmission
 vnstat
