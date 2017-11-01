@@ -34,7 +34,16 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(magit-diff-added ((t (:background "brightgreen" :foreground "#22aa22"))))
+ '(magit-diff-added-highlight ((t (:background "brightgreen" :foreground "#22aa22"))))
+ '(magit-diff-context ((t (:foreground "brightgreen"))))
+ '(magit-diff-removed ((t (:background "brightgreen" :foreground "#aa2222"))))
+ '(magit-diff-removed-highlight ((t (:background "brightgreen" :foreground "#aa2222"))))
+ '(magit-dimmed ((t (:foreground "brightgreen"))))
+ '(magit-hash ((t (:foreground "brightyellow"))))
+ '(magit-log-date ((t (:foreground "brightgreen"))))
+ '(magit-log-graph ((t (:foreground "brightgreen"))))
+ '(magit-refname ((t (:foreground "brightgreen")))))
 
 ;; Use helm
 (require 'helm-config)
