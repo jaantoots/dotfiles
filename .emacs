@@ -26,7 +26,9 @@
  '(global-magit-file-mode t)
  '(indent-tabs-mode nil)
  '(org-special-ctrl-a/e t)
- '(package-selected-packages (quote (auctex cdlatex magit markdown-mode org-ref)))
+ '(package-selected-packages
+   (quote
+    (flycheck auctex cdlatex magit markdown-mode org-ref)))
  '(show-trailing-whitespace t))
 
 (custom-set-faces
