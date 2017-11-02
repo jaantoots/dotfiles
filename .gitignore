@@ -5,6 +5,7 @@
 !/.gitignore
 !/README.md
 !/LICENSE
+!/config
 !/setup
 
 ### Unignore configuration files to be tracked ###
@@ -43,7 +44,6 @@
 
 # ZSH
 !/.zshrc
-!/antigen
 
 ### Unignore bin directory ###
 
