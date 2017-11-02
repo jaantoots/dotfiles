@@ -1,3 +1,6 @@
 [submodule "antigen"]
 	path = config/antigen
 	url = https://github.com/zsh-users/antigen.git
+[submodule "config/bash-sensible"]
+	path = config/bash-sensible
+	url = https://github.com/mrzool/bash-sensible.git

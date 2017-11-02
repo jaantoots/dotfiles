@@ -33,18 +33,3 @@ export EDITOR='emacsclient'
 if [ -f "$HOME/.profile.local" ]; then
     . "$HOME/.profile.local"
 fi
-
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-    # brew bash_completion
-    hash brew >/dev/null 2>&1 && {
-        if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
-            . "$(brew --prefix)/etc/bash_completion"
-        fi
-    }
-    true
-    # include iterm2 integration if it exists
-    if [ -f "$HOME/.iterm2_shell_integration.bash" ]; then
-        . "$HOME/.iterm2_shell_integration.bash"
-    fi
-fi
