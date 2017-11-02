@@ -33,3 +33,6 @@ export EDITOR='emacsclient'
 if [ -f "$HOME/.profile.local" ]; then
     . "$HOME/.profile.local"
 fi
+
+# just run zsh
+[ -z "$ZSH_VERSION" ] && exec $(which zsh) -l
