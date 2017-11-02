@@ -35,4 +35,7 @@ if [ -f "$HOME/.profile.local" ]; then
 fi
 
 # just run zsh
-[ -z "$ZSH_VERSION" ] && exec $(which zsh) -l
+hash zsh >/dev/null 2>&1 && {
+    export SHELL=$(which zsh)
+    [ -z "$ZSH_VERSION" ] && exec $SHELL -l
+} || true
