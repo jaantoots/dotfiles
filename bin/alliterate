@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# use gshuf on macOS (part of brew coreutils)
+SHUF=shuf
+if [ $(uname) == 'Darwin' ]; then
+    SHUF=gshuf
+fi
+
+# default to random letter alliteration
+LETT=$2
+if [ -z $LETT ]; then
+    LETT=$(printf "%s\n" {a..z} | $SHUF -n 1)
+fi
+
+# default to 2 words
+[ -z $1 ] && NUM=2 || NUM=$1
+
+cat /usr/share/dict/words | grep '^'"$LETT" | $SHUF -n $NUM
