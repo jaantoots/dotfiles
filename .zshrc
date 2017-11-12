@@ -1,4 +1,10 @@
-source /usr/share/zsh/share/antigen.zsh
+ANTIGEN="/usr/share/zsh/share/antigen.zsh"
+
+if [[ $(uname) == 'Darwin' ]]; then
+    hash brew >/dev/null 2>&1 && ANTIGEN=$(brew --prefix)/share/antigen/antigen.zsh
+fi
+
+source $ANTIGEN
 
 # Load the oh-my-zsh's library
 antigen use oh-my-zsh
