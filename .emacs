@@ -23,12 +23,13 @@
  ;; If there is more than one, they won't work right.
  '(calendar-week-start-day 1)
  '(column-number-mode t)
+ '(exec-path-from-shell-check-startup-files nil)
  '(global-magit-file-mode t)
  '(indent-tabs-mode nil)
  '(org-special-ctrl-a/e t)
  '(package-selected-packages
    (quote
-    (flycheck auctex cdlatex magit markdown-mode org-ref)))
+    (exec-path-from-shell flycheck auctex cdlatex magit markdown-mode org-ref)))
  '(show-trailing-whitespace t))
 
 (custom-set-faces
