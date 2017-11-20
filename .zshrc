@@ -13,17 +13,19 @@ antigen use oh-my-zsh
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 antigen bundle colored-man-pages
 antigen bundle colorize
 antigen bundle gitignore
 
 # Load the theme
 antigen theme dieter
-ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=accept-line-or-clear-warning
 
 # Tell antigen that you're done
 antigen apply
+
+# Fix some things
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=accept-line-or-clear-warning
 
 # if not running interactively, stop here
 [[ $- != *i* ]] && return
