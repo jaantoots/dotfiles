@@ -150,11 +150,10 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # launch faster
-set $launcher Launch: [c]hromium [g]oogle-chrome [e]xit
+set $launcher Launch: [c]hromium [e]xit
 bindsym $mod+x mode "$launcher"
 mode "$launcher" {
      bindsym c mode "default"; exec chromium
-     bindsym g mode "default"; exec google-chrome-stable
      bindsym e mode "default"; exit
 
      bindsym Esc mode "default"
