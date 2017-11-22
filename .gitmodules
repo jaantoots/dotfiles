@@ -1,6 +1,6 @@
 [submodule "config/bash-sensible"]
-	path = config/bash-sensible
+	path = .submodules/bash-sensible
 	url = https://github.com/mrzool/bash-sensible.git
 [submodule "config/transfer.sh"]
-	path = config/transfer.sh
+	path = .submodules/transfer.sh
 	url = https://gist.github.com/a511f172d3fb3cd0e42d.git

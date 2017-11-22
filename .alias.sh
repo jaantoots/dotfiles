@@ -15,4 +15,4 @@ startvm(){
 }
 
 # add transfer.sh function
-source "$HOME/config/transfer.sh/transfer.sh"
+source "$HOME/.submodules/transfer.sh/transfer.sh"

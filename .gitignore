@@ -5,8 +5,8 @@
 !/.gitignore
 !/README.md
 !/LICENSE
-!/config
 !/setup
+!/.submodules
 
 ### Unignore configuration files to be tracked ###
 
