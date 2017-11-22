@@ -45,6 +45,9 @@ fi
 # fix keyboard
 setxkbmap -option ctrl:nocaps
 
+# fix dpi
+xrandr --dpi 180
+
 # start i3
 (which i3 >/dev/null 2>&1) && exec i3
 
