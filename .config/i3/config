@@ -167,6 +167,9 @@ hide_edge_borders smart
 # Wallpaper
 # exec --no-startup-id ~/.fehbg
 
+# Compton
+exec_always --no-startup-id "killall -q compton; compton -b"
+
 ## Base16 Default Dark
 # Author: Chris Kempson (http://chriskempson.com)
 #
