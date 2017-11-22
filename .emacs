@@ -29,7 +29,7 @@
  '(org-special-ctrl-a/e t)
  '(package-selected-packages
    (quote
-    (exec-path-from-shell flycheck auctex cdlatex magit markdown-mode org-ref)))
+    (pkgbuild-mode exec-path-from-shell flycheck auctex cdlatex magit markdown-mode org-ref)))
  '(show-trailing-whitespace t))
 
 (custom-set-faces
