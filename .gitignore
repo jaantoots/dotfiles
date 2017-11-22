@@ -25,6 +25,8 @@
 
 # config
 !/.config
+/.config/chromium
+/.config/menus
 
 # Profile
 !/.profile
