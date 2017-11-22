@@ -24,7 +24,6 @@ antigen theme dieter
 antigen apply
 
 # Fix some things
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=accept-line-or-clear-warning
 
 # if not running interactively, stop here

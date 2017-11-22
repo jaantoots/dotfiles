@@ -29,7 +29,7 @@
  '(org-special-ctrl-a/e t)
  '(package-selected-packages
    (quote
-    (pkgbuild-mode exec-path-from-shell flycheck auctex cdlatex magit markdown-mode org-ref)))
+    (base16-theme pkgbuild-mode exec-path-from-shell flycheck auctex cdlatex magit markdown-mode org-ref)))
  '(show-trailing-whitespace t))
 
 (custom-set-faces
@@ -37,17 +37,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(font-latex-sedate-face ((t (:foreground "brightmagenta"))))
- '(magit-diff-added ((t (:background "brightgreen" :foreground "#22aa22"))))
- '(magit-diff-added-highlight ((t (:background "brightgreen" :foreground "#22aa22"))))
- '(magit-diff-context ((t (:foreground "brightgreen"))))
- '(magit-diff-removed ((t (:background "brightgreen" :foreground "#aa2222"))))
- '(magit-diff-removed-highlight ((t (:background "brightgreen" :foreground "#aa2222"))))
- '(magit-dimmed ((t (:foreground "brightgreen"))))
- '(magit-hash ((t (:foreground "brightyellow"))))
- '(magit-log-date ((t (:foreground "brightgreen"))))
- '(magit-log-graph ((t (:foreground "brightgreen"))))
- '(magit-refname ((t (:foreground "brightgreen")))))
+ )
 
 ;; Use helm
 (require 'helm-config)
@@ -68,3 +58,6 @@
 (setq bibtex-completion-pdf-open-function
       (lambda (fpath)
 	(start-process "open" "*open*" "open" fpath)))
+
+;; base16
+(load-theme 'base16-default-dark t)
