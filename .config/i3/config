@@ -159,7 +159,7 @@ mode "$launcher" {
 # window edges
 new_window pixel 1
 new_float pixel 1
-hide_edge_borders both
+hide_edge_borders smart
 
 # Lock screen
 # bindsym $mod+Shift+z exec "i3lock -fe -r 16 -s 4"
