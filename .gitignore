@@ -23,10 +23,8 @@
 # Emacs
 !/.emacs
 
-# i3
-!/.i3
-!/.i3status.conf
-!/.fehbg
+# config
+!/.config
 
 # Profile
 !/.profile
