@@ -3,6 +3,7 @@
 
 # Unignore metafiles for the repository
 !/.gitignore
+!/.gitmodules
 !/README.md
 !/LICENSE
 !/setup
@@ -25,8 +26,9 @@
 
 # config
 !/.config
-/.config/chromium
-/.config/menus
+/.config/*
+!/.config/base16-shell
+!/.config/i3*
 
 # Profile
 !/.profile
