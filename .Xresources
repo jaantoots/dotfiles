@@ -15,7 +15,6 @@ URxvt*scrollTtyKeypress: true
 ! Scrollback buffer in secondary screen
 URxvt.secondaryScreen: 1
 URxvt.secondaryScroll: 0
-URxvt.secondaryWheel: 1
 
 ! Font
 URxvt.font: xft:Inconsolata:size=12
@@ -31,14 +30,9 @@ URxvt.urlLauncher: chromium
 
 ! Cursor
 URxvt.cursorBlink: true
-URxvt.cursorColor: #657b83
-URxvt.cursorUnderline: false
 
 ! Pointer
 URxvt.pointerBlank: true
-
-! Fix bold colors
-URxvt.intensityStyles: false
 
 ! Base16 Default Dark
 ! Scheme: Chris Kempson (http://chriskempson.com)
