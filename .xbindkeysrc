@@ -1,0 +1,29 @@
+# Backlight
+"xbacklight -dec 5"
+    XF86MonBrightnessDown
+"xbacklight -inc 5"
+    XF86MonBrightnessUp
+
+# Sound
+"amixer -q set Master 5%+"
+    XF86AudioRaiseVolume
+"amixer -q set Master 5%-"
+    XF86AudioLowerVolume
+"amixer -q set Master toggle"
+    XF86AudioMute
+
+# "(Scheme function)"
+# m:0x0 + c:173
+# XF86AudioPrev
+# "(Scheme function)"
+# m:0x0 + c:172
+# XF86AudioPlay
+# "(Scheme function)"
+# m:0x0 + c:171
+# XF86AudioNext
+# "(Scheme function)"
+# m:0x0 + c:225
+# XF86Search
+# "(Scheme function)"
+# m:0x0 + c:107
+# Print

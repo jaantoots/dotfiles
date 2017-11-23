@@ -39,6 +39,7 @@
 !/.tmux.conf
 
 # X
+!/.xbindkeysrc
 !/.xinitrc
 !/.Xresources
 
