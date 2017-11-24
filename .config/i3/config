@@ -162,7 +162,7 @@ new_float pixel 1
 hide_edge_borders smart
 
 # Lock screen
-# bindsym $mod+Shift+z exec "i3lock -fe -r 16 -s 4"
+bindsym $mod+Shift+z exec "i3lock -fe -c 383838"
 
 # Wallpaper
 # exec --no-startup-id ~/.fehbg
