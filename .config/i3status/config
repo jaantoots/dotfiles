@@ -10,6 +10,7 @@ general {
         colors = true
         color_good = "#a1b56c"
         color_bad = "#ab4642"
+        color_degraded = "#f7ca88"
         interval = 1
 }
 
@@ -17,6 +18,7 @@ order += "ipv6"
 order += "disk /"
 order += "wireless _first_"
 order += "ethernet _first_"
+order += "volume master"
 order += "battery all"
 order += "cpu_temperature 0"
 order += "load"
@@ -37,6 +39,14 @@ ethernet _first_ {
         format_down = ""
 }
 
+volume master {
+       format = " %volume"
+       format_muted = " %volume"
+       device = "default"
+       mixer = "Master"
+       mixer_idx = 0
+}
+
 battery all {
         format = "%status %percentage %remaining"
         status_chr = ""
@@ -47,7 +57,7 @@ battery all {
 }
 
 cpu_temperature 0 {
-        format = " %degrees°C"
+        format = " %degrees°C"
         max_threshold = 75
         path = "/sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input"
 }
