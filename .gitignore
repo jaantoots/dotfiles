@@ -7,7 +7,6 @@
 !/README.md
 !/LICENSE
 !/setup
-!/.submodules
 
 ### Unignore configuration files to be tracked ###
 
@@ -28,7 +27,9 @@
 !/.config
 /.config/*
 !/.config/base16-shell
+!/.config/bash-sensible
 !/.config/i3*
+!/.config/transfer.sh
 
 # Profile
 !/.profile
