@@ -19,7 +19,7 @@ URxvt.secondaryScreen: 1
 URxvt.secondaryScroll: 0
 
 ! Font
-URxvt.font: xft:DejaVu Sans Mono:size=11
+URxvt.font: xft:Inconsolata:size=12
 
 ! Scrollbar
 URxvt.scrollStyle: rxvt
