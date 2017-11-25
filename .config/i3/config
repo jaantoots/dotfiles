@@ -146,11 +146,25 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # launch faster
-set $launcher Launch: [c]hromium [e]xit
-bindsym $mod+x mode "$launcher"
-mode "$launcher" {
+set $launcher "Launch: [c]hromium [e]xit"
+bindsym $mod+x mode $launcher
+mode $launcher {
      bindsym c mode "default"; exec chromium
      bindsym e mode "default"; exit
+
+     bindsym Esc mode "default"
+     bindsym Return mode "default"
+}
+
+# system menu
+set $sysmenu "system: [l]ock [e]xit [s]uspend [r]eboot [p]oweroff"
+bindsym $mod+Delete mode $sysmenu
+mode $sysmenu {
+     bindsym l mode "default"; exec --no-startup-id "light-locker-command -l"
+     bindsym e mode "default"; exit
+     bindsym s mode "default"; exec --no-startup-id systemctl suspend
+     bindsym r mode "default"; exec --no-startup-id systemctl reboot
+     bindsym p mode "default"; exec --no-startup-id systemctl poweroff
 
      bindsym Esc mode "default"
      bindsym Return mode "default"
