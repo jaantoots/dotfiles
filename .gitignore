@@ -30,6 +30,7 @@
 !/.config/bash-sensible
 !/.config/i3*
 !/.config/transfer.sh
+!/.config/zathura
 
 # Profile
 !/.profile
