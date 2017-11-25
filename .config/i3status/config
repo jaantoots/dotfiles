@@ -59,7 +59,7 @@ battery all {
 cpu_temperature 0 {
         format = " %degrees°C"
         max_threshold = 75
-        path = "/sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input"
+        path = "/sys/devices/platform/coretemp.0/hwmon/hwmon?/temp1_input"
 }
 
 tztime local {
