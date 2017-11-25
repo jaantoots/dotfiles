@@ -42,14 +42,9 @@ if [ -d $xinitrcd ] ; then
  unset f
 fi
 
-# fix keyboard
-setxkbmap -option ctrl:nocaps
-
-# fix dpi
-xrandr --dpi 180
-
-# additional keybindings
-xbindkeys
+# Make sure this is before the 'exec' command or it won't be sourced.
+[ -f /etc/xprofile ] && . /etc/xprofile
+[ -f ~/.xprofile ] && . ~/.xprofile
 
 # start i3
 (which i3 >/dev/null 2>&1) && exec i3

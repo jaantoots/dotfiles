@@ -45,6 +45,7 @@
 # X
 !/.xbindkeysrc
 !/.xinitrc
+!/.xprofile
 !/.Xresources
 
 # ZSH

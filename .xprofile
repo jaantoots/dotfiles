@@ -1,0 +1,11 @@
+# fix keyboard
+setxkbmap -option ctrl:nocaps
+
+# fix dpi
+xrandr --dpi 192
+
+# additional keybindings
+xbindkeys
+
+# locker
+light-locker &
