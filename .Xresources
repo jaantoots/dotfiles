@@ -21,6 +21,9 @@ URxvt.secondaryScroll: 0
 ! Font
 URxvt.font: xft:Inconsolata:size=12
 
+! Print buffer to file
+URxvt.print-pipe: cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
+
 ! Scrollbar
 URxvt.scrollStyle: rxvt
 URxvt.scrollBar: false
