@@ -29,6 +29,7 @@
 !/.config/base16-shell
 !/.config/bash-sensible
 !/.config/i3*
+!/.config/libinput-gestures.conf
 !/.config/transfer.sh
 !/.config/zathura
 
