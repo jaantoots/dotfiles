@@ -10,7 +10,7 @@ Xft.rgba: rgb
 ! URxvt*buffered: false
 
 ! Font
-URxvt.font: xft:Inconsolata:size=12
+URxvt.font: xft:Inconsolata:size=12, xft:DejaVu Sans Mono:size=12
 
 ! Print buffer to file
 URxvt.print-pipe: cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
