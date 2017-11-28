@@ -28,6 +28,7 @@
 /.config/*
 !/.config/base16-shell
 !/.config/bash-sensible
+!/.config/gtk-3.0
 !/.config/i3*
 !/.config/libinput-gestures.conf
 !/.config/transfer.sh
@@ -39,6 +40,9 @@
 
 # Slate
 !/.slate
+
+# GTK custom themes
+!/.themes
 
 # Tmux
 !/.tmux.conf
