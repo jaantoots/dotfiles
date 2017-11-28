@@ -12,3 +12,6 @@ libinput-gestures &
 
 # locker
 light-locker &
+
+# start ssh-agent
+eval $(ssh-agent)
