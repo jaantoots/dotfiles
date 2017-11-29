@@ -148,11 +148,10 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # launch faster
-set $launcher "Launch: [c]hromium [e]xit"
+set $launcher "Launch: [c]hromium"
 bindsym $mod+x mode $launcher
 mode $launcher {
-     bindsym c mode "default"; exec chromium
-     bindsym e mode "default"; exit
+     bindsym c mode "default"; exec --no-startup-id chromium
 
      bindsym Esc mode "default"
      bindsym Return mode "default"
