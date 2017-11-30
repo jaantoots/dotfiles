@@ -29,7 +29,7 @@
  '(org-special-ctrl-a/e t)
  '(package-selected-packages
    (quote
-    (base16-theme pkgbuild-mode exec-path-from-shell flycheck auctex cdlatex magit markdown-mode org-ref)))
+    (jade-mode base16-theme pkgbuild-mode exec-path-from-shell flycheck auctex cdlatex magit markdown-mode org-ref)))
  '(show-trailing-whitespace t))
 
 (custom-set-faces
