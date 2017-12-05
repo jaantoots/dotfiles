@@ -37,7 +37,7 @@ URxvt.secondaryScroll: false
 
 ! Perl extensions
 URxvt.perl-ext-common: default,matcher
-URxvt.matcher.button: 1
+URxvt.matcher.button: 2
 URxvt.url-launcher: chromium
 
 ! Base16 Default Dark
