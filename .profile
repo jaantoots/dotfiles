@@ -33,8 +33,3 @@ export EDITOR='emacsclient'
 if [ -f "$HOME/.profile.local" ]; then
     . "$HOME/.profile.local"
 fi
-
-# just run zsh if interactive
-[[ $- == *i* ]] && hash zsh >/dev/null 2>&1 && {
-    [ -z "$ZSH_VERSION" ] && export SHELL=$(which zsh) && exec $SHELL -l
-} || true
