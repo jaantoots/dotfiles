@@ -28,6 +28,7 @@
 /.config/*
 !/.config/base16-shell
 !/.config/bash-sensible
+!/.config/chromium-flags.conf
 !/.config/dunst
 !/.config/gtk-3.0
 !/.config/i3*
