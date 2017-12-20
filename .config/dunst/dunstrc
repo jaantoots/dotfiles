@@ -1,0 +1,77 @@
+[global]
+    ### Display ###
+    monitor = 0
+    follow = none
+    geometry = "800x5-0-47"
+    indicate_hidden = true
+    shrink = false
+    transparency = 0
+    notification_height = 0
+    padding = 8
+    horizontal_padding = 8
+    frame_width = 2
+    frame_color = "#282828"
+    separator_height = 2
+    separator_color = frame
+    sort = true
+    idle_threshold = 0
+
+    ### Text ###
+    font = Inconsolata 12
+    line_height = 0
+    markup = full
+    format = "<b>%s</b>\n%b %p"
+    alignment = left
+    show_age_threshold = 60
+    word_wrap = true
+    ignore_newline = true
+    stack_duplicates = true
+    hide_duplicate_count = false
+    show_indicators = false
+
+    ### Icons ###
+    icon_position = left
+    max_icon_size = 64
+    icon_folders = /usr/share/icons/Paper/32x32@2x/apps/:/usr/share/icons/Paper/32x32@2x/status/:/usr/share/icons/Paper/32x32@2x/devices/
+
+    ### History ###
+    sticky_history = true
+    history_length = 512
+
+    ### Misc/Advanced ###
+    dmenu = /usr/bin/dmenu -p dunst:
+    browser = /usr/bin/chromium
+    always_run_script = true
+    title = Dunst
+    class = Dunst
+    startup_notification = false
+
+[shortcuts]
+    close = mod4+period
+    close_all = mod4+shift+period
+    history = mod4+grave
+    context = mod4+slash
+
+[urgency_low]
+    timeout = 10
+
+[urgency_normal]
+    timeout = 10
+
+[urgency_critical]
+    timeout = 0
+
+[base16_low]
+    msg_urgency = low
+    background = "#181818"
+    foreground = "#585858"
+
+[base16_normal]
+    msg_urgency = normal
+    background = "#181818"
+    foreground = "#d8d8d8"
+
+[base16_critical]
+    msg_urgency = critical
+    background = "#ab4642"
+    foreground = "#e8e8e8"

@@ -28,6 +28,7 @@
 /.config/*
 !/.config/base16-shell
 !/.config/bash-sensible
+!/.config/dunst
 !/.config/gtk-3.0
 !/.config/i3*
 !/.config/libinput-gestures.conf
