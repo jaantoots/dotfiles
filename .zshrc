@@ -1,11 +1,7 @@
 ANTIGEN="/usr/share/zsh/share/antigen.zsh"
 
-if [[ ! -f $ANTIGEN ]] && hash brew &>/dev/null; then
-    ANTIGEN=$(brew --prefix)/share/antigen/antigen.zsh
-fi
-
-if [[ ! -f $ANTIGEN ]] && [[ -f "$HOME/.config/antigen.zsh" ]]; then
-    ANTIGEN="$HOME/.config/antigen.zsh"
+if [[ ! -f $ANTIGEN ]] && [[ -f "$HOME/.linuxbrew/share/antigen/antigen.zsh" ]]; then
+    ANTIGEN=$HOME/.linuxbrew/share/antigen/antigen.zsh
 fi
 
 source $ANTIGEN
