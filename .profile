@@ -16,13 +16,6 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-# linuxbrew
-if [ -d "$HOME/.linuxbrew" ]; then
-    PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
-    MANPATH="$(brew --prefix)/share/man:$MANPATH"
-    INFOPATH="$(brew --prefix)/share/info:$INFOPATH"
-fi
-
 # set PATH so it includes user's private bin directories
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
