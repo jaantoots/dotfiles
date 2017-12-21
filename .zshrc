@@ -1,8 +1,7 @@
 ANTIGEN="/usr/share/zsh/share/antigen.zsh"
 
-if [[ $(uname) == 'Darwin' ]]; then
-    hash brew >/dev/null 2>&1 \
-        && ANTIGEN=$(brew --prefix)/share/antigen/antigen.zsh
+if [[ ! -f $ANTIGEN ]] && hash brew &>/dev/null; then
+    ANTIGEN=$(brew --prefix)/share/antigen/antigen.zsh
 fi
 
 if [[ ! -f $ANTIGEN ]] && [[ -f "$HOME/.config/antigen.zsh" ]]; then
