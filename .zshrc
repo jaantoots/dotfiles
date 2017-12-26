@@ -4,6 +4,10 @@ if [[ ! -f $ANTIGEN ]] && [[ -f "$HOME/.linuxbrew/share/antigen/antigen.zsh" ]];
     ANTIGEN=$HOME/.linuxbrew/share/antigen/antigen.zsh
 fi
 
+if [[ ! -f $ANTIGEN ]] && [[ -f "/usr/local/share/antigen/antigen.zsh" ]]; then
+    ANTIGEN=/usr/local/share/antigen/antigen.zsh
+fi
+
 source $ANTIGEN
 
 # Load the oh-my-zsh's library
