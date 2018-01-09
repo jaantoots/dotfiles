@@ -185,11 +185,13 @@ mode $launcher {
      bindsym Return mode "default"
 }
 
+set $locker "i3lock -fe -i ~/.i3lockbg --insidevercolor=f7ca8840 --insidewrongcolor=ab464240 --insidecolor=00000000 --ringvercolor=f7ca88ff --ringwrongcolor=ab4642ff --ringcolor=d8d8d8ff --line-uses-inside --separatorcolor=d8d8d8ff --textcolor=d8d8d8ff --keyhlcolor=a1b56cff --bshlcolor=ab4642ff --clock --indicator --timecolor=d8d8d8ff --datestr='%a %e %b %Y' --datecolor=d8d8d8ff --veriftext='' --wrongtext='' --ring-width=4"
+
 # system menu
 set $sysmenu "system: [l]ock [e]xit [s]uspend [r]eboot [p]oweroff"
 bindsym $mod+Delete mode $sysmenu
 mode $sysmenu {
-     bindsym l mode "default"; exec --no-startup-id "light-locker-command -l"
+     bindsym l mode "default"; exec $locker
      bindsym e mode "default"; exit
      bindsym s mode "default"; exec --no-startup-id systemctl suspend
      bindsym r mode "default"; exec --no-startup-id systemctl reboot
@@ -205,7 +207,7 @@ new_float pixel 1
 hide_edge_borders smart
 
 # Lock screen
-bindsym $mod+Shift+z exec --no-startup-id "light-locker-command -l"
+bindsym $mod+Shift+z exec $locker
 
 # Wallpaper
 exec --no-startup-id ~/.fehbg
