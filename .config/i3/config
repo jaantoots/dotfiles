@@ -215,6 +215,10 @@ exec --no-startup-id ~/.fehbg
 # Notifications
 exec --no-startup-id dunst
 
+# Passmenu
+bindsym $mod+p exec --no-startup-id passmenu --type
+bindsym $mod+Shift+p exec --no-startup-id passmenu
+
 ## Base16 Default Dark
 # Author: Chris Kempson (http://chriskempson.com)
 #
