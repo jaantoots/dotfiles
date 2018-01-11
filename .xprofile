@@ -10,5 +10,8 @@ xbindkeys
 # touchpad gestures
 libinput-gestures &
 
+# screenlocker
+xautolock -detectsleep -time 10 -locker "$HOME/bin/locker" &
+
 # start ssh-agent
 eval $(ssh-agent)
