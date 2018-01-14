@@ -32,7 +32,7 @@
     ### Icons ###
     icon_position = left
     max_icon_size = 64
-    icon_folders = /usr/share/icons/Paper/32x32@2x/apps/:/usr/share/icons/Paper/32x32@2x/status/:/usr/share/icons/Paper/32x32@2x/devices/
+    icon_folders = /usr/share/icons/hicolor/16x16/status/:/usr/share/icons/hicolor/16x16/devices/
 
     ### History ###
     sticky_history = true
