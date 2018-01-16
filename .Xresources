@@ -38,7 +38,7 @@ URxvt.secondaryScroll: false
 ! Perl extensions
 URxvt.perl-ext-common: default,matcher
 URxvt.matcher.button: 2
-URxvt.url-launcher: chromium
+URxvt.url-launcher: firefox-nightly
 
 ! Base16 Default Dark
 ! Scheme: Chris Kempson (http://chriskempson.com)
