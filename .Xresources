@@ -7,39 +7,6 @@ Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
 
-! URxvt*buffered: false
-
-! Font
-URxvt.font: xft:Inconsolata:size=12, xft:Noto Sans:size=12
-
-! Print buffer to file
-URxvt.print-pipe: cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
-
-! Scrollbar
-URxvt.scrollStyle: rxvt
-URxvt.scrollBar: false
-
-! Scrollback position
-URxvt.scrollTtyOutput: false
-URxvt.scrollWithBuffer: true
-URxvt.scrollTtyKeypress: true
-URxvt.saveLines: 10000
-
-! Cursor
-URxvt.cursorBlink: true
-
-! Pointer
-URxvt.pointerBlank: true
-
-! Scrollback buffer in secondary screen
-URxvt.secondaryScreen: true
-URxvt.secondaryScroll: false
-
-! Perl extensions
-URxvt.perl-ext-common: default,matcher
-URxvt.matcher.button: 2
-URxvt.url-launcher: firefox-nightly
-
 ! Base16 Default Dark
 ! Scheme: Chris Kempson (http://chriskempson.com)
 

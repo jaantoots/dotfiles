@@ -20,8 +20,8 @@ set $right l
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Shift+Return exec --no-startup-id urxvt -name floatterm
+bindsym $mod+Return exec termite
+bindsym $mod+Shift+Return exec --no-startup-id termite --name=floatterm
 for_window [instance="floatterm"] floating enabled
 
 # kill focused window

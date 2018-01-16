@@ -33,6 +33,7 @@
 !/.config/gtk-3.0
 !/.config/i3*
 !/.config/libinput-gestures.conf
+!/.config/termite
 !/.config/transfer.sh
 !/.config/zathura
 
