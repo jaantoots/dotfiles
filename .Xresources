@@ -1,4 +1,4 @@
-! Fix DPI
+!! Fix DPI
 Xft.dpi: 192
 Xft.autohint: 0
 Xft.lcdfilter: lcddefault
@@ -7,7 +7,7 @@ Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
 
-! UXTerm
+!! UXTerm
 UXTerm.termName: xterm-256color
 UXTerm.vt100.metaSendsEscape: true
 UXTerm.vt100.backarrowKey: false
@@ -23,6 +23,41 @@ UXTerm.vt100.translations: #override \n\
 UXTerm.vt100.faceName: Inconsolata Nerd Font Mono
 UXTerm.vt100.faceSize: 12
 !UXTerm.vt100.wideChars: true
+
+!! URxvt
+
+! URxvt*buffered: false
+
+! Font
+URxvt.font: xft:Inconsolata:size=12, xft:Noto Sans:size=12
+
+! Print buffer to file
+URxvt.print-pipe: cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
+
+! Scrollbar
+URxvt.scrollStyle: rxvt
+URxvt.scrollBar: false
+
+! Scrollback position
+URxvt.scrollTtyOutput: false
+URxvt.scrollWithBuffer: true
+URxvt.scrollTtyKeypress: true
+URxvt.saveLines: 10000
+
+! Cursor
+URxvt.cursorBlink: true
+
+! Pointer
+URxvt.pointerBlank: true
+
+! Scrollback buffer in secondary screen
+URxvt.secondaryScreen: true
+URxvt.secondaryScroll: false
+
+! Perl extensions
+URxvt.perl-ext-common: default,matcher
+URxvt.matcher.button: 2
+URxvt.url-launcher: firefox-nightly
 
 !! base16
 #include ".config/base16-xresources/xresources/base16-default-dark-256.Xresources"
