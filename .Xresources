@@ -7,6 +7,22 @@ Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
 
+! UXTerm
+UXTerm.termName: xterm-256color
+UXTerm.vt100.metaSendsEscape: true
+UXTerm.vt100.backarrowKey: false
+UXTerm.ttyModes: erase ^?
+UXTerm.vt100.saveLines: 65536
+UXTerm.vt100.alternateScroll: true
+UXTerm.vt100.scrollKey: true
+UXTerm.vt100.scrollTtyOutput: false
+UXTerm.vt100.cursorBlink: true
+UXTerm.vt100.translations: #override \n\
+  Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+  Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
+UXTerm.vt100.faceName: Inconsolata Nerd Font Mono
+UXTerm.vt100.faceSize: 12
+!UXTerm.vt100.wideChars: true
 
 !! base16
 #include ".config/base16-xresources/xresources/base16-default-dark-256.Xresources"
