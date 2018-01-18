@@ -20,9 +20,9 @@ set $right l
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite
-bindsym $mod+Shift+Return exec --no-startup-id termite --name=floatterm
-for_window [instance="floatterm"] floating enabled
+bindsym $mod+Return exec --no-startup-id uxterm
+bindsym $mod+Shift+Return exec --no-startup-id uxterm -title floatterm
+for_window [class="XTerm" title="floatterm"] floating enabled
 
 # kill focused window
 bindsym $mod+Shift+q kill
