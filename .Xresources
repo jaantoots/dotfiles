@@ -20,40 +20,23 @@ UXTerm.vt100.cursorBlink: true
 UXTerm.vt100.translations: #override \n\
   Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
   Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
-UXTerm.vt100.faceName: Inconsolata Nerd Font Mono
+UXTerm.vt100.faceName: Inconsolata
 UXTerm.vt100.faceSize: 12
-!UXTerm.vt100.wideChars: true
 
 !! URxvt
-
-! URxvt*buffered: false
-
-! Font
-URxvt.font: xft:Inconsolata:size=12, xft:Noto Sans:size=12
-
-! Print buffer to file
+!URxvt*buffered: false
+URxvt.font: xft:Inconsolata:size=12
 URxvt.print-pipe: cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
-
-! Scrollbar
-URxvt.scrollStyle: rxvt
 URxvt.scrollBar: false
-
-! Scrollback position
 URxvt.scrollTtyOutput: false
 URxvt.scrollWithBuffer: true
 URxvt.scrollTtyKeypress: true
-URxvt.saveLines: 10000
-
-! Cursor
+URxvt.saveLines: 65536
 URxvt.cursorBlink: true
-
-! Pointer
 URxvt.pointerBlank: true
-
-! Scrollback buffer in secondary screen
 URxvt.secondaryScreen: true
-URxvt.secondaryScroll: false
-
+URxvt.secondaryScroll: true
+URxvt.secondaryWheel: true
 ! Perl extensions
 URxvt.perl-ext-common: default,matcher
 URxvt.matcher.button: 2
