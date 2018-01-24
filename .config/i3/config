@@ -180,7 +180,7 @@ set $launcher "Launch: [c]hromium [f]irefox"
 bindsym $mod+x mode $launcher
 mode $launcher {
      bindsym c mode "default"; exec --no-startup-id chromium
-     bindsym f mode "default"; exec --no-startup-id firefox-nightly
+     bindsym f mode "default"; exec --no-startup-id firefox
 
      bindsym Esc mode "default"
      bindsym Return mode "default"

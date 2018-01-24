@@ -40,7 +40,7 @@ URxvt.secondaryWheel: true
 ! Perl extensions
 URxvt.perl-ext-common: default,matcher
 URxvt.matcher.button: 2
-URxvt.url-launcher: firefox-nightly
+URxvt.url-launcher: firefox
 
 !! base16
 #include ".config/base16-xresources/xresources/base16-default-dark-256.Xresources"
