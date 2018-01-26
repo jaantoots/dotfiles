@@ -20,8 +20,8 @@ set $right l
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id uxterm
-bindsym $mod+Shift+Return exec --no-startup-id uxterm -title floatterm
+bindsym $mod+Return exec --no-startup-id uxterm -e /bin/zsh
+bindsym $mod+Shift+Return exec --no-startup-id uxterm -title floatterm -e /bin/zsh
 for_window [class="XTerm" title="floatterm"] floating enabled
 
 # kill focused window

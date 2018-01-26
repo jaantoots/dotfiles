@@ -1,14 +1,4 @@
 #!/bin/bash
 
-# Turn off the screen, if 'off' is given
-[ "$1" = "off" ] && (sleep 2 && xset dpms force off) &
-
 # Non-forking as a new countdown starts as soon as the locker exits
-i3lock --nofork --ignore-empty-password --show-failed-attempts --image="$HOME/.i3lockbg" \
-       --insidevercolor=f7ca8840 --insidewrongcolor=ab464240 --insidecolor=00000000 \
-       --ringvercolor=f7ca88ff --ringwrongcolor=ab4642ff --ringcolor=d8d8d8ff \
-       --line-uses-inside --separatorcolor=d8d8d8ff --keyhlcolor=a1b56cff --bshlcolor=ab4642ff \
-       --verifcolor=d8d8d8ff --wrongcolor=d8d8d8ff --timecolor=d8d8d8ff --datecolor=d8d8d8ff \
-       --verif-font=mono --wrong-font=mono --time-font=mono --date-font=mono \
-       --veriftext='' --wrongtext='' --timesize=24 --datesize=16 --radius 128 --ring-width=4 \
-       --indicator --indpos="w/4:h/4" --clock --datepos="tx:ty+20" --datestr='%a %e %b %Y'
+i3lock --nofork --ignore-empty-password --show-failed-attempts --image="$HOME/.i3lockbg"

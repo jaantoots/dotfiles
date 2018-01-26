@@ -8,26 +8,14 @@ else
 fi
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
-sysresources=$xinitdir/.Xresources
-sysmodmap=$xinitdir/.Xmodmap
 xinitrcd=$xinitdir/xinitrc.d
 
 # merge in defaults and keymaps
-if [ -f $sysresources ]; then
-    if [ -x /usr/bin/cpp ] ; then
-        xrdb -merge $sysresources
-    else
-        xrdb -nocpp -merge $sysresources
-    fi
-fi
-if [ -f $sysmodmap ]; then
-    xmodmap $sysmodmap
-fi
 if [ -f "$userresources" ]; then
     if [ -x /usr/bin/cpp ] ; then
-        xrdb -merge "$userresources"
+        xrdb -load "$userresources"
     else
-        xrdb -nocpp -merge "$userresources"
+        xrdb -nocpp -load "$userresources"
     fi
 fi
 if [ -f "$usermodmap" ]; then
