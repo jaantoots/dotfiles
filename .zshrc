@@ -20,6 +20,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle colored-man-pages
 antigen bundle colorize
 antigen bundle gitignore
+antigen bundle pip
 
 # Load the theme
 antigen theme dieter
