@@ -7,11 +7,15 @@ else
     xinitdir=/etc/X11/xinit
 fi
 userresources=$HOME/.Xresources
+sysresources=$xinitdir/.Xresources
 xinitrcd=$xinitdir/xinitrc.d
 
 # merge in defaults and keymaps
+if [ -f $sysresources ]; then
+    xrdb -merge $sysresources
+fi
 if [ -f "$userresources" ]; then
-    xrdb -load "$userresources"
+    xrdb -merge "$userresources"
 fi
 
 # start some nice programs
@@ -22,5 +26,9 @@ if [ -d $xinitrcd ] ; then
  unset f
 fi
 
-# start i3
-(which i3 >/dev/null 2>&1) && exec i3
+# Make sure this is before the 'exec' command or it won't be sourced.
+[ -f /etc/xprofile ] && . /etc/xprofile
+[ -f ~/.xprofile ] && . ~/.xprofile
+
+# start i3 and ssh-agent
+exec ssh-agent i3
