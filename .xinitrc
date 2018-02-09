@@ -7,15 +7,11 @@ else
     xinitdir=/etc/X11/xinit
 fi
 userresources=$HOME/.Xresources
-usermodmap=$HOME/.Xmodmap
 xinitrcd=$xinitdir/xinitrc.d
 
 # merge in defaults and keymaps
 if [ -f "$userresources" ]; then
     xrdb -load "$userresources"
-fi
-if [ -f "$usermodmap" ]; then
-    xmodmap "$usermodmap"
 fi
 
 # start some nice programs
