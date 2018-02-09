@@ -15,4 +15,4 @@ fi
 # default to 2 words
 [ -z $1 ] && NUM=2 || NUM=$1
 
-cat /usr/share/dict/words | grep '^'"$LETT" | $SHUF -n $NUM
+cat /usr/share/dict/cracklib-small | grep '^'"$LETT" | $SHUF -n $NUM
