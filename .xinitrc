@@ -12,11 +12,7 @@ xinitrcd=$xinitdir/xinitrc.d
 
 # merge in defaults and keymaps
 if [ -f "$userresources" ]; then
-    if [ -x /usr/bin/cpp ] ; then
-        xrdb -load "$userresources"
-    else
-        xrdb -nocpp -load "$userresources"
-    fi
+    xrdb -load "$userresources"
 fi
 if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
@@ -30,14 +26,5 @@ if [ -d $xinitrcd ] ; then
  unset f
 fi
 
-# Make sure this is before the 'exec' command or it won't be sourced.
-[ -f /etc/xprofile ] && . /etc/xprofile
-[ -f ~/.xprofile ] && . ~/.xprofile
-
 # start i3
 (which i3 >/dev/null 2>&1) && exec i3
-
-# if the above fails, fall back to defaults
-twm &
-exec xterm -geometry 80x66+0+0 -name login
-
