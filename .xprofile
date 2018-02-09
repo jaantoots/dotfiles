@@ -1,5 +1,5 @@
 # set keyboard
-setxkbmap -variant altgr-intl -option ctrl:nocaps
+setxkbmap -layout us -variant altgr-intl -option ctrl:nocaps
 
 # fix dpi
 xrandr --dpi 192
@@ -8,7 +8,7 @@ xrandr --dpi 192
 xbindkeys
 
 # touchpad gestures
-libinput-gestures &
+(which libinput-gestures >/dev/null 2>&1) && libinput-gestures &
 
 # screenlocker
 xautolock -detectsleep -time 10 -locker "$HOME/bin/locker" &
