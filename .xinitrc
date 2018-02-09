@@ -30,10 +30,5 @@ fi
 [ -f /etc/xprofile ] && . /etc/xprofile
 [ -f ~/.xprofile ] && . ~/.xprofile
 
-# start i3
-(which i3 >/dev/null 2>&1) && exec i3
-
-# if the above fails, fall back to defaults
-twm &
-exec xterm -geometry 80x66+0+0 -name login
-
+# start i3 and ssh-agent
+exec ssh-agent i3
