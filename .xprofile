@@ -12,3 +12,4 @@ xbindkeys
 
 # screenlocker
 xautolock -detectsleep -time 10 -locker "$HOME/bin/locker" &
+xset dpms 600 600 600
