@@ -12,18 +12,10 @@ xinitrcd=$xinitdir/xinitrc.d
 
 # merge in defaults and keymaps
 if [ -f $sysresources ]; then
-    if [ -x /usr/bin/cpp ] ; then
-        xrdb -merge $sysresources
-    else
-        xrdb -nocpp -merge $sysresources
-    fi
+    xrdb -merge $sysresources
 fi
 if [ -f "$userresources" ]; then
-    if [ -x /usr/bin/cpp ] ; then
-        xrdb -merge "$userresources"
-    else
-        xrdb -nocpp -merge "$userresources"
-    fi
+    xrdb -merge "$userresources"
 fi
 
 # start some nice programs
