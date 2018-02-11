@@ -4,6 +4,7 @@ alias ec='emacsclient -c'
 alias haikunate='python3 -c "import haikunator; print(haikunator.Haikunator().haikunate(token_length=0))"'
 alias mpvd='mpv --screen=0 --fs-screen=1'
 alias wgetu="wget -U 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/61.0.3163.100 Chrome/61.0.3163.100 Safari/537.36'"
+alias zathura="zathura --fork"
 
 # start VirtualBox VM in the background
 startvm(){
