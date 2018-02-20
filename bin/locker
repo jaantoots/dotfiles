@@ -11,4 +11,4 @@ i3lock --nofork --ignore-empty-password --show-failed-attempts --image="$HOME/.i
        --verifcolor=d8d8d8ff --wrongcolor=d8d8d8ff --timecolor=d8d8d8ff --datecolor=d8d8d8ff \
        --verif-font=mono --wrong-font=mono --time-font=mono --date-font=mono \
        --veriftext='' --wrongtext='' --timesize=24 --datesize=16 --radius 128 --ring-width=4 \
-       --indicator --indpos="w/4:h/4" --clock --datepos="tx:ty+20" --datestr='%a %e %b %Y'
+       --indicator --clock --datepos="tx:ty+20" --datestr='%a %e %b %Y'
