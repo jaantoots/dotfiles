@@ -42,6 +42,9 @@
 !/.profile
 !/.zprofile
 
+# Pylint
+!/.pylintrc
+
 # Slate
 !/.slate
 
