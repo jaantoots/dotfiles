@@ -15,3 +15,5 @@
 	editor = emacsclient -t
 [push]
 	default = simple
+[credential]
+	helper = store
