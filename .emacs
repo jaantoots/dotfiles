@@ -61,3 +61,6 @@
 
 ;; base16
 (load-theme 'base16-default-dark t)
+
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
