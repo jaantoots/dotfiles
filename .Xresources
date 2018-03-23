@@ -35,8 +35,7 @@ URxvt.saveLines: 65536
 URxvt.cursorBlink: true
 URxvt.pointerBlank: true
 URxvt.secondaryScreen: true
-URxvt.secondaryScroll: true
-URxvt.secondaryWheel: true
+URxvt.secondaryScroll: false
 ! Perl extensions
 URxvt.perl-ext-common: default,matcher
 URxvt.matcher.button: 2
