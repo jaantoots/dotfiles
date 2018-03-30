@@ -5,11 +5,11 @@
     XF86MonBrightnessUp
 
 # Sound
-"amixer -q set Master 5%+"
+"amixer -q -D pulse set Master 5%+"
     XF86AudioRaiseVolume
-"amixer -q set Master 5%-"
+"amixer -q -D pulse set Master 5%-"
     XF86AudioLowerVolume
-"amixer -q set Master toggle"
+"amixer -q -D pulse set Master toggle"
     XF86AudioMute
 
 # "(Scheme function)"
