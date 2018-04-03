@@ -1,12 +1,4 @@
-ANTIGEN="/usr/share/zsh/share/antigen.zsh"
-
-if [[ ! -f $ANTIGEN ]] && [[ -f "$HOME/.linuxbrew/share/antigen/antigen.zsh" ]]; then
-    ANTIGEN=$HOME/.linuxbrew/share/antigen/antigen.zsh
-fi
-
-if [[ ! -f $ANTIGEN ]] && [[ -f "/usr/local/share/antigen/antigen.zsh" ]]; then
-    ANTIGEN=/usr/local/share/antigen/antigen.zsh
-fi
+ANTIGEN="$HOME/.config/antigen/antigen.zsh"
 
 source $ANTIGEN
 

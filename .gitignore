@@ -26,6 +26,7 @@
 # config
 !/.config
 /.config/*
+!/.config/antigen
 !/.config/base16-shell
 !/.config/base16-xresources
 !/.config/bash-sensible
