@@ -24,8 +24,8 @@ UXTerm.vt100.faceName: Inconsolata
 UXTerm.vt100.faceSize: 12
 
 !! URxvt
-!URxvt*buffered: false
 URxvt.font: xft:Inconsolata:size=12
+URxvt.letterSpace: 1
 URxvt.print-pipe: cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
 URxvt.scrollBar: false
 URxvt.scrollTtyOutput: false
