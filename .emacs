@@ -29,7 +29,7 @@
  '(org-special-ctrl-a/e t)
  '(package-selected-packages
    (quote
-    (yaml-mode jade-mode base16-theme pkgbuild-mode exec-path-from-shell flycheck auctex cdlatex magit markdown-mode org-ref)))
+    (gnuplot-mode yaml-mode jade-mode base16-theme pkgbuild-mode exec-path-from-shell flycheck auctex cdlatex magit markdown-mode org-ref)))
  '(show-trailing-whitespace t))
 
 (custom-set-faces
