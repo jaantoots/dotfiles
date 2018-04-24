@@ -11,5 +11,6 @@ xbindkeys
 (which libinput-gestures >/dev/null 2>&1) && libinput-gestures &
 
 # screenlocker
-xautolock -detectsleep -time 10 -locker "$HOME/bin/locker" &
 xset dpms 600 600 600
+xset s 594 5
+xss-lock -n "$HOME/bin/dim-screen.sh" -- "$HOME/bin/locker" &
