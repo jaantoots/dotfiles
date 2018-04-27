@@ -12,5 +12,5 @@ xbindkeys
 
 # screenlocker
 xset dpms 600 600 600
-xset s 594 5
+xset s 590 9
 xss-lock -n "$HOME/bin/dim-screen.sh" -- "$HOME/bin/locker" &
