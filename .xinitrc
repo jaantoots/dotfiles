@@ -1,14 +1,9 @@
 #!/bin/sh
 
 # set locations
-if [ "$(uname)" = "Darwin" ]; then
-    xinitdir=/opt/X11/lib/X11/xinit
-else
-    xinitdir=/etc/X11/xinit
-fi
 userresources=$HOME/.Xresources
-sysresources=$xinitdir/.Xresources
-xinitrcd=$xinitdir/xinitrc.d
+sysresources=/etc/X11/xinit/.Xresources
+xinitrcd=/etc/X11/xinit/xinitrc.d
 
 # merge in defaults and keymaps
 if [ -f $sysresources ]; then

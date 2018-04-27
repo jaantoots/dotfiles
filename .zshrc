@@ -26,11 +26,6 @@ ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=accept-line-or-clear-warning
 # if not running interactively, stop here
 [[ $- != *i* ]] && return
 
-# include iterm2 integration if it exists
-if [ -f "${HOME}/.iterm2_shell_integration.zsh" ]; then
-    . "${HOME}/.iterm2_shell_integration.zsh"
-fi
-
 # base16
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] \

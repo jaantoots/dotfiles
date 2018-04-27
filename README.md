@@ -1,67 +1,15 @@
 # Dotfiles
 
 This is a collection of my dotfiles and scripts. All configurations
-are maintained to work on both Linux and macOS hosts (with
-occasionally inelegant solutions). Everything should fail gracefully,
-it is safe to check out this repository into a new home directory.
+are maintained to work on Arch Linux hosts (with occasionally
+inelegant solutions for compatibility with Ubuntu). Everything should
+fail gracefully, it is safe to check out this repository into a new
+home directory.
 
 ## To-do
 
 - Use `head -1 | awk 'BEGIN {FS=""}; {print $n};'` to print n-th
   character
-
-## Non-trivial packages
-
-Brew:
-
-```
-awscli
-emacs --with-gnutls
-ffmpeg --with-x265
-gist
-git-annex
-git-annex-remote-rclone
-htop
-mpv
-pass
-rclone
-speedtest-cli
-syncthing
-syncthing-inotify
-tesseract --with-all-languages
-tmux
-transmission
-vnstat
-youtube-dl
-zsh
-```
-
-Cask:
-
-```
-chromium
-eid-ee
-firefox
-google-chrome
-handbrake
-inkscape
-iterm2
-mactex
-osxfuse
-slate
-tunnelblick
-virtualbox
-xquartz
-```
-
-Ideas:
-
-```
-feh
-mpd
-steghide
-zathura
-```
 
 ## License
 
