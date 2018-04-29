@@ -20,7 +20,7 @@ fi
 PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 
 export ALTERNATE_EDITOR=''
-export EDITOR='emacsclient'
+export EDITOR='emacsclient -t'
 
 # use the local file for private variables (e.g. API keys)
 if [ -f "$HOME/.profile.local" ]; then
