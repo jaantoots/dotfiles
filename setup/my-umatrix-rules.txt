@@ -33,6 +33,11 @@ google.com content.googleapis.com * allow
 google.com gstatic.com * allow
 messenger.com fbcdn.net script allow
 nanopool.org highcharts.com * allow
+postimees.ee babahhcdn.com * allow
+postimees.ee jwpcdn.com * allow
+postimees.ee jwpcdn.com script allow
+postimees.ee jwplayer.com * allow
+postimees.ee pmo.ee * allow
 rarbg.to dyncdn.me script allow
 reddit.com redditstatic.com script allow
 slack.com slack-edge.com * allow
