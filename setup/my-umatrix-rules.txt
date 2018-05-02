@@ -1,0 +1,41 @@
+https-strict: behind-the-scene false
+matrix-off: about-scheme true
+matrix-off: behind-the-scene true
+matrix-off: chrome-extension-scheme true
+matrix-off: chrome-scheme true
+matrix-off: moz-extension-scheme true
+matrix-off: opera-scheme true
+matrix-off: wyciwyg-scheme true
+noscript-spoof: * true
+referrer-spoof: * true
+referrer-spoof: behind-the-scene false
+* * * block
+* * css allow
+* * frame block
+* * image allow
+* 1st-party * allow
+* 1st-party frame allow
+* ajax.googleapis.com script allow
+* cloudflare.com script allow
+* googlevideo.com * allow
+* mathjax.org script allow
+* youtube.com * allow
+* youtube.com frame allow
+* youtube.com script allow
+* ytimg.com * allow
+amazon.co.uk media-amazon.com * allow
+amazon.co.uk ssl-images-amazon.com * allow
+digitalocean.com cloud-cdn-digitalocean-com.global.ssl.fastly.net * allow
+digitalocean.com typekit.net * allow
+facebook.com fbcdn.net * allow
+gitlab.com gitlab-static.net * allow
+google.com content.googleapis.com * allow
+google.com gstatic.com * allow
+messenger.com fbcdn.net script allow
+nanopool.org highcharts.com * allow
+rarbg.to dyncdn.me script allow
+reddit.com redditstatic.com script allow
+slack.com slack-edge.com * allow
+slack.com slack-msgs.com * allow
+youtube.com googlevideo.com * allow
+youtube.com ytimg.com * allow
