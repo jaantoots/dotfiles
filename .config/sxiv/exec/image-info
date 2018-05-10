@@ -26,4 +26,4 @@ exposure=$(exif "Exposure time")
 aperture=$(exif "Aperture")
 iso=$(exif "ISO speed")
 
-echo "${filesize}${s}${geometry}${s}${focal}${s}${exposure}${s}${aperture}${s}${iso}${s}${filename}"
+echo "${filesize}${s}${geometry}${focal:+$s}${focal}${exposure:+$s}${exposure}${aperture:+$s}${aperture}${iso:+$s}${iso}${s}${filename}"
