@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Called by sxiv(1) whenever an image gets loaded.
 # The output is displayed in sxiv's status bar.
@@ -15,7 +15,6 @@ filename=$(basename -- "$1")
 filesize=$(du -Hh -- "$1" | cut -f 1)
 
 exif=$(exiv2 "$1")
-geometry="${2}x${3}"
 
 exif () {
     echo -n $(grep -s -m 1 "$1" <<<"$exif" | cut -d ':' -f 2 | cut -c 2-)
@@ -25,5 +24,10 @@ focal=$(exif "Focal length")
 exposure=$(exif "Exposure time")
 aperture=$(exif "Aperture")
 iso=$(exif "ISO speed")
+
+geometry="${2}x${3}"
+if [ -z $2 ]; then
+    geometry=$(exif "Image size" | tr -d ' ')
+fi
 
 echo "${filesize}${s}${geometry}${focal:+$s}${focal}${exposure:+$s}${exposure}${aperture:+$s}${aperture}${iso:+$s}${iso}${s}${filename}"
