@@ -1,0 +1,19 @@
+#!/bin/bash
+# better output for git annex fsck
+
+i=0
+git annex fsck --json $@ | while read json; do
+    ((i++))
+    if [ "$(echo "$json" | jq .success)" = "true" ]; then
+        file="$(echo $json | jq .file)"
+        cols="$(tput cols)"
+        ((pad = cols - 8 - "${#file}"))
+        ((pad = pad > 0 ? pad : 0))
+        printf '\r%6d  %.*s%*s' $i $((cols - 8)) "$file" $pad ""
+    else
+        echo
+        echo "$json" | jq .
+    fi
+done
+echo
+unset i
