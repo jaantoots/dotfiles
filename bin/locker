@@ -3,7 +3,7 @@ set -e
 
 # Extra options for i3lock-color
 OPTS=
-(which pacman >/dev/null 2>&1) && [ $(pacman -Qqo $(which i3lock)) = "i3lock-color-git" ] && \
+(which pacman >/dev/null 2>&1) && [ $(pacman -Qqo i3lock) = "i3lock-color-git" ] && \
     OPTS=( --insidevercolor=f7ca8840 --insidewrongcolor=ab464240 --insidecolor=00000000 \
     --ringvercolor=f7ca88ff --ringwrongcolor=ab4642ff --ringcolor=d8d8d8ff \
     --line-uses-inside --separatorcolor=d8d8d8ff --keyhlcolor=a1b56cff --bshlcolor=ab4642ff \
