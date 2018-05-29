@@ -1,0 +1,84 @@
+#!/usr/bin/env python
+"""Convert JSON from Google Takeout to GPX"""
+import bisect
+import json
+import os
+import time
+import calendar
+import argparse
+
+
+class SortedLocations(object):
+    """Wrap locations to extract according to timestamp."""
+
+    def __init__(self, lst, key=None):
+        key = (lambda x: x) if key is None else key
+        self._items = lst
+        self._key = key
+
+    def __len__(self):
+        return len(self._items)
+
+    def __getitem__(self, i):
+        return float(self._items[i][self._key])/1000
+
+    def __reversed__(self):
+        return reversed(self._items)
+
+    def _bisect_left(self, x):
+        return bisect.bisect_left(self, x)
+
+    def extract(self, start=None, end=None):
+        """Extract points in range from start to end."""
+        first = self._bisect_left(start) if start is not None else None
+        end = self._bisect_left(end) if end is not None else None
+        return self._items[first:end]
+
+
+def write_gpx(filep, locations):
+    """Write locations as GPX to filep."""
+    filep.write(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<gpx creator="json2gpx" version="0.1" xmlns="http://www.topografix.com/GPX/1/0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/GPX/1/0/gpx.xsd">\n'
+        '<trk><name><![CDATA[Europe]]></name><trkseg>\n')
+    for point in locations:
+        filep.write('<trkpt lat="{:f}" lon="{:f}">\n'.format(
+            float(point['latitudeE7'])/1e7,
+            float(point['longitudeE7'])/1e7))
+        if 'altitude' in point:
+            filep.write('  <ele>{:f}</ele>\n'.format(
+                float(point['altitude'])))
+        filep.write('  <time>{:s}</time>\n'.format(
+            time.strftime('%Y-%m-%dT%H:%M:%SZ',
+                          time.gmtime(float(point['timestampMs'])/1000))))
+        filep.write('</trkpt>\n')
+    filep.write('</trkseg></trk></gpx>\n')
+
+def main():
+    """Extract GPX from Location History."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("history", type=str,
+                        help="Input JSON file")
+    parser.add_argument("--start", "-s", type=str,
+                        help="Start date of range")
+    parser.add_argument("--end", "-e", type=str,
+                        help="End date of range")
+    args = parser.parse_args()
+
+    with open(args.history, 'r') as file_:
+        locations = json.load(file_)['locations']
+    locations.reverse()
+    locations = SortedLocations(locations, 'timestampMs').extract(
+        calendar.timegm(time.strptime(args.start, "%Y-%m-%d")) if
+        args.start is not None else None,
+        calendar.timegm(time.strptime(args.end, "%Y-%m-%d")) if
+        args.end is not None else None)
+    outname = os.path.splitext(args.history)[0]
+    outname += '--{:s}'.format(args.start if args.start is not None
+                               else 'start')
+    outname += '--{:s}'.format(args.end if args.end is not None else 'end')
+    with open(outname + '.gpx', 'w') as file_:
+        write_gpx(file_, locations)
+
+if __name__ == "__main__":
+    main()
