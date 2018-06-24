@@ -1,42 +1,44 @@
 #!/bin/bash
 # better output for git annex copy
 
+get_file() {
+    if [ "$(echo "$1" | jq .file)" = "null" ]; then
+        echo "$1" | jq -r .key
+    else
+        echo "$1" | jq -r .file
+    fi
+}
+
+print_progress() {
+    cols="$(tput cols)"
+    ((pad = cols - 8 - "${#2}"))
+    ((pad = pad > 0 ? pad : 0))
+    if [ -n "$3" ] && [ "$pad" -ge "${#3}" ]; then
+        ((pad = pad - "${#3}"))
+        printf '\r%6d  %.*s%*s%s' $1 $((cols - 8)) "$2" $pad "" "$3"
+    else
+        printf '\r%6d  %.*s%*s' $1 $((cols - 8)) "$2" $pad ""
+    fi
+}
+
 i=0
 git annex copy --json-progress $@ | while read json; do
     if [ "$(echo "$json" | jq .command)" != "null" ]; then
         ((i++))
-         if [ "$(echo "$json" | jq .success)" = "true" ]; then
-            file="$(echo $json | jq .file)"
-            if [ "$file" = "null" ]; then
-                file="$(echo $json | jq .key)"
-            fi
-            cols="$(tput cols)"
-            ((pad = cols - 8 - "${#file}"))
-            ((pad = pad > 0 ? pad : 0))
-            printf '\r%6d  %.*s%*s' $i $((cols - 8)) "$file" $pad ""
+        if [ "$(echo "$json" | jq .success)" = "true" ]; then
+            file="$(get_file "$json")"
+            print_progress $i "$file"
         else
             echo
-            echo "$json" | jq .
+            echo "$json" | jq
         fi
     else
-        file="$(echo $json | jq .action.file)"
-        if [ "$file" = "null" ]; then
-            file="$(echo $json | jq .action.key)"
-        fi
+        file="$(get_file "$(echo "$json" | jq .action)")"
         bytes="$(echo $json | jq '.["byte-progress"]')"
         total="$(echo $json | jq '.["total-size"]')"
-        percent="$(echo $json | jq '.["percent-progress"]')"
-        progress="$(printf ' %d/%d %s' "$bytes" "$total" "$percent")"
-        cols="$(tput cols)"
-        ((pad = cols - 8 - "${#file}"))
-        ((pad = pad > 0 ? pad : 0))
-        if [ "$pad" -ge "${#progress}" ]; then
-            ((pad = pad - "${#progress}"))
-            printf '\r%6d  %.*s%*s%s' $i $((cols - 8)) "$file" $pad "" \
-                   "$progress"
-        else
-            printf '\r%6d  %.*s%*s' $i $((cols - 8)) "$file" $pad ""
-        fi
+        percent="$(echo $json | jq -r '.["percent-progress"]')"
+        progress="$(printf ' %d/%d %7s' "$bytes" "$total" "$percent")"
+        print_progress $i "$file" "$progress"
     fi
 done
 echo

@@ -1,21 +1,35 @@
 #!/bin/bash
 # better output for git annex fsck
 
+get_file() {
+    if [ "$(echo "$1" | jq .file)" = "null" ]; then
+        echo "$1" | jq -r .key
+    else
+        echo "$1" | jq -r .file
+    fi
+}
+
+print_progress() {
+    cols="$(tput cols)"
+    ((pad = cols - 8 - "${#2}"))
+    ((pad = pad > 0 ? pad : 0))
+    if [ -n "$3" ] && [ "$pad" -ge "${#3}" ]; then
+        ((pad = pad - "${#3}"))
+        printf '\r%6d  %.*s%*s%s' $1 $((cols - 8)) "$2" $pad "" "$3"
+    else
+        printf '\r%6d  %.*s%*s' $1 $((cols - 8)) "$2" $pad ""
+    fi
+}
+
 i=0
 git annex fsck --json $@ | while read json; do
     ((i++))
     if [ "$(echo "$json" | jq .success)" = "true" ]; then
-        file="$(echo $json | jq .file)"
-        if [ "$file" = "null" ]; then
-            file="$(echo $json | jq .key)"
-        fi
-        cols="$(tput cols)"
-        ((pad = cols - 8 - "${#file}"))
-        ((pad = pad > 0 ? pad : 0))
-        printf '\r%6d  %.*s%*s' $i $((cols - 8)) "$file" $pad ""
+        file="$(get_file "$json")"
+        print_progress $i "$file"
     else
         echo
-        echo "$json" | jq .
+        echo "$json" | jq
     fi
 done
 echo
