@@ -1,0 +1,43 @@
+#!/bin/bash
+# better output for git annex copy
+
+i=0
+git annex copy --json-progress $@ | while read json; do
+    if [ "$(echo "$json" | jq .command)" != "null" ]; then
+        ((i++))
+         if [ "$(echo "$json" | jq .success)" = "true" ]; then
+            file="$(echo $json | jq .file)"
+            if [ "$file" = "null" ]; then
+                file="$(echo $json | jq .key)"
+            fi
+            cols="$(tput cols)"
+            ((pad = cols - 8 - "${#file}"))
+            ((pad = pad > 0 ? pad : 0))
+            printf '\r%6d  %.*s%*s' $i $((cols - 8)) "$file" $pad ""
+        else
+            echo
+            echo "$json" | jq .
+        fi
+    else
+        file="$(echo $json | jq .action.file)"
+        if [ "$file" = "null" ]; then
+            file="$(echo $json | jq .action.key)"
+        fi
+        bytes="$(echo $json | jq '.["byte-progress"]')"
+        total="$(echo $json | jq '.["total-size"]')"
+        percent="$(echo $json | jq '.["percent-progress"]')"
+        progress="$(printf ' %d/%d %s' "$bytes" "$total" "$percent")"
+        cols="$(tput cols)"
+        ((pad = cols - 8 - "${#file}"))
+        ((pad = pad > 0 ? pad : 0))
+        if [ "$pad" -ge "${#progress}" ]; then
+            ((pad = pad - "${#progress}"))
+            printf '\r%6d  %.*s%*s%s' $i $((cols - 8)) "$file" $pad "" \
+                   "$progress"
+        else
+            printf '\r%6d  %.*s%*s' $i $((cols - 8)) "$file" $pad ""
+        fi
+    fi
+done
+echo
+unset i

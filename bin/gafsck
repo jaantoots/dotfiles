@@ -6,6 +6,9 @@ git annex fsck --json $@ | while read json; do
     ((i++))
     if [ "$(echo "$json" | jq .success)" = "true" ]; then
         file="$(echo $json | jq .file)"
+        if [ "$file" = "null" ]; then
+            file="$(echo $json | jq .key)"
+        fi
         cols="$(tput cols)"
         ((pad = cols - 8 - "${#file}"))
         ((pad = pad > 0 ? pad : 0))
