@@ -34,6 +34,10 @@ digitalocean.com stripe.com frame allow
 digitalocean.com typekit.net * allow
 facebook.com fbcdn.net * allow
 get.app domain-registry.appspot.com * allow
+github.com github-render.s3.amazonaws.com * allow
+github.com githubapp.com * allow
+github.com githubusercontent.com * allow
+github.com render.githubusercontent.com frame allow
 gitlab.com gitlab-static.net * allow
 google.com content.googleapis.com * allow
 google.com content.googleapis.com frame allow
@@ -45,6 +49,7 @@ google.com www.googleapis.com * allow
 live.com akamaihd.net * allow
 live.com microsoft.com * allow
 messenger.com fbcdn.net script allow
+n26.com salesforce.com * allow
 n26.com tech26.de * allow
 namecheap.com d1dijnkjnmzy2z.cloudfront.net * allow
 namecheap.com d2bhsbhm5ibqfe.cloudfront.net * allow
