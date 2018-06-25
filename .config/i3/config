@@ -21,11 +21,12 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id urxvt
+bindsym $mod+$alt+Return exec --no-startup-id urxvt -cd "$($HOME/.config/i3/shell-cd.sh)"
 bindsym $mod+Shift+Return exec --no-startup-id urxvt -title floatterm
 for_window [class="URxvt" title="floatterm"] floating enabled
 
 # start terminal with ssh
-bindsym $mod+$alt+Return exec --no-startup-id urxvt -e ssh-last
+bindsym $mod+$alt+s exec --no-startup-id urxvt -e ssh-last
 bindsym $mod+Shift+s exec --no-startup-id urxvt -e ssh-host
 
 # kill focused window
