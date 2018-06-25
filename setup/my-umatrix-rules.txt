@@ -25,6 +25,7 @@ referrer-spoof: behind-the-scene false
 * ytimg.com * allow
 amazon.co.uk media-amazon.com * allow
 amazon.co.uk ssl-images-amazon.com * allow
+booking.com bstatic.com * allow
 dell.com dellcdn.com * allow
 digitalocean.com cloud-cdn-digitalocean-com.global.ssl.fastly.net * allow
 digitalocean.com statuspage.io * allow
@@ -56,6 +57,7 @@ namecheap.com revved.com * allow
 namecheap.com stripe.com * allow
 namecheap.com stripe.com frame allow
 nanopool.org highcharts.com * allow
+outline.com outlineapi.com * allow
 ox.ac.uk google.com * allow
 ox.ac.uk google.com frame allow
 ox.ac.uk gstatic.com * allow
