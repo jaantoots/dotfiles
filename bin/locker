@@ -1,6 +1,11 @@
 #!/bin/bash
 set -e
 
+base05="d8d8d8"
+base08="ab4642"
+base0A="f7ca88"
+base0B="a1b56c"
+
 OPTS=(
     --nofork
     --ignore-empty-password
@@ -11,20 +16,20 @@ OPTS=(
 (which pacman >/dev/null 2>&1) &&
     [[ $(pacman -Qqo i3lock) =~ ^i3lock-color ]] &&
     OPTS+=(
-        --insidevercolor=f7ca8840
-        --insidewrongcolor=ab464240
-        --insidecolor=00000000
-        --ringvercolor=f7ca88ff
-        --ringwrongcolor=ab4642ff
-        --ringcolor=d8d8d8ff
+        --insidevercolor="$base0A"40
+        --insidewrongcolor="$base08"40
+        --insidecolor="$base05"10
+        --ringvercolor="$base0A"ff
+        --ringwrongcolor="$base08"ff
+        --ringcolor="$base05"ff
         --line-uses-inside
-        --separatorcolor=d8d8d8ff
-        --keyhlcolor=a1b56cff
-        --bshlcolor=ab4642ff
-        --verifcolor=d8d8d8ff
-        --wrongcolor=d8d8d8ff
-        --timecolor=d8d8d8ff
-        --datecolor=d8d8d8ff
+        --separatorcolor="$base05"ff
+        --keyhlcolor="$base0B"ff
+        --bshlcolor="$base08"ff
+        --verifcolor="$base05"ff
+        --wrongcolor="$base05"ff
+        --timecolor="$base05"ff
+        --datecolor="$base05"ff
         --verif-font=mono
         --wrong-font=mono
         --time-font=mono
