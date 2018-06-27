@@ -28,8 +28,8 @@ ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=accept-line-or-clear-warning
 
 # base16
 BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] \
-    && eval "$($BASE16_SHELL/profile_helper.sh)"
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] &&
+    eval "$($BASE16_SHELL/profile_helper.sh)"
 
 #
 [[ -r $HOME/.alias.sh ]] && source $HOME/.alias.sh
