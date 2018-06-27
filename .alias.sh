@@ -6,6 +6,11 @@ alias mpvd='mpv --screen=0 --fs-screen=1'
 alias wgetu="wget -U 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/61.0.3163.100 Chrome/61.0.3163.100 Safari/537.36'"
 alias zathura="zathura --fork"
 
+exifdiff() {
+    [ "$#" -eq 2 ] || { echo "usage: $0 OLD NEW" >&2 && return 2 }
+    diff <(exiftool "$1") <(exiftool "$2")
+}
+
 # get user entry for process
 whop(){
     ps --no-headers -p "$1"
