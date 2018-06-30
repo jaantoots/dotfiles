@@ -57,6 +57,13 @@
 # Tmux
 !/.tmux.conf
 
+# Vim
+!/.vim
+/.vim/*
+!/.vim/base16
+!/.vim/colors
+!/.vimrc
+
 # X
 !/.xbindkeysrc
 !/.xinitrc
