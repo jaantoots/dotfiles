@@ -19,8 +19,8 @@ fi
 # set PATH so it includes user's private bin directories
 PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 
-export ALTERNATE_EDITOR=''
-export EDITOR='emacsclient -t'
+export ALTERNATE_EDITOR=
+export EDITOR=vim
 
 # use the local file for private variables (e.g. API keys)
 if [ -f "$HOME/.profile.local" ]; then
