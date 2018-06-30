@@ -2,14 +2,24 @@
 
 This is a collection of my dotfiles and scripts. All configurations
 are maintained to work on Arch Linux hosts (with occasionally
-inelegant solutions for compatibility with Ubuntu). Everything should
-fail gracefully, it is safe to check out this repository into a new
-home directory.
+inelegant solutions for [compatibility with Ubuntu
+16.04](setup/ubuntu.md)). Everything should fail gracefully, it is
+safe to check out this repository into a new home directory.
 
-## To-do
+# Browser extensions
 
-- Use `head -1 | awk 'BEGIN {FS=""}; {print $n};'` to print n-th
-  character
+Occasionally updated list of used Firefox extensions.
+
+- browserpass-ce
+- Facebook Container
+- Greasemonkey
+- HTTPS Everywhere
+- Markdown Here
+- Privacy Badger
+- Proxy SwitchyOmega
+- uBlock Origin
+- uMatrix
+- Vimium
 
 ## License
 
