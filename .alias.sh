@@ -23,6 +23,3 @@ startvm(){
     [[ "$#" -eq 1 ]] || return 1
     VirtualBox --startvm "$1" &
 }
-
-# add transfer.sh function
-source "$HOME/.config/transfer.sh/transfer.sh"
