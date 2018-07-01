@@ -1,0 +1,9 @@
+[Unit]
+Description=Run nsupdate for %I every 5 minutes
+
+[Timer]
+OnStartupSec=30s
+OnUnitActiveSec=5m
+
+[Install]
+WantedBy=timers.target
