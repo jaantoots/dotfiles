@@ -8,7 +8,9 @@ alias wgetu="wget -U 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML,
 alias zathura="zathura --fork"
 
 exifdiff() {
-    [ "$#" -eq 2 ] || { echo "usage: $0 OLD NEW" >&2 && return 2 }
+    [ "$#" -eq 2 ] || {
+        echo "usage: $0 OLD NEW" >&2 && return 2
+    }
     diff <(exiftool "$1") <(exiftool "$2")
 }
 
