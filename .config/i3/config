@@ -181,12 +181,13 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # launch faster
-set $launcher "Launch: [c]hromium [f]irefox [s]potify"
+set $launcher "Launch: [c]hromium [f]irefox [s]ignal s[p]otify"
 bindsym $mod+x mode $launcher
 mode $launcher {
      bindsym c mode "default"; exec --no-startup-id chromium
      bindsym f mode "default"; exec --no-startup-id firefox
-     bindsym s mode "default"; exec --no-startup-id spotify --force-device-scale-factor=2
+     bindsym s mode "default"; exec --no-startup-id signal-desktop
+     bindsym p mode "default"; exec --no-startup-id spotify --force-device-scale-factor=2
 
      bindsym Esc mode "default"
      bindsym Return mode "default"
