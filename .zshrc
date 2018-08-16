@@ -23,6 +23,10 @@ antigen apply
 # Fix some things
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=accept-line-or-clear-warning
 
+# History
+HISTSIZE=1048576
+SAVEHIST=1048576
+
 # if not running interactively, stop here
 [[ $- != *i* ]] && return
 
