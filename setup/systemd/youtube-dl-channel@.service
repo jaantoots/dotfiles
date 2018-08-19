@@ -1,0 +1,17 @@
+[Unit]
+Description=Download recent YouTube videos from channel %I
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=ytdl
+UMask=0002
+WorkingDirectory=/data/Downloads/youtube/%i
+ExecStart=/usr/bin/youtube-dl -icw --no-progress --download-archive archive.txt --merge-output-format mkv --playlist-end 16 -o '%(upload_date)s-%(title)s-%(id)s.%(ext)s' https://www.youtube.com/user/%i
+ProtectSystem=full
+ProtectHome=on
+PrivateDevices=on
+NoNewPrivileges=on
+
+[Install]
+WantedBy=multi-user.target
