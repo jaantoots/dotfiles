@@ -12,15 +12,14 @@
 "amixer -q -D pulse set Master toggle"
     XF86AudioMute
 
-# "(Scheme function)"
-# m:0x0 + c:173
-# XF86AudioPrev
-# "(Scheme function)"
-# m:0x0 + c:172
-# XF86AudioPlay
-# "(Scheme function)"
-# m:0x0 + c:171
-# XF86AudioNext
+# Playback
+"playerctl play-pause"
+    XF86AudioPlay
+"playerctl next"
+    XF86AudioNext
+"playerctl previous"
+    XF86AudioPrev
+
 # "(Scheme function)"
 # m:0x0 + c:225
 # XF86Search
