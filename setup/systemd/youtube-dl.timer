@@ -1,5 +1,5 @@
 [Unit]
-Description=Run youtube-dl-user for %I every 2 hours
+Description=Run youtube-dl every 2 hours
 
 [Timer]
 OnCalendar=*-*-* 00/2:00:00
