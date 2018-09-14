@@ -14,6 +14,8 @@ set autoindent
 if has("autocmd")
     " Makefiles need actual tabs
     autocmd FileType make set tabstop=8 shiftwidth=8 noexpandtab
+    " smaller tab widths
+    autocmd FileType tex set tabstop=2 shiftwidth=2
 endif
 
 " use spaces instead of tabs
