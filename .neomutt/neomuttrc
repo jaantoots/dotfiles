@@ -57,6 +57,7 @@ bind pager g top
 bind pager G bottom
 bind attach,index g first-entry
 bind attach,index G last-entry
+bind pager a group-reply
 
 # History
 set history = 256
