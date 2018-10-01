@@ -24,6 +24,12 @@ source ~/.neomutt/gpg.rc
 set crypt_autosign = yes
 
 # Contacts
+set query_command= "khard email --parsable --search-in-source-files '%s'"
+bind editor <Tab> complete-query
+bind editor ^T complete
+macro index,pager A \
+    "<pipe-message>khard add-email<return>" \
+    "add the sender email address to khard"
 #set reverse_alias = yes
 
 # UI
