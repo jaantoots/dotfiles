@@ -40,6 +40,11 @@
 !/.config/termite
 !/.config/zathura
 
+# Neomutt
+!/.neomutt
+/.neomutt/mailboxes
+/.neomutt/local.rc
+
 # Profile
 !/.profile
 !/.zprofile

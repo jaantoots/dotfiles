@@ -1,0 +1,57 @@
+set header_cache = "~/.cache/neomutt"
+
+# Personal configuration
+source ~/.neomutt/local.rc
+
+# Mail directories
+set folder = "~/.mail"
+source ~/.neomutt/mailboxes
+set spoolfile = "+main/INBOX"
+set record = "+main/Sent"
+set postponed = "+main/Drafts"
+set trash = "+main/Trash"
+
+# Sending
+set sendmail = "/usr/bin/msmtp"
+set use_from = yes
+set use_envelope_from = yes
+set edit_headers = yes
+set send_charset="us-ascii:utf-8"
+set reverse_name = yes
+
+# PGP
+source ~/.neomutt/gpg.rc
+set crypt_autosign = yes
+
+# Contacts
+#set reverse_alias = yes
+
+# UI
+set sort = threads
+set sort_aux = reverse-last-date
+set pager_index_lines = 8
+set mailcap_path = ~/.neomutt/mailcap
+auto_view text/html
+alternative_order text/plain text/html
+set sidebar_visible = yes
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+set mail_check_stats = yes
+bind index,pager \CP sidebar-prev
+bind index,pager \CN sidebar-next
+bind index,pager \CO sidebar-open
+bind index,pager B sidebar-toggle-visible
+bind pager j next-line
+bind pager k previous-line
+bind attach,index,pager \Cd next-page
+bind attach,index,pager \Cu previous-page
+bind pager g top
+bind pager G bottom
+bind attach,index g first-entry
+bind attach,index G last-entry
+
+# History
+set history = 256
+set save_history = 256
+
+# Colours
+source ~/.neomutt/colors.linux
