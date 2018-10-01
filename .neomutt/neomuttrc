@@ -39,6 +39,9 @@ set pager_index_lines = 8
 set mailcap_path = ~/.neomutt/mailcap
 auto_view text/html
 alternative_order text/plain text/html
+set print = yes
+set print_command = "$PAGER"
+set print_split = yes
 set sidebar_visible = yes
 set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
 set mail_check_stats = yes
