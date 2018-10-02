@@ -15,16 +15,17 @@ set trash = "+main/Trash"
 set sendmail = "/usr/bin/msmtp"
 set use_from = yes
 set use_envelope_from = yes
-set edit_headers = yes
-set send_charset="us-ascii:utf-8"
 set reverse_name = yes
+set edit_headers = yes
+set send_charset = "us-ascii:utf-8"
+set date_format = "%a, %-d %b %Y %T %z"
 
 # PGP
 source ~/.neomutt/gpg.rc
 set crypt_autosign = yes
 
 # Contacts
-set query_command= "khard email --parsable --search-in-source-files '%s'"
+set query_command = "khard email --parsable --search-in-source-files '%s'"
 bind editor <Tab> complete-query
 bind editor ^T complete
 macro index,pager A \
@@ -35,6 +36,7 @@ macro index,pager A \
 # UI
 set sort = threads
 set sort_aux = reverse-last-date
+set strict_threads = yes
 set pager_index_lines = 8
 set mailcap_path = ~/.neomutt/mailcap
 auto_view text/html
