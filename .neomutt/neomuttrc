@@ -22,7 +22,7 @@ set date_format = "%a, %-d %b %Y %T %z"
 
 # PGP
 source ~/.neomutt/gpg.rc
-set crypt_autosign = yes
+#set crypt_autosign = yes
 
 # Contacts
 set query_command = "khard email --parsable --search-in-source-files '%s'"
