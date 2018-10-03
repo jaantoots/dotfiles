@@ -40,6 +40,9 @@
 !/.config/termite
 !/.config/zathura
 
+# Mailcap
+!/.mailcap
+
 # Neomutt
 !/.neomutt
 /.neomutt/mailboxes

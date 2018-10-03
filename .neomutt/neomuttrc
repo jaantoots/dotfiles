@@ -38,7 +38,6 @@ set sort = threads
 set sort_aux = reverse-last-date
 set strict_threads = yes
 set pager_index_lines = 8
-set mailcap_path = ~/.neomutt/mailcap
 auto_view text/html
 alternative_order text/plain text/html
 set print = yes
