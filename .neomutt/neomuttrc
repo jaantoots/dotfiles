@@ -44,7 +44,7 @@ bind index,pager E edit-or-view-raw-message
 
 # Display
 set sort = threads
-set sort_aux = reverse-last-date
+set sort_aux = reverse-last-date-received
 set strict_threads = yes
 set pager_index_lines = 8
 auto_view text/html
@@ -58,6 +58,7 @@ set sleep_time = 0
 set sidebar_visible = yes
 set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
 set mail_check_stats = yes
+set index_format = "%4C %Z %(%d %b %H:%M) %-15.15L  %s"
 bind index,pager \CP sidebar-prev
 bind index,pager \CN sidebar-next
 bind index,pager \CO sidebar-open
