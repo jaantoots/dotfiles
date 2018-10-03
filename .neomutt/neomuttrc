@@ -18,7 +18,8 @@ set use_envelope_from = yes
 set reverse_name = yes
 set edit_headers = yes
 set send_charset = "us-ascii:utf-8"
-set date_format = "%a, %-d %b %Y %T %z"
+set attribution = "On %d, %f wrote:"
+set date_format = "%a, %-d %b %Y at %T %z"
 
 # PGP
 source ~/.neomutt/gpg.rc
