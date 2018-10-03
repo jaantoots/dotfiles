@@ -34,7 +34,15 @@ macro index,pager A \
     "add the sender email address to khard"
 #set reverse_alias = yes
 
-# UI
+# Archiving
+set delete = yes
+set confirmappend = no
+macro index,pager e \
+    "<save-message>=main/Archive<enter>" \
+    "archive message"
+bind index,pager E edit-or-view-raw-message
+
+# Display
 set sort = threads
 set sort_aux = reverse-last-date
 set strict_threads = yes
@@ -44,6 +52,9 @@ alternative_order text/plain text/html
 set print = yes
 set print_command = "$PAGER"
 set print_split = yes
+
+# UI
+set sleep_time = 0
 set sidebar_visible = yes
 set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
 set mail_check_stats = yes
@@ -59,7 +70,10 @@ bind pager g top
 bind pager G bottom
 bind attach,index g first-entry
 bind attach,index G last-entry
-bind pager a group-reply
+bind index,pager a group-reply
+macro index i \
+    "<change-folder>=main/INBOX<enter>" \
+    "go to inbox"
 
 # History
 set history = 256
