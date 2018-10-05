@@ -6,10 +6,10 @@ source ~/.neomutt/local.rc
 # Mail directories
 set folder = "~/.mail"
 source ~/.neomutt/mailboxes
-set spoolfile = "+main/INBOX"
-set record = "+main/Sent"
-set postponed = "+main/Drafts"
-set trash = "+main/Trash"
+set spoolfile = "+INBOX"
+set record = "+Sent"
+set postponed = "+Drafts"
+set trash = "+Trash"
 
 # Sending
 set sendmail = "/usr/bin/msmtp"
@@ -38,7 +38,7 @@ macro index,pager A \
 set delete = yes
 set confirmappend = no
 macro index,pager e \
-    "<save-message>=main/Archive<enter>" \
+    "<save-message>=Archive<enter>" \
     "archive message"
 bind index,pager E edit-or-view-raw-message
 
@@ -73,7 +73,7 @@ bind attach,index g first-entry
 bind attach,index G last-entry
 bind index,pager a group-reply
 macro index i \
-    "<change-folder>=main/INBOX<enter>" \
+    "<change-folder>=INBOX<enter>" \
     "go to inbox"
 
 # History
