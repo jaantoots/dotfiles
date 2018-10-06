@@ -79,6 +79,10 @@ if [ -z "$TARGET" ]; then
     TARGET="$(jq -r '"\(.info.title).\(.info.episode).\(.info.airdate)"' <<<"$response" |
         tr ' ' '.')"
 fi
+if [ -f "$TARGET".mp4 ]; then
+    $OHCE "\"$TARGET.mp4\" already downloaded"
+    exit
+fi
 token="$(jq -r '.data.token' <<<"$response")"
 data_path="$(jq -r '.data.path' <<<"$response")"
 file="$(jq -r '.data.streams | .[0].file' <<<"$response")"
