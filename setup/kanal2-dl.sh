@@ -29,6 +29,7 @@ while getopts ":vdqki" o; do
             usage
     esac
 done
+shift $((OPTIND-1))
 
 VIDEO="$1"
 TARGET="$2"
