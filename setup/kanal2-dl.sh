@@ -1,13 +1,14 @@
 #!/bin/bash
 
-usage() { echo "usage: $0 [-vdqk] VIDEO [TARGET]" 1>&2; exit 2; }
+usage() { echo "usage: $0 [-vdqki] VIDEO [TARGET]" 1>&2; exit 2; }
 
 verbose=false
 debug=false
 quiet=false
 keep=false
+id=false
 
-while getopts ":vdq" o; do
+while getopts ":vdqki" o; do
     case "${o}" in
         v)
             verbose=true
@@ -21,6 +22,9 @@ while getopts ":vdq" o; do
         k)
             keep=true
             ;;
+        i)
+            id=true
+            ;;
         *)
             usage
     esac
@@ -31,6 +35,15 @@ TARGET="$2"
 
 if [ -z "$VIDEO" ]; then
     usage
+fi
+
+if [ $id = false ]; then
+    echo "Downloading all videos on page \"$VIDEO\"..."
+    lynx -dump -listonly 'https://kanal2.postimees.ee/pluss/saade/'"$VIDEO" |
+        grep 'https://kanal2.postimees.ee/pluss/video' | awk '{ print $2; }' |
+        sed 's|https://kanal2.postimees.ee/pluss/video/?id=||' | sort -nu |
+        xargs -t -l "$0" -i
+    exit
 fi
 
 set -eu
