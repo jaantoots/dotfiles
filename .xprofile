@@ -1,5 +1,5 @@
 # set keyboard
-setxkbmap -layout us -variant altgr-intl -option ctrl:nocaps
+setxkbmap -layout ee,us -variant us,altgr-intl -option ctrl:nocaps,grp_led:caps,grp:alt_space_toggle
 
 # fix dpi
 xrandr --dpi 192
