@@ -156,26 +156,26 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+    # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym $left       resize shrink width 10 px or 10 ppt
-        bindsym $down       resize grow height 10 px or 10 ppt
-        bindsym $up         resize shrink height 10 px or 10 ppt
-        bindsym $right      resize grow width 10 px or 10 ppt
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym $left       resize shrink width 10 px or 10 ppt
+    bindsym $down       resize grow height 10 px or 10 ppt
+    bindsym $up         resize shrink height 10 px or 10 ppt
+    bindsym $right      resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left        resize shrink width 10 px or 10 ppt
-        bindsym Down        resize grow height 10 px or 10 ppt
-        bindsym Up          resize shrink height 10 px or 10 ppt
-        bindsym Right       resize grow width 10 px or 10 ppt
+    # same bindings, but for the arrow keys
+    bindsym Left        resize shrink width 10 px or 10 ppt
+    bindsym Down        resize grow height 10 px or 10 ppt
+    bindsym Up          resize shrink height 10 px or 10 ppt
+    bindsym Right       resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -184,13 +184,14 @@ bindsym $mod+r mode "resize"
 set $launcher "Launch: [c]hromium [f]irefox [s]ignal s[p]otify"
 bindsym $mod+x mode $launcher
 mode $launcher {
-     bindsym c mode "default"; exec --no-startup-id chromium
-     bindsym f mode "default"; exec --no-startup-id firefox
-     bindsym s mode "default"; exec --no-startup-id signal-desktop
-     bindsym p mode "default"; exec --no-startup-id spotify --force-device-scale-factor=2
+    bindsym c mode "default"; exec --no-startup-id chromium
+    bindsym f mode "default"; exec --no-startup-id firefox
+    bindsym s mode "default"; exec --no-startup-id signal-desktop
+    bindsym p mode "default"; exec --no-startup-id spotify --force-device-scale-factor=2
 
-     bindsym Esc mode "default"
-     bindsym Return mode "default"
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 # system menu
