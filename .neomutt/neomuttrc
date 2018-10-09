@@ -42,6 +42,11 @@ macro index,pager e \
     "archive message"
 bind index,pager E edit-or-view-raw-message
 
+# Virtual mailboxes
+set nm_default_uri = "notmuch://$HOME/.mail"
+virtual-mailboxes "All Mail" "notmuch://?query=*"
+bind index,pager X change-vfolder
+
 # Display
 set sort = threads
 set sort_aux = reverse-last-date-received
