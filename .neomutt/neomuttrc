@@ -46,6 +46,8 @@ bind index,pager E edit-or-view-raw-message
 set nm_default_uri = "notmuch://$HOME/.mail"
 virtual-mailboxes "All Mail" "notmuch://?query=*"
 bind index,pager X change-vfolder
+bind index,pager x vfolder-from-query
+bind index,pager + entire-thread
 
 # Display
 set sort = threads
