@@ -145,7 +145,7 @@ $OHCE "Converting video..."
 if [ $quiet = true ]; then
     exec &>/dev/null
 fi
-ffmpeg -f concat -i "$TARGET"/list -acodec copy -vcodec copy "$TARGET".mp4
+ffmpeg -f concat -i "$TARGET"/list -c copy -bsf:a aac_adtstoasc "$TARGET".mp4
 )
 
 if [ $keep = false ]; then
