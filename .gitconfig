@@ -1,21 +1,24 @@
-[user]
-        name = Jaan Toots
-        email = jaantoots@gmail.com
-        signingkey = 52A558F64DD089AA
 [alias]
-        co = checkout
-        ci = commit
-        st = status -s
-        br = branch
-        hist = log --pretty=format:'%C(red)%h %C(green)%ad%Creset | %s%C(bold yellow)%d%Creset %C(blue)[%an]%Creset' --graph --date=short
-        type = cat-file -t
-        dump = cat-file -p
-        wdiff = diff --word-diff=color
+    co = checkout
+    ci = commit
+    st = status -s
+    br = branch
+    hist = log --pretty=format:'%C(red)%h %C(green)%ad%Creset | %s%C(bold yellow)%d%Creset %C(blue)[%an]%Creset' --graph --date=short
+    type = cat-file -t
+    dump = cat-file -p
+    wdiff = diff --word-diff=color
+
 [core]
-        excludesfile = ~/.gitignore_global
+    excludesfile = ~/.gitignore_global
+
 [push]
-        default = simple
+    default = simple
+
 [credential]
-        helper = store
+    helper = store
+
 [diff "pandoc"]
-        textconv=pandoc --to=markdown
+    textconv = pandoc --to=markdown
+
+[include]
+    path = .gitconfig.local
