@@ -20,6 +20,7 @@ set edit_headers = yes
 set send_charset = "us-ascii:utf-8"
 set attribution = "On %d, %f wrote:"
 set date_format = "%a, %-d %b %Y at %T %z"
+set empty_subject = "Re: "
 
 # PGP
 source ~/.neomutt/gpg.rc
