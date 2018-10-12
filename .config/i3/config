@@ -178,13 +178,14 @@ bindsym $mod+Print exec --no-startup-id scrot
 bindsym $mod+Shift+Print exec --no-startup-id scrot -u
 
 # launch faster
-set $launcher "Launch: [c]hromium [f]irefox [s]ignal s[p]otify"
+set $launcher "Launch: [c]hromium [f]irefox [s]ignal s[p]otify [m]essenger"
 bindsym $mod+x mode $launcher
 mode $launcher {
     bindsym c mode "default"; exec --no-startup-id chromium
     bindsym f mode "default"; exec --no-startup-id firefox
     bindsym s mode "default"; exec --no-startup-id signal-desktop
     bindsym p mode "default"; exec --no-startup-id spotify --force-device-scale-factor=2
+    bindsym m mode "default"; exec --no-startup-id caprine
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -244,6 +245,8 @@ set $base0F #a16946
 # Basic bar configuration using the Base16 variables.
 bar {
     status_command i3status
+
+    tray_output none
 
     colors {
         background $base00
