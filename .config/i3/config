@@ -173,6 +173,10 @@ bindsym $mod+Shift+s exec --no-startup-id urxvt -e ssh-host
 bindsym $mod+p exec --no-startup-id passmenu --type
 bindsym $mod+Shift+p exec --no-startup-id passmenu
 
+# screenshot
+bindsym $mod+Print exec --no-startup-id scrot
+bindsym $mod+Shift+Print exec --no-startup-id scrot -u
+
 # launch faster
 set $launcher "Launch: [c]hromium [f]irefox [s]ignal s[p]otify"
 bindsym $mod+x mode $launcher
