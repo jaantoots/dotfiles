@@ -179,6 +179,11 @@ bindsym $mod+Shift+Print exec --no-startup-id scrot -u
 bindsym $mod+s exec --no-startup-id "sleep 0.1; scrot -s"
 bindsym $mod+Shift+s exec --no-startup-id "sleep 0.1; scrot -s -e 'xclip -selection clipboard -t image/png $f'"
 
+# start organisational stuff on workspace 2
+exec --no-startup-id "i3-msg 'workspace 2; append_layout $HOME/.config/i3/org.json'"
+#exec --no-startup-id "qutebrowser https://www.fastmail.com/calendar/; caprine; signal-desktop"
+#exec --no-startup-id "urxvt -e neomutt -R"
+
 # launch faster
 set $launcher "Launch: [c]hromium [f]irefox [s]ignal s[p]otify [m]essenger"
 bindsym $mod+x mode $launcher
