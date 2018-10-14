@@ -36,6 +36,9 @@
 !/.config/gtk-3.0
 !/.config/i3*
 !/.config/libinput-gestures.conf
+!/.config/qutebrowser
+/.config/qutebrowser/bookmarks
+/.config/qutebrowser/quickmarks
 !/.config/sxiv
 !/.config/termite
 !/.config/zathura
