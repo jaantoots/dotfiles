@@ -166,8 +166,8 @@ bindsym $mod+Shift+Return exec --no-startup-id urxvt -title floatterm
 for_window [class="URxvt" title="floatterm"] floating enabled
 
 # start terminal with ssh
-bindsym $mod+$alt+s exec --no-startup-id urxvt -e ssh-last
-bindsym $mod+Shift+s exec --no-startup-id urxvt -e ssh-host
+#bindsym $mod+$alt+s exec --no-startup-id urxvt -e ssh-last
+#bindsym $mod+Shift+s exec --no-startup-id urxvt -e ssh-host
 
 # passmenu
 bindsym $mod+p exec --no-startup-id passmenu --type
@@ -176,6 +176,8 @@ bindsym $mod+Shift+p exec --no-startup-id passmenu
 # screenshot
 bindsym $mod+Print exec --no-startup-id scrot
 bindsym $mod+Shift+Print exec --no-startup-id scrot -u
+bindsym $mod+s exec --no-startup-id "sleep 0.1; scrot -s"
+bindsym $mod+Shift+s exec --no-startup-id "sleep 0.1; scrot -s -e 'xclip -selection clipboard -t image/png $f'"
 
 # launch faster
 set $launcher "Launch: [c]hromium [f]irefox [s]ignal s[p]otify [m]essenger"
