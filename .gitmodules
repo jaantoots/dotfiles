@@ -13,3 +13,6 @@
 [submodule ".vim/colors/base16"]
 	path = .vim/base16
 	url = git://github.com/chriskempson/base16-vim.git
+[submodule ".config/qutebrowser/base16-qutebrowser"]
+	path = .config/qutebrowser/base16-qutebrowser
+	url = https://github.com/theova/base16-qutebrowser.git
