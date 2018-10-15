@@ -26,6 +26,7 @@ aliases:
     q: quit
     wq: quit --save
     pass: spawn --userscript qute-pass -d dmenu
+    mpv: spawn --userscript view_in_mpv
 
 # Keybindings
 bindings.commands:
@@ -34,3 +35,5 @@ bindings.commands:
         zol: spawn --userscript qute-pass -d dmenu --otp-only
         zpl: spawn --userscript qute-pass -d dmenu --password-only
         zul: spawn --userscript qute-pass -d dmenu --username-only
+        ",w": open https://framabag.org/bookmarklet?url={url}
+        ",s": open https://miniflux.jaan.xyz/bookmarklet?uri={url}
