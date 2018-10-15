@@ -15,9 +15,17 @@ fonts.statusbar: 12pt monospace
 fonts.tabs: 12pt monospace
 
 # Misc
+auto_save.session: true
 completion.cmd_history_max_items: -1
 scrolling.bar: when-searching
 scrolling.smooth: true
+
+# Aliases
+aliases:
+    w: session-save
+    q: quit
+    wq: quit --save
+    pass: spawn --userscript qute-pass -d dmenu
 
 # Keybindings
 bindings.commands:
