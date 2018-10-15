@@ -1,5 +1,8 @@
 source $VIMRUNTIME/defaults.vim
 
+" allow buffers to become hidden
+set hidden
+
 if &t_Co > 2 || has("gui_running")
     " highlight search pattern
     set hlsearch
