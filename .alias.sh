@@ -15,13 +15,20 @@ exifdiff() {
 }
 
 # get user entry for process
-whop(){
+whop() {
     ps --no-headers -p "$1"
     getent passwd "$(ps --no-headers -o uid -p "$1")"
 }
 
 # start VirtualBox VM in the background
-startvm(){
+startvm() {
     [[ "$#" -eq 1 ]] || return 1
     VirtualBox --startvm "$1" &
+}
+
+# open recent file with zathura
+zh() {
+    cat .local/share/zathura/history |
+        sed -nE '/^\[.+\]$/h;/^time=[0-9]+$/{x;G;s/^\[(.+)\]\ntime=([0-9]+)$/\2 \1/p}' |
+        sort -nr | cut -d ' ' -f 2- | dmenu | xargs -r zathura --fork
 }
