@@ -68,6 +68,7 @@
 !/.tmux.conf
 
 # Vim
+!/.gvimrc
 !/.vim
 /.vim/*
 !/.vim/base16
