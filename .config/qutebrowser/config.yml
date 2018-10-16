@@ -21,6 +21,7 @@ content.webrtc_ip_handling_policy: default-public-interface-only
 content.windowed_fullscreen: true
 scrolling.bar: when-searching
 scrolling.smooth: true
+tabs.show: multiple
 
 # Aliases
 aliases:
