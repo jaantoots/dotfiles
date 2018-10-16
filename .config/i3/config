@@ -53,6 +53,14 @@ bindsym $mod+e layout toggle split
 bindsym $mod+a focus parent
 bindsym $mod+Shift+a focus child
 
+# mark and switch windows
+bindsym $mod+m mark --toggle quick
+bindsym $mod+Shift+m exec i3-input -F 'mark --toggle %s' -l 1 -P 'Mark: '
+bindsym $mod+comma [con_mark="quick"] focus
+bindsym $mod+Shift+comma exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Go to: '
+bindsym $mod+n swap container with mark quick
+bindsym $mod+Shift+n exec i3-input -F 'swap container with mark %s' -l 1 -P 'Swap: '
+
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
@@ -95,6 +103,9 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
+
+# switch workspaces quickly
+bindsym $mod+Tab workspace back_and_forth
 
 # move workspace to output
 bindsym $mod+$alt+$left move workspace to output left
