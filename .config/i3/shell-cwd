@@ -1,7 +1,5 @@
 #!/bin/bash
 
-cd="$HOME"
-
 while read pid cmd; do
     grep -q "$(cut -d " " -f 1 <<<"$cmd")" /etc/shells && break
 done < <(
@@ -11,7 +9,7 @@ done < <(
 )
 
 if [ -n "$pid" ]; then
-    cd="$(readlink "/proc/$pid/cwd")"
+    cwd="$(readlink "/proc/$pid/cwd")"
 fi
 
-echo "$cd"
+echo "${cwd:-$HOME}"
