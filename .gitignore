@@ -1,14 +1,13 @@
 # Ignore everything.
 /*
 
-# Unignore metafiles for the repository
+# repository
 !/.gitignore
 !/.gitmodules
 !/README.md
 !/LICENSE
-!/setup
-
-### Unignore configuration files to be tracked ###
+!/bin
+!/scripts
 
 # Git
 !/.gitconfig
@@ -36,6 +35,7 @@
 !/.config/gtk-3.0
 !/.config/i3*
 !/.config/libinput-gestures.conf
+!/.config/my-umatrix-rules.txt
 !/.config/qutebrowser
 /.config/qutebrowser/bookmarks
 /.config/qutebrowser/quickmarks
@@ -83,7 +83,3 @@
 
 # ZSH
 !/.zshrc
-
-### Unignore bin directory ###
-
-!/bin
