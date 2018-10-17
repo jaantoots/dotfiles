@@ -1,5 +1,9 @@
 !! Fix DPI
+#ifdef DPI
+Xft.dpi: DPI
+#else
 Xft.dpi: 192
+#endif
 Xft.autohint: 0
 Xft.lcdfilter: lcddefault
 Xft.hintstyle: hintfull
@@ -20,11 +24,11 @@ UXTerm.vt100.cursorBlink: true
 UXTerm.vt100.translations: #override \n\
   Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
   Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
-UXTerm.vt100.faceName: Inconsolata
+UXTerm.vt100.faceName: monospace
 UXTerm.vt100.faceSize: 12
 
 !! URxvt
-URxvt.font: xft:Inconsolata:size=12
+URxvt.font: xft:monospace:size=12
 URxvt.letterSpace: 1
 URxvt.print-pipe: cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
 URxvt.scrollBar: false
@@ -39,7 +43,11 @@ URxvt.secondaryScroll: false
 ! Perl extensions
 URxvt.perl-ext-common: default,matcher
 URxvt.matcher.button: 2
+#ifdef BROWSER
+URxvt.url-launcher: BROWSER
+#else
 URxvt.url-launcher: firefox
+#endif
 
 !! base16
 #include ".config/base16-xresources/xresources/base16-default-dark-256.Xresources"

@@ -1,3 +1,6 @@
+# set variables
+BROWSER=firefox
+
 # set keyboard
 setxkbmap -layout ee,us -variant us,altgr-intl -option ctrl:nocaps,grp_led:caps,grp:alt_space_toggle
 
