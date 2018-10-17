@@ -25,5 +25,11 @@ fi
 [ -f /etc/xprofile ] && . /etc/xprofile
 [ -f ~/.xprofile ] && . ~/.xprofile
 
+# fix dpi
+xrandr --dpi 192
+# screenlocker
+xset dpms 600 600 600
+xset s 590 9
+xss-lock -n "$HOME/bin/dim-screen.sh" -- "$HOME/bin/locker" &
 # start i3 and ssh-agent
 exec ssh-agent i3

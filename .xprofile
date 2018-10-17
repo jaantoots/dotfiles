@@ -1,16 +1,8 @@
 # set keyboard
 setxkbmap -layout ee,us -variant us,altgr-intl -option ctrl:nocaps,grp_led:caps,grp:alt_space_toggle
 
-# fix dpi
-xrandr --dpi 192
-
 # additional keybindings
 xbindkeys
 
 # touchpad gestures
 (which libinput-gestures >/dev/null 2>&1) && libinput-gestures &
-
-# screenlocker
-xset dpms 600 600 600
-xset s 590 9
-xss-lock -n "$HOME/bin/dim-screen.sh" -- "$HOME/bin/locker" &
