@@ -39,7 +39,11 @@ def write_gpx(filep, locations):
     """Write locations as GPX to filep."""
     filep.write(
         '<?xml version="1.0" encoding="UTF-8"?>\n'
-        '<gpx creator="json2gpx" version="0.1" xmlns="http://www.topografix.com/GPX/1/0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/GPX/1/0/gpx.xsd">\n'
+        '<gpx creator="json2gpx" version="0.1"'
+        ' xmlns="http://www.topografix.com/GPX/1/0"'
+        ' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"'
+        ' xsi:schemaLocation="http://www.topografix.com/GPX/1/0'
+        ' http://www.topografix.com/GPX/1/0/gpx.xsd">\n'
         '<trk><name><![CDATA[Europe]]></name><trkseg>\n')
     for point in locations:
         filep.write('<trkpt lat="{:f}" lon="{:f}">\n'.format(
