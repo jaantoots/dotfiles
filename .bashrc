@@ -90,17 +90,5 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# brew bash_completion
-hash brew >/dev/null 2>&1 && {
-    if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
-        . "$(brew --prefix)/etc/bash_completion"
-    fi
-}
-true
-# include iterm2 integration if it exists
-if [ -f "$HOME/.iterm2_shell_integration.bash" ]; then
-    . "$HOME/.iterm2_shell_integration.bash"
-fi
-
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
