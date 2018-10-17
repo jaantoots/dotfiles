@@ -237,9 +237,6 @@ hide_edge_borders smart
 # Wallpaper
 exec --no-startup-id ~/.fehbg
 
-# Notifications
-exec --no-startup-id dunst
-
 ## Base16 Default Dark
 # Author: Chris Kempson (http://chriskempson.com)
 #

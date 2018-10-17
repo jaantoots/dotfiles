@@ -2,7 +2,6 @@
     ### Display ###
     monitor = 0
     follow = none
-    geometry = "800x5-0-47"
     indicate_hidden = true
     shrink = false
     transparency = 0
@@ -17,7 +16,7 @@
     idle_threshold = 10
 
     ### Text ###
-    font = Inconsolata 12
+    font = "monospace 12"
     line_height = 0
     markup = full
     format = "<b>%s</b>\n%b %p"
@@ -40,10 +39,7 @@
 
     ### Misc/Advanced ###
     dmenu = /usr/bin/dmenu -p dunst:
-    browser = /usr/bin/chromium
     always_run_script = true
-    title = Dunst
-    class = Dunst
     startup_notification = false
 
 [shortcuts]
