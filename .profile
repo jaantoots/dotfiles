@@ -21,6 +21,7 @@ PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 
 export ALTERNATE_EDITOR=
 export EDITOR=vim
+export SUDO_EDITOR=rvim
 
 # use the local file for private variables (e.g. API keys)
 if [ -f "$HOME/.profile.local" ]; then
