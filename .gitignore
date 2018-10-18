@@ -48,6 +48,7 @@
 
 # Neomutt
 !/.neomutt
+/.neomutt/alias
 /.neomutt/mailboxes
 /.neomutt/local.rc
 

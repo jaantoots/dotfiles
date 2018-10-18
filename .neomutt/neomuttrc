@@ -1,10 +1,10 @@
-set header_cache = "~/.cache/neomutt"
+set header_cache = ~/.cache/neomutt
 
 # Personal configuration
 source ~/.neomutt/local.rc
 
 # Mail directories
-set folder = "~/.mail"
+set folder = ~/.mail
 source ~/.neomutt/mailboxes
 set spoolfile = "+INBOX"
 set record = "+Sent"
@@ -12,7 +12,7 @@ set postponed = "+Drafts"
 set trash = "+Trash"
 
 # Sending
-set sendmail = "/usr/bin/msmtp"
+set sendmail = /usr/bin/msmtp
 set use_from = yes
 set use_envelope_from = yes
 set reverse_name = yes
@@ -30,6 +30,8 @@ source ~/.neomutt/gpg.rc
 #set crypt_autosign = yes
 
 # Contacts
+set alias_file = ~/.neomutt/alias
+source ~/.neomutt/alias
 set query_command = "khard email --parsable --search-in-source-files '%s'"
 bind editor <Tab> complete-query
 bind editor ^T complete
