@@ -21,6 +21,9 @@ set send_charset = "us-ascii:utf-8"
 set attribution = "On %d, %f wrote:"
 set date_format = "%a, %-d %b %Y at %T %z"
 set empty_subject = "Re: "
+set mime_forward = ask-yes
+set forward_format = "Fwd: [%F] %s"
+set fast_reply = yes
 
 # PGP
 source ~/.neomutt/gpg.rc
@@ -60,6 +63,7 @@ alternative_order text/plain text/html
 set print = yes
 set print_command = "$PAGER"
 set print_split = yes
+set wait_key = no
 
 # UI
 set sleep_time = 0
