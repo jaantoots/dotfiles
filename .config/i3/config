@@ -61,12 +61,11 @@ bindsym $mod+Shift+comma exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Go to
 bindsym $mod+n swap container with mark quick
 bindsym $mod+Shift+n exec i3-input -F 'swap container with mark %s' -l 1 -P 'Swap: '
 
-# toggle tiling / floating
+# floating windows
 bindsym $mod+Shift+space floating toggle
-# change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
-# Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+floating_maximum_size 1920 x 1080
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -150,16 +149,16 @@ mode "resize" {
     # Pressing right will grow the window’s width.
     # Pressing up will shrink the window’s height.
     # Pressing down will grow the window’s height.
-    bindsym $left       resize shrink width 10 px or 10 ppt
-    bindsym $down       resize grow height 10 px or 10 ppt
-    bindsym $up         resize shrink height 10 px or 10 ppt
-    bindsym $right      resize grow width 10 px or 10 ppt
+    bindsym $left       resize shrink width 20 px or 20 ppt
+    bindsym $down       resize grow height 20 px or 20 ppt
+    bindsym $up         resize shrink height 20 px or 20 ppt
+    bindsym $right      resize grow width 20 px or 20 ppt
 
     # same bindings, but for the arrow keys
-    bindsym Left        resize shrink width 10 px or 10 ppt
-    bindsym Down        resize grow height 10 px or 10 ppt
-    bindsym Up          resize shrink height 10 px or 10 ppt
-    bindsym Right       resize grow width 10 px or 10 ppt
+    bindsym Left        resize shrink width 20 px or 20 ppt
+    bindsym Down        resize grow height 20 px or 20 ppt
+    bindsym Up          resize shrink height 20 px or 20 ppt
+    bindsym Right       resize grow width 20 px or 20 ppt
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
