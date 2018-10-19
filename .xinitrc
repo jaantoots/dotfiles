@@ -39,6 +39,6 @@ xset dpms 600 600 600
 xset s 590 9
 xss-lock -n "$HOME/bin/dim-screen.sh" -- "$HOME/bin/locker" &
 # notifications
-dunst -browser ${BROWSER:-firefox} -geometry "800x5-0-47"
+dunst -browser ${BROWSER:-firefox} -geometry "800x5-0-47" &
 # start i3 and ssh-agent
 exec ssh-agent i3
