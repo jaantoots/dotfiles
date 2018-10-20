@@ -24,6 +24,7 @@ set empty_subject = "Re: "
 set mime_forward = ask-yes
 set forward_format = "Fwd: [%F] %s"
 set fast_reply = yes
+set abort_noattach = ask-yes
 
 # PGP
 source ~/.neomutt/gpg.rc
