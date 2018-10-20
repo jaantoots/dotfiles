@@ -29,11 +29,12 @@ if [ -f $sysresources ]; then
     xrdb -merge $sysresources
 fi
 if [ -f "$userresources" ]; then
-    xrdb -merge -DBROWSER="${BROWSER:-firefox}" -DDPI="${DPI:-192}" "$userresources"
+    xrdb -merge "${BROWSER:+-DBROWSER=${BROWSER}}" "${DPI:+-DDPI=${DPI}}" \
+        "$userresources"
 fi
 
 # fix dpi
-xrandr --dpi "${DPI:-192}"
+[ -n "${DPI}" ] && xrandr --dpi "${DPI}"
 # screenlocker
 xset dpms 600 600 600
 xset s 590 9

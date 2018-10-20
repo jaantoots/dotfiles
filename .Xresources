@@ -46,7 +46,7 @@ URxvt.matcher.button: 2
 #ifdef BROWSER
 URxvt.url-launcher: BROWSER
 #else
-URxvt.url-launcher: firefox
+URxvt.url-launcher: xdg-open
 #endif
 
 !! base16
