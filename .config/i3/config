@@ -194,6 +194,7 @@ set $launcher "Launch: [q]utebrowser [c]hromium [f]irefox [s]ignal s[p]otify [m]
 bindsym $mod+x mode $launcher
 mode $launcher {
     bindsym q mode "default"; exec --no-startup-id qutebrowser
+    bindsym Shift+q mode "default"; exec --no-startup-id "qutebrowser ':open -p'"
     bindsym c mode "default"; exec --no-startup-id chromium
     bindsym f mode "default"; exec --no-startup-id firefox
     bindsym s mode "default"; exec --no-startup-id signal-desktop

@@ -17,6 +17,7 @@ fonts.tabs: 12pt monospace
 # Misc
 auto_save.session: true
 completion.cmd_history_max_items: -1
+content.autoplay: false
 content.webrtc_ip_handling_policy: default-public-interface-only
 content.windowed_fullscreen: true
 scrolling.bar: when-searching
