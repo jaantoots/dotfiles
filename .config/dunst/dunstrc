@@ -2,6 +2,7 @@
     ### Display ###
     monitor = 0
     follow = none
+    geometry = "800x5-0+0"
     indicate_hidden = true
     shrink = false
     transparency = 0

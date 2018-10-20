@@ -6,6 +6,18 @@ inelegant solutions for [compatibility with Ubuntu
 16.04](setup/ubuntu.md)). Everything should fail gracefully, it is
 safe to check out this repository into a new home directory.
 
+## Dunst notifications
+
+Dunst is started automatically as a systemd service through dbus but it is
+useful to define an override for the position by `systemctl --user edit
+dunst.service`, for example:
+
+```
+[Service]
+ExecStart=
+ExecStart=/usr/bin/dunst -geometry "800x5-0-47"
+```
+
 ## Browser extensions
 
 Occasionally updated list of used Firefox extensions.
