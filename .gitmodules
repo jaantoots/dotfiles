@@ -16,3 +16,6 @@
 [submodule ".config/qutebrowser/base16-qutebrowser"]
 	path = .config/qutebrowser/base16-qutebrowser
 	url = https://github.com/theova/base16-qutebrowser.git
+[submodule ".config/kitty/base16-kitty"]
+	path = .config/kitty/base16-kitty
+	url = https://github.com/kdrag0n/base16-kitty.git

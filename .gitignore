@@ -34,6 +34,7 @@
 !/.config/fontconfig
 !/.config/gtk-3.0
 !/.config/i3*
+!/.config/kitty
 !/.config/libinput-gestures.conf
 !/.config/my-umatrix-rules.txt
 !/.config/qutebrowser
