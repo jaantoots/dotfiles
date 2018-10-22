@@ -1,7 +1,7 @@
 # Backlight
-"xbacklight -dec 5"
+"xbacklight -dec 5; pkill -SIGRTMIN+11 i3blocks"
     XF86MonBrightnessDown
-"xbacklight -inc 5"
+"xbacklight -inc 5; pkill -SIGRTMIN+11 i3blocks"
     XF86MonBrightnessUp
 
 # Sound

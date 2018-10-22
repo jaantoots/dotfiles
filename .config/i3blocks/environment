@@ -2,6 +2,7 @@
 
 disk_icon= 
 wifi_icon= 
+backlight_icon= 
 volume_icons=(   )
 power_icons=(   )
 battery_icons=(     )
