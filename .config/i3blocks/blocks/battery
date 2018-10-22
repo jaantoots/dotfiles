@@ -1,0 +1,53 @@
+#!/bin/bash
+# Copyright (C) 2018 Jaan Toots <jaan@jaantoots.org>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#------------------------------------------------------------------------
+
+source ~/.config/i3blocks/environment
+
+BAT="${BLOCK_INSTANCE:-BAT0}"
+BATP=/sys/class/power_supply/$BAT
+LOW="${1:-20}"
+CRITICAL="${2:-10}"
+
+PERCENT="$(printf "scale=2; 100*%d/%d\n" $(cat $BATP/charge_{now,full}) | bc)"
+secs="$(printf "3600*%d/%d\n" $(cat $BATP/{charge,current}_now) | bc)"
+TIME="$(printf "%02d:%02d" $((${secs}/3600)) $(((${secs} % 3600)/60)))"
+POWER="$(printf "scale=1; %d*%d/10^12\n" $(cat $BATP/{voltage,current}_now) | bc)"
+
+COLOR=
+case "$(cat $BATP/status)" in
+    "Charging")
+        ICON=${power_icons[0]}
+        ;;
+    "Discharging")
+        ICON=${battery_icons[$(printf "(%f + 12.5)/25\n" $PERCENT | bc)]}
+        if [[ "$(printf "%.0f" $PERCENT)" -lt $CRITICAL ]]; then
+            COLOR="$base08"
+        elif [[ "$(printf "%.0f" $PERCENT)" -lt $LOW ]]; then
+            COLOR="$base0A"
+        fi
+        ;;
+    "Full")
+        ICON=${power_icons[1]}
+        ;;
+    *)
+        ICON=${power_icons[2]}
+esac
+
+echo "$ICON $PERCENT% $TIME ${POWER}W"
+echo "$PERCENT%"
+echo "$COLOR"
