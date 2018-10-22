@@ -1,4 +1,5 @@
 source $VIMRUNTIME/defaults.vim
+set encoding=utf-8
 
 " allow buffers to become hidden
 set hidden
