@@ -23,6 +23,8 @@ BATP=/sys/class/power_supply/$BAT
 LOW="${1:-20}"
 CRITICAL="${2:-10}"
 
+[[ -d $BATP ]] || exit
+
 PERCENT="$(printf "scale=2; 100*%d/%d\n" $(cat $BATP/charge_{now,full}) | bc)"
 secs="$(printf "3600*%d/%d\n" $(cat $BATP/{charge,current}_now) | bc)"
 TIME="$(printf "%02d:%02d" $((${secs}/3600)) $(((${secs} % 3600)/60)))"
@@ -43,11 +45,14 @@ case "$(cat $BATP/status)" in
         ;;
     "Full")
         ICON=${power_icons[1]}
+        TIME=
+        POWER=
         ;;
     *)
         ICON=${power_icons[2]}
+        TIME=
 esac
 
-echo "$ICON $PERCENT% $TIME ${POWER}W"
+echo "$ICON $PERCENT%${TIME:+ }${TIME}${POWER:+ ${POWER}W}"
 echo "$PERCENT%"
 echo "$COLOR"
