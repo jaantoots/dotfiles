@@ -40,18 +40,15 @@ capability() { # Return "Capture" if the device is a capture device
 }
 
 volume() {
-    amixer -D $MIXER get $SCONTROL $(capability)
-}
-
-format() {
     sed_filter='s/.*\[([0-9]+%)\] (\[(-?[0-9]+.[0-9]+dB)\] )?\[(on|off)\]/'
     # If dB was selected, print that instead
     sed_filter+="$([[ "$STEP" = *dB ]] && echo '\3' || echo '\1')"
     sed_filter+=' \4/p'
-    sed -nE "$sed_filter" | head -n1 | fancy_format
+    amixer -D $MIXER get $SCONTROL $(capability) |
+        sed -nE "$sed_filter" | head -1
 }
 
-fancy_format() {
+format() {
     read VOL STATE
     COLOR=
     ICON="${volume_icons[0]}"

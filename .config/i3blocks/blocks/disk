@@ -15,21 +15,30 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#------------------------------------------------------------------------
+
 source ~/.config/i3blocks/environment
 
 DIR="${BLOCK_INSTANCE:-$HOME}"
 LOW="${1:-10}"
 CRITICAL="${2:-5}"
 
-read FREE USE < <(df -P -l "$DIR" | awk '/^\// {print $4/1024/1024, $5; exit 0;}')
-COLOR=
-use=${USE%\%}
-if [[ $((100 - use)) -lt $CRITICAL ]]; then
-    COLOR="$base08"
-elif [[ $((100 - use)) -lt $LOW ]]; then
-    COLOR="$base0A"
-fi
+#------------------------------------------------------------------------
 
-printf "$disk_icon %.2fG\n" "$FREE"
-printf "%.fG\n" "$FREE"
-echo "$COLOR"
+format() {
+    read FREE USE
+    COLOR=
+    use=${USE%\%}
+    if [[ $((100 - use)) -lt $CRITICAL ]]; then
+        COLOR="$base08"
+    elif [[ $((100 - use)) -lt $LOW ]]; then
+        COLOR="$base0A"
+    fi
+    printf "$disk_icon %.2fG\n" "$FREE"
+    printf "%.fG\n" "$FREE"
+    echo "$COLOR"
+}
+
+#------------------------------------------------------------------------
+
+df -P -l "$DIR" | awk '/^\// {print $4/1024/1024, $5; exit 0;}' | format

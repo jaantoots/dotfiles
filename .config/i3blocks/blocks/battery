@@ -25,6 +25,8 @@ CRITICAL="${2:-10}"
 
 [[ -d $BATP ]] || exit
 
+#------------------------------------------------------------------------
+
 PERCENT="$(printf "scale=2; 100*%d/%d\n" $(cat $BATP/charge_{now,full}) | bc)"
 secs="$(printf "3600*%d/%d\n" $(cat $BATP/{charge,current}_now) | bc)"
 TIME="$(printf "%02d:%02d" $((${secs}/3600)) $(((${secs} % 3600)/60)))"
