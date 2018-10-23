@@ -36,11 +36,14 @@ IFS=$'\n' read -d '' ESSID FREQ BITR < <(iwconfig $INTERFACE | sed -nE '
     s/.*Bit Rate=([0-9]+(\.[0-9]+)? \S+).*/\1/p')
 COLOR="$base08"
 if [[ "$(cat /sys/class/net/$INTERFACE/operstate)" = "up" ]]; then
-    COLOR="$base0B"
+    COLOR=
+    [[ "${FREQ%%.*}" -gt 3 ]] && COLOR="$base0B"
     IP="$(ip addr show $INTERFACE |
         sed -nE 's/\s*inet6? ([^\/]+)\/.*/\1/p' | head -1)"
 fi
-echo "${wifi_icon}"\
-    "${IP:+ }${IP}${ESSID:+ }${ESSID}${FREQ:+ }${FREQ}${BITR:+ }${BITR}"
+echo "${wifi_icon}${IP:+ }${IP}${ESSID:+ }${ESSID}${FREQ:+ }${FREQ}${BITR:+ }${BITR}"
 echo "$ESSID"
 echo "$COLOR"
+if [[ -n "$IP" ]]; then
+    ip addr show $INTERFACE | grep -qsE '\s*inet ' || exit 33
+fi
