@@ -20,7 +20,7 @@ source ~/.config/i3blocks/environment
 
 DISP="${BLOCK_INSTANCE}"
 
-STEP="${1:-10}"
+STEP="${1:-5}"
 
 #------------------------------------------------------------------------
 
@@ -49,8 +49,8 @@ format() {
 
 case $BLOCK_BUTTON in
   3) toggle ;;  # right click, max/min
-  4) xbacklight ${DISP:+-display ${DISP}} -dec $STEP ;; # scroll down, decrease
-  5) xbacklight ${DISP:+-display ${DISP}} -inc $STEP ;; # scroll up, increase
+  4) xbacklight ${DISP:+-display ${DISP}} -time 50 -dec $STEP ;; # scroll down, decrease
+  5) xbacklight ${DISP:+-display ${DISP}} -time 50 -inc $STEP ;; # scroll up, increase
 esac
 
 backlight | format
