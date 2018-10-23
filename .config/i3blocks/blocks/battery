@@ -20,22 +20,31 @@ source ~/.config/i3blocks/environment
 
 BAT="${BLOCK_INSTANCE:-BAT0}"
 BATP=/sys/class/power_supply/$BAT
-LOW="${1:-20}"
-CRITICAL="${2:-10}"
+LOW="${1:-25}"
+CRITICAL="${2:-15}"
+URGENT="${3:-10}"
 
 [[ -d $BATP ]] || exit
 
 #------------------------------------------------------------------------
 
+time_format() {
+    read SECS || return
+    printf "%02d:%02d" $(($SECS/3600)) $((($SECS % 3600)/60))
+}
+
+#------------------------------------------------------------------------
+
 PERCENT="$(printf "scale=2; 100*%d/%d\n" $(cat $BATP/charge_{now,full}) | bc)"
-secs="$(printf "3600*%d/%d\n" $(cat $BATP/{charge,current}_now) | bc)"
-TIME="$(printf "%02d:%02d" $((${secs}/3600)) $(((${secs} % 3600)/60)))"
 POWER="$(printf "scale=1; %d*%d/10^12\n" $(cat $BATP/{voltage,current}_now) | bc)"
 
 COLOR=
 case "$(cat $BATP/status)" in
     "Charging")
         ICON=${power_icons[0]}
+        TIME="$(printf "3600*(%d - %d)/%d\n" \
+            $(cat $BATP/charge_{full,now} $BATP/current_now) | bc |
+            time_format)"
         ;;
     "Discharging")
         ICON=${battery_icons[$(printf "(%f + 12.5)/25\n" $PERCENT | bc)]}
@@ -44,17 +53,22 @@ case "$(cat $BATP/status)" in
         elif [[ "$(printf "%.0f" $PERCENT)" -lt $LOW ]]; then
             COLOR="$base0A"
         fi
+        TIME="$(printf "3600*%d/%d\n" \
+            $(cat $BATP/{charge,current}_now) | bc | time_format)"
         ;;
     "Full")
         ICON=${power_icons[1]}
-        TIME=
         POWER=
+        COLOR="$base0B"
         ;;
     *)
         ICON=${power_icons[2]}
-        TIME=
+        POWER=
 esac
 
 echo "$ICON $PERCENT%${TIME:+ }${TIME}${POWER:+ ${POWER}W}"
 echo "$PERCENT%"
 echo "$COLOR"
+if [[ "$(printf "%.0f" $PERCENT)" -lt $URGENT ]]; then
+    exit 33
+fi
