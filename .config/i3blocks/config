@@ -20,8 +20,8 @@ signal=11
 
 [battery]
 
-#[temp]
-#
+[temp]
+
 #[load]
 #
 [time]

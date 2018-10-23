@@ -6,6 +6,7 @@ backlight_icon=
 volume_icons=(   )
 power_icons=(   )
 battery_icons=(     )
+temp_icons=(     )
 
 # Colors
 base00="#181818"
