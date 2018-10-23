@@ -25,6 +25,17 @@ load="$(cut -d ' ' -f1 /proc/loadavg)"
 COLOR="$(echo "$load" "$(nproc)" "$base08" |
     awk 'BEGIN {OFMT="%d";} $1 > $2 {print $3;}')"
 
+long() {
+    load="$(cut -d ' ' -f-3 /proc/loadavg)"
+}
+
+#------------------------------------------------------------------------
+
+case $BLOCK_BUTTON in
+  1) long ;;  # right click
+  3) i3-msg "exec i3-sensible-terminal -e htop" >/dev/null ;;  # right click
+esac
+
 echo "$load_icon $load"
 echo "$load"
 echo "$COLOR"

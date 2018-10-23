@@ -23,6 +23,7 @@ signal=11
 [temp]
 
 [load]
+interval=2
 
 [time]
 command=date '+ %F %T'

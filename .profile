@@ -23,6 +23,7 @@ export ALTERNATE_EDITOR=
 export EDITOR=vim
 export SUDO_EDITOR=rvim
 export BROWSER=lynx
+export TERMINAL=kitty
 export LESS=FRj4
 export SYSTEMD_LESS=${LESS}SMK
 
