@@ -22,8 +22,8 @@ signal=11
 
 [temp]
 
-#[load]
-#
+[load]
+
 [time]
 command=date '+ %F %T'
 #
@@ -31,18 +31,6 @@ command=date '+ %F %T'
 #[bandwidth]
 ##instance=eth0
 #interval=5
-#
-## CPU usage
-##
-## The script may be called with -w and -c switches to specify thresholds,
-## see the script for details.
-#[cpu_usage]
-#label=CPU
-#interval=10
-#min_width=CPU: 100.00%
-#
-##[load_average]
-##interval=10
 #
 ## Generic media player support
 ##
@@ -58,15 +46,6 @@ command=date '+ %F %T'
 ## Support multiple VPN, with colors.
 ##[openvpn]
 ##interval=20
-#
-## Temperature
-##
-## Support multiple chips, though lm-sensors.
-## The script may be called with -w and -c switches to specify thresholds,
-## see the script for details.
-##[temperature]
-##label=TEMP
-##interval=10
 #
 ## Key indicators
 ##
