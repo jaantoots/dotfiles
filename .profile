@@ -23,7 +23,8 @@ export ALTERNATE_EDITOR=
 export EDITOR=vim
 export SUDO_EDITOR=rvim
 export BROWSER=lynx
-export SYSTEMD_LESS=FRSMK
+export LESS=FRj4
+export SYSTEMD_LESS=${LESS}SMK
 
 # use the local file for private variables (e.g. API keys)
 if [ -f "$HOME/.profile.local" ]; then
