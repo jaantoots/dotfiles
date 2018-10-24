@@ -13,11 +13,11 @@
     XF86AudioMute
 
 # Playback
-"playerctl play-pause"
+"playerctl play-pause; pkill -SIGRTMIN+12 i3blocks"
     XF86AudioPlay
-"playerctl next"
+"playerctl next; pkill -SIGRTMIN+12 i3blocks"
     XF86AudioNext
-"playerctl previous"
+"playerctl previous; pkill -SIGRTMIN+12 i3blocks"
     XF86AudioPrev
 
 # "(Scheme function)"

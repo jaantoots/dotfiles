@@ -4,10 +4,15 @@ disk_icon=
 wifi_icon= 
 backlight_icon= 
 load_icon= 
+player_icon= 
+player_spotify_icon= 
+player_icons=(   )
 volume_icons=(   )
 power_icons=(   )
 battery_icons=(     )
 temp_icons=(     )
+
+player_spotify_args="--force-device-scale-factor=2"
 
 # Colors
 base00="#181818"

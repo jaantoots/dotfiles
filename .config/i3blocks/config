@@ -3,6 +3,10 @@ command=$HOME/.config/i3blocks/blocks/$BLOCK_NAME
 interval=1
 markup=none
 
+[player]
+instance=spotify
+signal=12
+
 [disk]
 
 [wifi]
@@ -11,7 +15,7 @@ markup=none
 
 [volume]
 instance=Master
-interval=30
+interval=5
 signal=10
 
 [backlight]
@@ -32,15 +36,6 @@ command=date '+ %F %T'
 #[bandwidth]
 ##instance=eth0
 #interval=5
-#
-## Generic media player support
-##
-## This displays "ARTIST - SONG" if a music is playing.
-## Supported players are: spotify, vlc, audacious, xmms2, mplayer, and others.
-##[mediaplayer]
-##instance=spotify
-##interval=5
-##signal=10
 #
 ## OpenVPN support
 ##
