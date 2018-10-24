@@ -2,7 +2,7 @@ alias v="vim"
 alias e="emacsclient -t"
 alias ec="emacsclient -c"
 alias mpvd="mpv --screen=0 --fs-screen=1"
-alias sshx="TERM=${SSH_TERM:-$TERM} ssh"
+alias ssh="TERM=${SSH_TERM:-$TERM} ssh"
 alias wgetu="wget -U 'Mozilla/5.0 (X11; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0'"
 alias zathura="zathura --fork"
 
