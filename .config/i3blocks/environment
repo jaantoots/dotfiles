@@ -4,6 +4,7 @@ disk_icon=
 wifi_icon= 
 backlight_icon= 
 load_icon= 
+time_icon= 
 player_icon= 
 player_spotify_icon= 
 player_icons=(   )
