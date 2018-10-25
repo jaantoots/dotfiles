@@ -43,30 +43,30 @@ metadata() {
 }
 
 format() {
-    SHORT=
-    LONG=
-    COLOR=
+    short=
+    long=
+    color=
     icon_name="player_${PLAYER}_icon"
-    ICON="${!icon_name:-$player_icon}"
+    icon="${!icon_name:-$player_icon}"
     case "$(playerctl -p "$PLAYER" status)" in
         [Pp]laying)
-            SHORT+="${player_icons[0]}"
-            LONG+="$(metadata)"
-            COLOR="$base0B"
+            short+="${player_icons[0]}"
+            long+="$(metadata)"
+            color="$base0B"
             ;;
         [Pp]aused)
-            SHORT+="${player_icons[1]}"
-            LONG+="$(metadata)"
+            short+="${player_icons[1]}"
+            long+="$(metadata)"
             ;;
         [Ss]topped)
-            SHORT+="${player_icons[2]}"
+            short+="${player_icons[2]}"
             ;;
         *)
-            COLOR="$base08"
+            color="$base08"
     esac
-    echo "$ICON${SHORT:+ $SHORT}${LONG:+ $LONG}"
-    echo "$SHORT"
-    echo "$COLOR"
+    echo "$icon${short:+ $short}${long:+ ${long:0:80}}"
+    echo "$short"
+    echo "$color"
 }
 
 #------------------------------------------------------------------------

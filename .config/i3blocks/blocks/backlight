@@ -19,38 +19,39 @@
 source ~/.config/i3blocks/environment
 
 DISP="${BLOCK_INSTANCE}"
-
 STEP="${1:-5}"
 
 #------------------------------------------------------------------------
 
 backlight() {
-    xbacklight ${DISP:+-display ${DISP}} -get | head -1
+    xbacklight ${DISP:+-display ${DISP}} "$@"
+}
+
+level() {
+    printf "%.0f\n" "$(backlight -get | head -1)"
 }
 
 toggle() {
-    case "$(printf "%.0f" $(backlight))" in
-        0|1)
-            xbacklight ${DISP:+-display ${DISP}} -set 100
-            ;;
-        *)
-            xbacklight ${DISP:+-display ${DISP}} -set 1
+    case "$(level)" in
+        0|1) backlight -set 30 ;;
+        30) backlight -set 100 ;;
+        *) backlight -set 1
     esac
 }
 
 format() {
-    read BACKLIGHT || exit
-    printf "${backlight_icon} %.0f%%\n" $BACKLIGHT
-    printf "%.0f%%\n" $BACKLIGHT
+    read backlight || exit
+    echo "${backlight_icon} ${backlight}%"
+    echo "${backlight}%"
     echo
 }
 
 #------------------------------------------------------------------------
 
 case $BLOCK_BUTTON in
-  3) toggle ;;  # right click, max/min
-  4) xbacklight ${DISP:+-display ${DISP}} -time 50 -dec $STEP ;; # scroll down, decrease
-  5) xbacklight ${DISP:+-display ${DISP}} -time 50 -inc $STEP ;; # scroll up, increase
+    3) toggle ;;  # right click
+    4) backlight -time 50 -dec $STEP ;; # scroll down
+    5) backlight -time 50 -inc $STEP ;; # scroll up
 esac
 
-backlight | format
+level | format

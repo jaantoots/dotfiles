@@ -26,19 +26,18 @@ CRITICAL="${2:-5}"
 #------------------------------------------------------------------------
 
 format() {
-    read FREE USE
-    COLOR=
-    use=${USE%\%}
+    read free use
     if [[ $((100 - use)) -lt $CRITICAL ]]; then
-        COLOR="$base08"
+        color="$base08"
     elif [[ $((100 - use)) -lt $LOW ]]; then
-        COLOR="$base0A"
+        color="$base0A"
     fi
-    printf "$disk_icon %.2fG\n" "$FREE"
-    printf "%.fG\n" "$FREE"
-    echo "$COLOR"
+    echo "$disk_icon ${free}G"
+    echo "${free}G"
+    echo "$color"
 }
 
 #------------------------------------------------------------------------
 
-df -P -l "$DIR" | awk '/^\// {print $4/1024/1024, $5; exit 0;}' | format
+df -P -l "$DIR" |
+    awk '/^\// {printf("%.2f %d\n", $4/1024/1024, $5); exit 0;}' | format

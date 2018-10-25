@@ -30,20 +30,19 @@ fi
 
 #------------------------------------------------------------------------
 
-IFS=$'\n' read -d '' ESSID FREQ BITR < <(iwconfig $INTERFACE | sed -nE '
+IFS=$'\n' read -d '' essid freq bitr < <(iwconfig $INTERFACE | sed -nE '
     s/.*ESSID:"(.*)".*/\1/p
     s/.*Frequency:([0-9]+(\.[0-9]+)? \S+).*/\1/p
     s/.*Bit Rate=([0-9]+(\.[0-9]+)? \S+).*/\1/p')
-COLOR="$base08"
+color="$base08"
 if [[ "$(cat /sys/class/net/$INTERFACE/operstate)" = "up" ]]; then
-    COLOR=
-    [[ "${FREQ%%.*}" -gt 3 ]] && COLOR="$base0B"
-    IP="$(ip addr show $INTERFACE |
-        sed -nE 's/\s*inet6? ([^\/]+)\/.*/\1/p' | head -1)"
+    color=
+    [[ "${freq%%.*}" -gt 3 ]] && color="$base0B"
+    ip="$(ip addr show $INTERFACE | grep -m1 -oP '\s*inet6? \K[^/]+')"
 fi
-echo "${wifi_icon}${IP:+ }${IP}${ESSID:+ }${ESSID}${FREQ:+ }${FREQ}${BITR:+ }${BITR}"
-echo "$ESSID"
-echo "$COLOR"
-if [[ -n "$IP" ]]; then
+echo "${wifi_icon}${ip:+ $ip}${essid:+ $essid}${freq:+ $freq}${bitr:+ $bitr}"
+echo "$essid"
+echo "$color"
+if [[ -n "$ip" ]]; then
     ip addr show $INTERFACE | grep -qsE '\s*inet ' || exit 33
 fi

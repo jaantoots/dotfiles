@@ -21,12 +21,10 @@
 source ~/.config/i3blocks/environment
 
 MIXER="${2:-pulse}"
-
 SCONTROL="${BLOCK_INSTANCE:-$(amixer -D $MIXER scontrols |
     sed -n "s/Simple mixer control '\([A-Za-z ]*\)',0/\1/p" |
     head -n1
 )}"
-
 STEP="${1:-5%}"
 
 #------------------------------------------------------------------------
@@ -46,33 +44,32 @@ volume() {
 }
 
 format() {
-    read VOL STATE
-    COLOR=
-    ICON="${volume_icons[0]}"
-    case "$STATE" in
+    read vol state
+    icon="${volume_icons[0]}"
+    case "$state" in
         on)
-            ICON="${volume_icons[2]}"
-            if [[ "$VOL" = *% ]] && [[ "${VOL%\%}" -lt 33 ]]; then
-                ICON="${volume_icons[1]}"
+            icon="${volume_icons[2]}"
+            if [[ "$vol" = *% ]] && [[ "${vol%\%}" -lt 33 ]]; then
+                icon="${volume_icons[1]}"
             fi
             ;;
         off)
-            COLOR="$base0A"
+            color="$base0A"
             ;;
         *)
-            COLOR="$base08"
+            color="$base08"
     esac
-    echo "$ICON $VOL"
-    echo "$VOL"
-    echo "$COLOR"
+    echo "$icon $vol"
+    echo "$vol"
+    echo "$color"
 }
 
 #------------------------------------------------------------------------
 
 case $BLOCK_BUTTON in
-  3) amixer -q -D $MIXER sset $SCONTROL $(capability) toggle ;;  # right click, mute/unmute
-  4) amixer -q -D $MIXER sset $SCONTROL $(capability) ${STEP}- ;; # scroll down, decrease
-  5) amixer -q -D $MIXER sset $SCONTROL $(capability) ${STEP}+ ;; # scroll up, increase
+    3) amixer -q -D $MIXER sset $SCONTROL $(capability) toggle ;;  # right click
+    4) amixer -q -D $MIXER sset $SCONTROL $(capability) ${STEP}- ;; # scroll down
+    5) amixer -q -D $MIXER sset $SCONTROL $(capability) ${STEP}+ ;; # scroll up
 esac
 
 volume | format

@@ -24,25 +24,18 @@ URGENT="${3:-95}"
 
 #------------------------------------------------------------------------
 
-format() {
-    read TEMP
-    TEMP=$(($TEMP/1000))
-    ICON=${temp_icons[$(echo $TEMP | awk 'BEGIN {OFMT="%d";}
-        {print $1 >= 40 ? ($1 < 90 ? ($1 - 40)/10 : 4) : 0;}')]}
-    COLOR=
-    if [[ $TEMP -ge $CRITICAL ]]; then
-        COLOR="$base08"
-    elif [[ $TEMP -ge $HIGH ]]; then
-        COLOR="$base0A"
-    fi
-    echo "$ICON $TEMP°C"
-    echo "$TEMP°C"
-    echo "$COLOR"
-}
+temp=$(cat /sys/devices/platform/coretemp.0/hwmon/hwmon?/temp1_input | head -1)
+temp=$((temp/1000))
+icon=${temp_icons[$((temp >= 40 ? (temp < 90 ? (temp - 40)/10 : 4) : 0))]}
+if [[ $temp -ge $CRITICAL ]]; then
+    color="$base08"
+elif [[ $temp -ge $HIGH ]]; then
+    color="$base0A"
+fi
 
-#------------------------------------------------------------------------
-
-cat /sys/devices/platform/coretemp.0/hwmon/hwmon?/temp1_input | head -1 | format
-if [[ $TEMP -ge $URGENT ]]; then
+echo "$icon $temp°C"
+echo "$temp°C"
+echo "$color"
+if [[ $temp -ge $URGENT ]]; then
     exit 33
 fi
