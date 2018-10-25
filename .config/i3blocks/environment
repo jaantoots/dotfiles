@@ -1,5 +1,13 @@
 # vim: ft=sh
 
+term() {
+    $TERMINAL --detach "$@"
+}
+
+termf() {
+    $TERMINAL --detach --name="$TERMINAL-float" "$@"
+}
+
 disk_icon= 
 wifi_icon= 
 backlight_icon= 

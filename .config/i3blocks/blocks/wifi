@@ -30,6 +30,12 @@ fi
 
 #------------------------------------------------------------------------
 
+case $BLOCK_BUTTON in
+    3) termf -e sudo wifi-menu >/dev/null ;;  # right click
+esac
+
+#------------------------------------------------------------------------
+
 IFS=$'\n' read -d '' essid freq bitr < <(iwconfig $INTERFACE | sed -nE '
     s/.*ESSID:"(.*)".*/\1/p
     s/.*Frequency:([0-9]+(\.[0-9]+)? \S+).*/\1/p

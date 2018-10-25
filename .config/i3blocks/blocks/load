@@ -33,7 +33,7 @@ long() {
 
 case $BLOCK_BUTTON in
     1) long ;;  # left click
-    3) i3-msg "exec i3-sensible-terminal -e htop" >/dev/null ;;  # right click
+    3) term -e htop >/dev/null ;;  # right click
 esac
 
 echo "$load_icon $load"
