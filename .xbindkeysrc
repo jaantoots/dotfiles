@@ -5,11 +5,11 @@
     XF86MonBrightnessUp
 
 # Sound
-"amixer -q -D pulse set Master 5%+; pkill -SIGRTMIN+10 i3blocks"
+"amixer -q -D pulse set Master 5%+"
     XF86AudioRaiseVolume
-"amixer -q -D pulse set Master 5%-; pkill -SIGRTMIN+10 i3blocks"
+"amixer -q -D pulse set Master 5%-"
     XF86AudioLowerVolume
-"amixer -q -D pulse set Master toggle; pkill -SIGRTMIN+10 i3blocks"
+"amixer -q -D pulse set Master toggle"
     XF86AudioMute
 
 # Playback

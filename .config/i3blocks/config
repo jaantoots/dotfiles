@@ -15,11 +15,15 @@ signal=12
 
 [volume]
 instance=Master
-interval=5
+interval=60
 signal=10
 
+[volume_update]
+command=bash -c 'pactl subscribe | while read line; do [[ "$line" =~ "sink" ]] && pkill -SIGRTMIN+10 i3blocks; done'
+interval=-3
+
 [backlight]
-interval=30
+interval=60
 signal=11
 
 [battery]
