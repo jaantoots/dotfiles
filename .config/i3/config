@@ -166,9 +166,11 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 
-# start dmenu (a program launcher)
-bindsym $mod+Shift+d exec --no-startup-id dmenu_run
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+# start dmenu/rofi (a program launcher)
+bindsym $mod+Shift+d exec rofi -show run
+bindsym $mod+d exec rofi -show drun
+bindsym $mod+q exec rofi -show window
+bindsym $mod+c exec rofi -show calc -modi "calc:qalc"
 
 # start a terminal
 set $term kitty
@@ -198,7 +200,7 @@ mode $launcher {
     bindsym s mode "default"; exec --no-startup-id signal-desktop
     bindsym p mode "default"; exec --no-startup-id spotify --force-device-scale-factor=2
     bindsym m mode "default"; exec --no-startup-id caprine
-    bindsym z mode "default"; exec --no-startup-id "cat $HOME/.local/share/zathura/history | sed -nE '/^\[.+\]$/h;/^time=[0-9]+$/{x;G;s/^\[(.+)\]\ntime=([0-9]+)$/\2 \1/p}' | sort -nr | cut -d ' ' -f 2- | dmenu | xargs -r zathura"
+    bindsym z mode "default"; exec --no-startup-id "cat $HOME/.local/share/zathura/history | sed -nE '/^\[.+\]$/h;/^time=[0-9]+$/{x;G;s/^\[(.+)\]\ntime=([0-9]+)$/\2 \1/p}' | sort -nr | cut -d ' ' -f 2- | dmenu -p zathura | xargs -r zathura"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"

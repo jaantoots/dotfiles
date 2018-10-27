@@ -1,0 +1,6 @@
+rofi.theme: base16-rofi/themes/base16-default-dark
+
+rofi.dpi: 0
+rofi.scroll-method: 1
+rofi.modi: window,drun,run,ssh
+rofi.sort: true

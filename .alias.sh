@@ -29,5 +29,5 @@ startvm() {
 zh() {
     cat .local/share/zathura/history |
         sed -nE '/^\[.+\]$/h;/^time=[0-9]+$/{x;G;s/^\[(.+)\]\ntime=([0-9]+)$/\2 \1/p}' |
-        sort -nr | cut -d ' ' -f 2- | dmenu | xargs -r zathura --fork
+        sort -nr | cut -d ' ' -f 2- | dmenu -p zathura | xargs -r zathura --fork
 }

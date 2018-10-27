@@ -29,16 +29,16 @@ aliases:
     w: session-save
     q: quit
     wq: quit --save
-    pass: spawn --userscript qute-pass -d dmenu
+    pass: spawn --userscript qute-pass
     mpv: spawn --userscript view_in_mpv
 
 # Keybindings
 bindings.commands:
     normal:
-        zl:  spawn --userscript qute-pass -d dmenu
-        zol: spawn --userscript qute-pass -d dmenu --otp-only
-        zpl: spawn --userscript qute-pass -d dmenu --password-only
-        zul: spawn --userscript qute-pass -d dmenu --username-only
+        zl:  spawn --userscript qute-pass
+        zol: spawn --userscript qute-pass --otp-only
+        zpl: spawn --userscript qute-pass --password-only
+        zul: spawn --userscript qute-pass --username-only
         ";D": hint --rapid links download
         ",w": open https://framabag.org/bookmarklet?url={url}
         ",s": open https://miniflux.jaan.xyz/bookmarklet?uri={url}

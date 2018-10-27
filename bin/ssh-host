@@ -1,7 +1,0 @@
-#!/bin/bash
-
-set -eu
-
-hostname='(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])'
-
-exec ssh "$(cat "$HOME/.ssh/config" | grep -E '^Host ('"$hostname"' )*'"$hostname"'$' | cut -c 6- | tr ' ' '\n' | dmenu)"

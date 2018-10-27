@@ -19,3 +19,6 @@
 [submodule ".config/kitty/base16-kitty"]
 	path = .config/kitty/base16-kitty
 	url = https://github.com/kdrag0n/base16-kitty.git
+[submodule ".config/rofi/base16-rofi"]
+	path = .config/rofi/base16-rofi
+	url = https://github.com/0xdec/base16-rofi.git
