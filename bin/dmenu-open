@@ -1,0 +1,13 @@
+#!/bin/bash
+
+arg="${1:-$PWD}"
+
+if [[ -d "$arg" ]]; then
+    next="$(find "$arg" -path '*/.*' -prune -o -printf '%P\n' | dmenu -i -p "$arg")"
+    [[ $? = 0 ]] || exit
+    if [[ -n "$next" ]]; then
+        exec $0 "$arg/$next"
+    fi
+fi
+
+exec xdg-open "$arg"

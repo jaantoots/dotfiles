@@ -171,6 +171,7 @@ bindsym $mod+Shift+d exec rofi -show run
 bindsym $mod+d exec rofi -show drun
 bindsym $mod+q exec rofi -show window
 bindsym $mod+c exec rofi -show calc -modi "calc:qalc"
+bindsym $mod+g exec dmenu-open
 
 # start a terminal
 set $term kitty
