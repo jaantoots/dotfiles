@@ -1,0 +1,51 @@
+#!/usr/bin/env python
+"""MozLz4a (de)compression utility."""
+import argparse
+import lz4.block as lz4
+
+
+class MozLz4Error(Exception):
+    """mozLz4 exception class"""
+    pass
+
+
+class InvalidHeader(MozLz4Error):
+    """mozLz4 invalid header exception class"""
+    def __init__(self, msg):
+        super().__init__()
+        self.msg = msg
+
+    def __str__(self):
+        return self.msg
+
+
+def decompress(file_obj):
+    """Decompress mozLz4"""
+    if file_obj.read(8) != b"mozLz40\0":
+        raise InvalidHeader("Invalid header")
+    return lz4.decompress(file_obj.read())
+
+def compress(file_obj):
+    """Compress mozLz4"""
+    compressed = lz4.compress(file_obj.read())
+    return b"mozLz40\0" + compressed
+
+def main():
+    """Parse arguments and (de)compress"""
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("-d", "--decompress", action="store_true",
+                        help="Decompress the input file")
+    parser.add_argument("in_file", nargs='?', default=0,
+                        help="Path to input file")
+    parser.add_argument("out_file", nargs='?', default=1,
+                        help="Path to output file")
+    args = parser.parse_args()
+
+    with open(args.in_file, 'rb') as in_file, \
+            open(args.out_file, 'wb') as out_file:
+        out_file.write(
+            decompress(in_file) if args.decompress else compress(in_file))
+
+
+if __name__ == "__main__":
+    main()

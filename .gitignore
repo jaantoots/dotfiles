@@ -8,6 +8,7 @@
 !/LICENSE
 !/bin
 !/scripts
+!/src
 
 # Git
 !/.gitconfig
