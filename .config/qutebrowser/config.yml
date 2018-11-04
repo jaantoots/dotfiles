@@ -42,3 +42,4 @@ bindings.commands:
         ";D": hint --rapid links download
         ",w": open https://framabag.org/bookmarklet?url={url}
         ",s": open https://miniflux.jaan.xyz/bookmarklet?uri={url}
+        ",a": open https://www.arxiv-vanity.com/convert/?query={url}
