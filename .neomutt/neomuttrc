@@ -41,13 +41,16 @@ macro index,pager A \
     "add the sender email address to khard"
 #set reverse_alias = yes
 
-# Archiving
+# Archiving and syncing
 set delete = yes
 set confirmappend = no
 macro index,pager e \
     "<save-message>=Archive<enter>" \
     "archive message"
 bind index,pager E edit-or-view-raw-message
+macro index S \
+    "<shell-escape>pkill -SIGUSR1 offlineimap<return>" \
+    "trigger full sync of all accounts in offlineimap"
 
 # Virtual mailboxes
 set nm_default_uri = "notmuch://$HOME/.mail"
