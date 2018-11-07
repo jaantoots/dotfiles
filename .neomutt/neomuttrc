@@ -74,6 +74,7 @@ set wait_key = no
 # UI
 set sleep_time = 0
 set sidebar_visible = yes
+set sidebar_width = 20
 set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
 set mail_check_stats = yes
 set index_format = "%4C %Z %(%d %b %H:%M) %-15.15L  %s"
