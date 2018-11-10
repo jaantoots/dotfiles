@@ -14,6 +14,7 @@ referrer-spoof: behind-the-scene false
 * * css allow
 * * frame block
 * * image allow
+academictorrents.com * script allow
 amazon.co.uk amazon.co.uk * allow
 amazon.co.uk ssl-images-amazon.com script allow
 asana.com asana.com * allow
@@ -32,10 +33,13 @@ facebook.com facebook.com * allow
 facebook.com fbcdn.net script allow
 ffprofile.com ffprofile.com * allow
 getpocket.com getpocket.com * allow
+github.com github-render.s3.amazonaws.com * allow
 github.com github.com * allow
 github.com githubapp.com * allow
 github.com githubusercontent.com * allow
 github.com render.githubusercontent.com frame allow
+gitlab.com * script allow
+gitlab.com gitlab.com * allow
 google.com content.googleapis.com xhr allow
 google.com google.com * allow
 google.com google.com frame allow
@@ -43,6 +47,8 @@ google.com gstatic.com media allow
 google.com gstatic.com script allow
 instagantt.com ajax.googleapis.com script allow
 instagantt.com instagantt.com * allow
+jaan.xyz jaan.xyz * allow
+ox.ac.uk * script allow
 python.org python.org script allow
 rarbg.to dyncdn.me script allow
 rarbg.to rarbg.to * allow
@@ -50,3 +56,4 @@ stackoverflow.com ajax.googleapis.com script allow
 stackoverflow.com sstatic.net script allow
 stackoverflow.com stackoverflow.com * allow
 stackoverflow.com stackoverflow.com cookie block
+storage.googleapis.com storage.googleapis.com script allow
