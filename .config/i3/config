@@ -198,7 +198,7 @@ mode $launcher {
     bindsym Shift+q mode "default"; exec --no-startup-id "qutebrowser ':open -p'"
     bindsym c mode "default"; exec --no-startup-id chromium
     bindsym f mode "default"; exec --no-startup-id firefox
-    bindsym Shift+f mode "default"; exec --no-startup-id firejail --private firefox --no-remote
+    bindsym Shift+f mode "default"; exec --no-startup-id firejail --overlay-tmpfs --nodbus firefox --no-remote -P ublock
     bindsym s mode "default"; exec --no-startup-id signal-desktop
     bindsym p mode "default"; exec --no-startup-id spotify --force-device-scale-factor=2
     bindsym m mode "default"; exec --no-startup-id caprine
