@@ -66,6 +66,7 @@ set strict_threads = yes
 set pager_index_lines = 8
 auto_view text/html
 alternative_order text/plain text/html
+set assumed_charset = "utf-8:us-ascii"
 set print = yes
 set print_command = "$PAGER"
 set print_split = yes
