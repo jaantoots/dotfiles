@@ -1,6 +1,6 @@
 # vim: ft=sh
 # set variables
-export BROWSER=firefox
+export BROWSER=qutebrowser
 
 # set keyboard
 setxkbmap -layout ee,us -variant us,altgr-intl -option ctrl:nocaps,grp_led:caps,grp:alt_space_toggle

@@ -10,5 +10,7 @@ with (config.configdir / 'config.yml').open() as f:
 for k, v in yaml_data.items():
     config.set(k, v)
 
+config.load_autoconfig()
+
 # Load color theme
 config.source('base16-qutebrowser/themes/base16-default-dark.config.py')

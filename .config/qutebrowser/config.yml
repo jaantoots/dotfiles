@@ -17,7 +17,12 @@ fonts.tabs: 12pt monospace
 # Misc
 auto_save.session: true
 completion.cmd_history_max_items: -1
+completion.web_history.max_items: -1
 content.autoplay: false
+content.cookies.accept: no-3rdparty
+content.cookies.store: false
+content.javascript.enabled: false
+content.local_storage: false
 content.webrtc_ip_handling_policy: default-public-interface-only
 content.windowed_fullscreen: true
 scrolling.bar: when-searching
