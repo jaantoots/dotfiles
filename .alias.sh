@@ -7,6 +7,15 @@ alias ssh="TERM=${SSH_TERM:-$TERM} ssh"
 alias wgetu="wget -U 'Mozilla/5.0 (X11; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0'"
 alias zathura="zathura --fork"
 
+20to5f() {
+    [ "$#" -ge 1 ] || {
+        echo "usage: $0 FILE..." >&2 && return 1
+    }
+    for f in "$@"; do
+        mv -iv "$f" "${f// /_}"
+    done
+}
+
 exifdiff() {
     [ "$#" -eq 2 ] || {
         echo "usage: $0 OLD NEW" >&2 && return 2
