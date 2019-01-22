@@ -1,6 +1,6 @@
 #!/bin/bash
 
-while read pid cmd; do
+while read -r pid cmd; do
     grep -q "$(cut -d " " -f 1 <<<"$cmd")" /etc/shells && break
 done < <(
     xdpyinfo | grep -m 1 -E '^focus' | cut -d " " -f 4 | tr -d ',' |

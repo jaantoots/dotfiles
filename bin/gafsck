@@ -15,14 +15,14 @@ print_progress() {
     ((pad = pad > 0 ? pad : 0))
     if [ -n "$3" ] && [ "$pad" -ge "${#3}" ]; then
         ((pad = pad - "${#3}"))
-        printf '\r%6d  %.*s%*s%s' $1 $((cols - 8)) "$2" $pad "" "$3"
+        printf '\r%6d  %.*s%*s%s' "$1" $((cols - 8)) "$2" $pad "" "$3"
     else
-        printf '\r%6d  %.*s%*s' $1 $((cols - 8)) "$2" $pad ""
+        printf '\r%6d  %.*s%*s' "$1" $((cols - 8)) "$2" $pad ""
     fi
 }
 
 i=0
-git annex fsck --json $@ | while read json; do
+git annex fsck --json "$@" | while read -r json; do
     ((i++))
     if [ "$(echo "$json" | jq .success)" = "true" ]; then
         file="$(get_file "$json")"

@@ -10,32 +10,32 @@ OPTS=(
     --nofork
     --ignore-empty-password
     --show-failed-attempts
-    --image="$HOME/.i3lockbg"
+    "--image=$HOME/.i3lockbg"
 )
 # Extra options for i3lock-color
-(which pacman >/dev/null 2>&1) &&
+command -v pacman &>/dev/null &&
     [[ $(pacman -Qqo i3lock) =~ ^i3lock-color ]] &&
     OPTS+=(
-        --insidecolor="$base05"20
-        --insidevercolor="$base0A"40
-        --insidewrongcolor="$base08"40
-        --ringcolor="$base05"ff
-        --ringvercolor="$base0A"ff
-        --ringwrongcolor="$base08"ff
-        --line-uses-inside
-        --keyhlcolor="$base0B"ff
-        --bshlcolor="$base08"ff
-        --{separator,verif,wrong,time,date}color="$base05"ff
-        --{verif,wrong,time,date}-font=mono
-        --{verif,wrong}text=
-        --timesize=24
-        --datesize=16
-        --radius=128
-        --ring-width=4
-        --indicator
-        --clock
-        --datepos='tx:ty+20'
-        --datestr='%a %e %b %Y'
+        "--insidecolor=${base05}20"
+        "--insidevercolor=${base0A}40"
+        "--insidewrongcolor=${base08}40"
+        "--ringcolor=${base05}ff"
+        "--ringvercolor=${base0A}ff"
+        "--ringwrongcolor=${base08}ff"
+        "--line-uses-inside"
+        "--keyhlcolor=${base0B}ff"
+        "--bshlcolor=${base08}ff"
+        --{separator,verif,wrong,time,date}color"=${base05}ff"
+        --{verif,wrong,time,date}-font"=mono"
+        --{verif,wrong}text"="
+        "--timesize=24"
+        "--datesize=16"
+        "--radius=128"
+        "--ring-width=4"
+        "--indicator"
+        "--clock"
+        "--datepos=tx:ty+20"
+        "--datestr=%a %e %b %Y"
     )
 
 # Turn off the screen, if 'off' is given

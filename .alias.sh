@@ -37,7 +37,7 @@ startvm() {
 
 # open recent file with zathura
 zh() {
-    cat .local/share/zathura/history |
-        sed -nE '/^\[.+\]$/h;/^time=[0-9]+$/{x;G;s/^\[(.+)\]\ntime=([0-9]+)$/\2 \1/p}' |
+    sed -nE '/^\[.+\]$/h;/^time=[0-9]+$/{x;G;s/^\[(.+)\]\ntime=([0-9]+)$/\2 \1/p}' \
+        .local/share/zathura/history |
         sort -nr | cut -d ' ' -f 2- | dmenu -p zathura | xargs -r zathura --fork
 }

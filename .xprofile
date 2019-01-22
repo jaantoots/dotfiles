@@ -10,4 +10,6 @@ xset r rate 300 50
 xbindkeys
 
 # touchpad gestures
-(which libinput-gestures >/dev/null 2>&1) && libinput-gestures &
+if command -v libinput-gestures &>/dev/null; then
+    libinput-gestures &
+fi

@@ -57,9 +57,9 @@ if [ $debug = true ]; then
 fi
 ECHO=true
 if [ $verbose = true ]; then
-    ECHO=echo
+    ECHO="echo"
 fi
-OHCE=echo
+OHCE="echo"
 if [ $quiet = true ]; then
     OHCE=true
 fi
@@ -129,7 +129,7 @@ nchunks="$(wc -l <<<"$chunklist")"
 $OHCE "Downloading $nchunks chunks..."
 mkdir "$TARGET"
 i=0
-while read chunk; do
+while read -r chunk; do
     name="$(cut -d '?' -f 1 <<<"$chunk")"
     curl "$OPTS" "$base"/"$chunk" -H "$UA" -H 'Accept: */*' \
         --compressed -H "$REF" -H 'Origin: https://kanal2.postimees.ee' \
