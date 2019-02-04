@@ -16,6 +16,13 @@ alias zathura="zathura --fork"
     done
 }
 
+cpv() {
+    [ "$#" -eq 2 ] || {
+        echo "usage: $0 SRC DEST" >&2 && return 1
+    }
+    tar -c "$1" | pv -pterb -s "$(du -bs "$1" | cut -f1)" | tar -C "$2" -xp
+}
+
 exifdiff() {
     [ "$#" -eq 2 ] || {
         echo "usage: $0 OLD NEW" >&2 && return 2
