@@ -48,7 +48,10 @@ facebook.com facebook.com * allow
 facebook.com facebook.com frame allow
 facebook.com fbcdn.net script allow
 facebook.com fbcdn.net xhr allow
+fastmail.com fastmail.com * allow
 ffprofile.com ffprofile.com * allow
+geenidoonor.ee geenidoonor.ee * allow
+geenidoonor.ee geenidoonor.ee frame allow
 getpocket.com getpocket.com * allow
 github.com * script allow
 github.com github-render.s3.amazonaws.com * allow
@@ -74,6 +77,8 @@ kv.ee * script allow
 kv.ee * xhr allow
 lhv.ee * script allow
 lhv.ee * xhr allow
+lloydsbank.co.uk lloydsbank.co.uk * allow
+lloydsbank.co.uk lloydsbank.co.uk frame allow
 localhost localhost * allow
 mnt.ee * script allow
 movidius.github.io * script allow
