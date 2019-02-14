@@ -56,6 +56,9 @@
 /.neomutt/mailboxes
 /.neomutt/local.rc
 
+# OfflineIMAP
+!/.offlineimap.py
+
 # Profile
 !/.profile
 !/.zprofile
