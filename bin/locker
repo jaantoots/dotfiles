@@ -41,5 +41,8 @@ command -v pacman &>/dev/null &&
 # Turn off the screen, if 'off' is given
 [ "$1" = "off" ] && (sleep 2 && xset dpms force off) &
 
+# Also clear gpg-agent cache
+pkill -SIGHUP gpg-agent
+
 # Non-forking as a new countdown starts as soon as the locker exits
 i3lock "${OPTS[@]}"
