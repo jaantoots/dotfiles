@@ -1,6 +1,4 @@
 #!/bin/bash
-set -e
-
 base05="d8d8d8"
 base08="ab4642"
 base0A="f7ca88"
