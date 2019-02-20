@@ -37,6 +37,7 @@
 !/.config/i3*
 !/.config/kitty
 !/.config/libinput-gestures.conf
+!/.config/mimeapps.list
 !/.config/my-umatrix-rules.txt
 !/.config/qutebrowser
 /.config/qutebrowser/bookmarks
