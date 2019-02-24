@@ -65,6 +65,7 @@ set sort_aux = reverse-last-date-received
 set strict_threads = yes
 set pager_index_lines = 8
 auto_view text/html
+auto_view text/calendar application/ics
 alternative_order text/plain text/html
 set assumed_charset = "utf-8:us-ascii"
 set print = yes
