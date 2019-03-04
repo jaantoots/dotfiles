@@ -86,6 +86,7 @@
 # X
 !/.xbindkeysrc
 !/.xinitrc
+!/.nvidia-xinitrc
 !/.xprofile
 !/.Xresources
 
