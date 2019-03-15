@@ -132,7 +132,7 @@ bindsym $mod+$alt+Shift+Up move container to output up
 bindsym $mod+$alt+Shift+Right move container to output right
 
 # change xrandr configuration
-bindsym $mod+$alt+r exec --no-startup-id "xrandr --output eDP1 --auto"
+bindsym $mod+$alt+r exec --no-startup-id "xrandr --auto"
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
