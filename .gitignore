@@ -40,6 +40,7 @@
 !/.config/mimeapps.list
 !/.config/my-umatrix-rules.txt
 !/.config/qutebrowser
+/.config/qutebrowser/autoconfig.yml
 /.config/qutebrowser/bookmarks
 /.config/qutebrowser/quickmarks
 !/.config/rofi
