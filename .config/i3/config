@@ -66,8 +66,7 @@ bindsym $mod+Shift+n exec i3-input -F 'swap container with mark %s' -l 1 -P 'Swa
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 floating_modifier $mod
-set_from_resource $floatmax i3wm.float-max 1200 x 800
-floating_maximum_size $floatmax
+floating_maximum_size 1920 x 1080
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
