@@ -4,6 +4,38 @@ This is a collection of my dotfiles and scripts. All configurations are
 maintained to work on Arch Linux hosts. Everything should fail gracefully, it
 is probably safe to check out this repository into a new home directory.
 
+## Keyboard configuration
+
+Persistent and sane keyboard configuration with a consistent experience should
+be done on the system level.
+
+### `/etc/X11/xorg.conf.d/00-keyboard.conf`
+
+```
+Section "InputClass"
+    Identifier "system-keyboard"
+    MatchIsKeyboard "on"
+    Option "XkbLayout" "us,us"
+    Option "XkbModel" "pc105"
+    Option "XkbVariant" "altgr-intl,dvp"
+    Option "XkbOptions" "grp_led:caps,grp:ctrls_toggle,caps:escape,compose:menu,shift:both_shiftlock"
+EndSection
+```
+
+### `/etc/X11/xinit/xserverrc`
+
+```
+#!/bin/sh
+exec /usr/bin/X -nolisten tcp -ardelay 200 -arinterval 20 "$@"
+```
+
+### `/etc/vconsole.conf`
+
+```
+FONT=ter-132n
+KEYMAP=us
+```
+
 ## Dunst notifications
 
 Dunst is started automatically as a systemd service through dbus but it is
