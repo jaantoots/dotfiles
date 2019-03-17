@@ -9,31 +9,16 @@ is probably safe to check out this repository into a new home directory.
 Persistent and sane keyboard configuration with a consistent experience should
 be done on the system level.
 
-### `/etc/X11/xorg.conf.d/00-keyboard.conf`
-
 ```
-Section "InputClass"
-    Identifier "system-keyboard"
-    MatchIsKeyboard "on"
-    Option "XkbLayout" "us,us"
-    Option "XkbModel" "pc105"
-    Option "XkbVariant" "altgr-intl,dvp"
-    Option "XkbOptions" "grp_led:caps,grp:ctrls_toggle,caps:escape,compose:menu,shift:both_shiftlock"
-EndSection
+sudo localectl set-x11-keymap us,ee pc105 ,us grp_led:caps,grp:ctrls_toggle,caps:escape,compose:menu,shift:both_shiftlock
 ```
 
-### `/etc/X11/xinit/xserverrc`
+Typematic delay and rate need to be set as Xserver options, e.g. in
+`/etc/X11/xinit/xserverrc`:
 
 ```
 #!/bin/sh
-exec /usr/bin/X -nolisten tcp -ardelay 200 -arinterval 20 "$@"
-```
-
-### `/etc/vconsole.conf`
-
-```
-FONT=ter-132n
-KEYMAP=us
+exec /usr/bin/X -nolisten tcp -ardelay 250 -arinterval 20 "$@"
 ```
 
 ## Dunst notifications
