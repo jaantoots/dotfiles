@@ -1,7 +1,7 @@
 # Backlight
-"xbacklight -time 50 -dec 5; pkill -SIGRTMIN+11 i3blocks"
+"xbacklight -time 50 -dec 5"
     XF86MonBrightnessDown
-"xbacklight -time 50 -inc 5; pkill -SIGRTMIN+11 i3blocks"
+"xbacklight -time 50 -inc 5"
     XF86MonBrightnessUp
 
 # Sound
@@ -13,11 +13,11 @@
     XF86AudioMute
 
 # Playback
-"playerctl play-pause; pkill -SIGRTMIN+12 i3blocks"
+"playerctl play-pause"
     XF86AudioPlay
-"playerctl next; pkill -SIGRTMIN+12 i3blocks"
+"playerctl next"
     XF86AudioNext
-"playerctl previous; pkill -SIGRTMIN+12 i3blocks"
+"playerctl previous"
     XF86AudioPrev
 
 # "(Scheme function)"

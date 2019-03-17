@@ -22,6 +22,6 @@
 [submodule ".config/rofi/base16-rofi"]
 	path = .config/rofi/base16-rofi
 	url = https://github.com/0xdec/base16-rofi.git
-[submodule ".config/i3blocks/blocks"]
-	path = .config/i3blocks/blocks
-	url = https://github.com/jaantoots/i3blocks-blocks.git
+[submodule ".config/i3line"]
+	path = .config/i3line
+	url = https://github.com/jaantoots/i3line.git
