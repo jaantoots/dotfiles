@@ -31,6 +31,7 @@ fi
 # screenlocker
 xset dpms 600 600 600
 xset s 590 9
+xset r rate 250 50
 xss-lock -n "$HOME/bin/dim-screen.sh" -- "$HOME/bin/locker" &
 # start i3 and ssh-agent
 exec ssh-agent i3
