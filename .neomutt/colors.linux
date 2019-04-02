@@ -2,22 +2,22 @@
 
 # Palette for use with the Linux console.  Black background.
 
-color hdrdefault blue black
-color quoted blue black
-color signature blue black
-color attachment red black
-color prompt brightmagenta black
-color message brightred black
-color error brightred black
+color hdrdefault blue default
+color quoted blue default
+color signature blue default
+color attachment red default
+color prompt brightmagenta default
+color message brightred default
+color error brightred default
 color indicator brightwhite brightblack
-color status brightgreen black
-color tree white black
-color normal white black
-color markers red black
-color search white black
-color tilde brightmagenta black
-color index blue black ~F
-color index red black "~N|~O"
+color status brightgreen default
+color tree default default
+color normal default default
+color markers red default
+color search default default
+color tilde brightmagenta default
+color index blue default ~F
+color index red default "~N|~O"
 
-color body brightwhite black '\*+[^*]+\*+'
-color body brightwhite black '_+[^_]+_+'
+color body brightdefault default '\*+[^*]+\*+'
+color body brightdefault default '_+[^_]+_+'
