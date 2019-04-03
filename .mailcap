@@ -3,3 +3,4 @@ text/calendar; mutt-ics; copiousoutput
 application/ics; mutt-ics; copiousoutput
 application/vnd.openxmlformats-officedocument.wordprocessingml.document; pandoc --to=markdown %s; copiousoutput
 application/vnd.oasis.opendocument.text; pandoc --to=markdown %s; copiousoutput
+application/msword; abiword --to=docx --to-name=fd://1 %s | pandoc --from=docx --to=markdown; copiousoutput
