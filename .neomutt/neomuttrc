@@ -49,8 +49,8 @@ macro index,pager e \
     "archive message"
 bind index,pager E edit-or-view-raw-message
 macro index S \
-    "<shell-escape>pkill -SIGUSR1 offlineimap<return>" \
-    "trigger full sync of all accounts in offlineimap"
+    "<shell-escape>systemctl --user restart mbsync.service<return>" \
+    "sync mailboxes with mbsync"
 
 # Virtual mailboxes
 set nm_default_uri = "notmuch://$HOME/.mail"
