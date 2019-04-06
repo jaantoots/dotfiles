@@ -45,9 +45,13 @@
 /.config/qutebrowser/quickmarks
 !/.config/rofi
 !/.config/sxiv
-!/.config/systemd
 !/.config/termite
 !/.config/zathura
+
+# systemd
+!/.config/systemd
+/.config/systemd/user/*.d
+/.config/systemd/user/*.wants
 
 # Mailcap
 !/.mailcap
