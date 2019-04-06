@@ -1,0 +1,9 @@
+[Unit]
+Description=Mailbox synchronization service
+Documentation=man:mbsync(1)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/mbsync -Va
+ExecStartPost=/usr/bin/sh -c 'ls -1 ~/.mail | xargs -d"\n" printf " \\"+%%s\\"" | xargs -d"\n" printf "mailboxes%%s\n" > ~/.neomutt/mailboxes'
+ExecStartPost=/usr/bin/notmuch new

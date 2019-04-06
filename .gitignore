@@ -45,6 +45,7 @@
 /.config/qutebrowser/quickmarks
 !/.config/rofi
 !/.config/sxiv
+!/.config/systemd
 !/.config/termite
 !/.config/zathura
 
