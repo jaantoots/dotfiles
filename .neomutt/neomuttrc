@@ -73,6 +73,9 @@ set print_command = "$PAGER"
 set print_split = yes
 set wait_key = no
 
+# Fix mail attachments from idiots
+set rfc2047_parameters = yes
+
 # UI
 set sleep_time = 0
 set sidebar_visible = yes
