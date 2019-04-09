@@ -1,6 +1,7 @@
 [Unit]
 Description=Mailbox synchronization service
 Documentation=man:mbsync(1)
+After=network-online.target
 
 [Service]
 Type=oneshot
