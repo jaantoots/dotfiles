@@ -1,0 +1,10 @@
+[Unit]
+Description=Autossh connection to %I
+After=network.target
+
+[Service]
+Environment=AUTOSSH_PORT=0
+ExecStart=/usr/bin/autossh -NT -o ExitOnForwardFailure=yes -o ServerAliveInterval=30 %I
+
+[Install]
+WantedBy=default.target
