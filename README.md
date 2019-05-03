@@ -21,6 +21,21 @@ Typematic delay and rate need to be set as Xserver options, e.g. in
 exec /usr/bin/X -nolisten tcp -ardelay 250 -arinterval 20 "$@"
 ```
 
+## Transmission desktop entry
+
+The desktop entry is needed to open magnet links directly
+(`~/.local/share/applications/transmission.desktop`):
+
+```
+[Desktop Entry]
+Type=Application
+Name=Transmission (HOST)
+Comment=Add a magnet link on HOST
+Exec=transmission-remote HOST -ne -a %U
+Categories=Network;
+MimeType=x-scheme-handler/magnet;
+```
+
 ## Dunst notifications
 
 Dunst is started automatically as a systemd service through dbus but it is
