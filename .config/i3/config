@@ -182,7 +182,7 @@ for_window [instance="$term-float"] floating enabled
 
 # passmenu
 bindsym $mod+p exec --no-startup-id passmenu --type
-bindsym $mod+Shift+p exec --no-startup-id firefox-pass
+bindsym $mod+Shift+p exec --no-startup-id passmenu-otp --type
 
 # screenshot
 bindsym $mod+Print exec --no-startup-id scrot
