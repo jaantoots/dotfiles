@@ -8,10 +8,6 @@ extension-pkg-whitelist=numpy,
                         cv2,
                         Levenshtein
 
-# Use multiple processes to speed up Pylint. Specifying 0 will auto-detect the
-# number of processors available to use.
-jobs=0
-
 [MESSAGES CONTROL]
 
 # Disable the message, report, category or checker with the given id(s). You
@@ -53,9 +49,3 @@ single-line-if-stmt=yes
 # system, and so shouldn't trigger E1101 when accessed. Python regular
 # expressions are accepted.
 generated-members=torch.*
-
-
-[DESIGN]
-
-# Minimum number of public methods for a class (see R0903).
-min-public-methods=1
