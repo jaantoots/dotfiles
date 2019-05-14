@@ -22,3 +22,5 @@
 
 [include]
     path = .gitconfig.local
+[diff]
+    tool = vimdiff
