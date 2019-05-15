@@ -5,8 +5,6 @@ SAVEHIST=1048576
 # if not running interactively, stop here
 [[ $- != *i* ]] && return
 
-setopt vi
-
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
