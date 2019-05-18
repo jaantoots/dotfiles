@@ -8,7 +8,6 @@
 !/LICENSE
 !/bin
 !/scripts
-!/src
 
 # Git
 !/.gitconfig
@@ -60,18 +59,12 @@
 /.neomutt/mailboxes
 /.neomutt/local.rc
 
-# OfflineIMAP
-!/.offlineimap.py
-
 # Profile
 !/.profile
 !/.zprofile
 
 # Pylint
 !/.pylintrc
-
-# Slate
-!/.slate
 
 # GTK custom themes
 !/.themes
