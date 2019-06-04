@@ -1,0 +1,9 @@
+[Unit]
+Description=Kubernetes API proxy to context %I
+After=network.target
+
+[Service]
+ExecStart=kubectl --context=%I --address=0.0.0.0 --accept-hosts='.*' proxy
+
+[Install]
+WantedBy=default.target
