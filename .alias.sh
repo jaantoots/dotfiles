@@ -1,6 +1,7 @@
 alias v="vim"
 alias e="emacsclient -t"
 alias ec="emacsclient -c"
+alias lsb="lsblk -oNAME,TYPE,MAJ:MIN,RM,SUBSYSTEMS,MODEL,SIZE,RO,FSTYPE,FSSIZE,FSUSE%,FSUSED,FSAVAIL,MOUNTPOINT"
 alias dg="dmenu-open"
 alias mpvd="mpv --screen=0 --fs-screen=1"
 alias ssh="TERM=${SSH_TERM:-$TERM} ssh"
