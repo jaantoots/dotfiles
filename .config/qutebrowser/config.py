@@ -5,7 +5,7 @@ config = config  # noqa: F821 pylint: disable=E0602,C0103
 
 # Load config.yml
 with (config.configdir / 'config.yml').open() as f:
-    yaml_data = yaml.load(f)
+    yaml_data = yaml.full_load(f)
 
 for k, v in yaml_data.items():
     config.set(k, v)
