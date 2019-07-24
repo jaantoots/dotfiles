@@ -4,6 +4,15 @@ This is a collection of my dotfiles and scripts. All configurations are
 maintained to work on Arch Linux hosts. Everything should fail gracefully, it
 is probably safe to check out this repository into a new home directory.
 
+## zsh configuration on non-Arch Linux hosts
+
+```
+curl -LSs https://git.grml.org/f/grml-etc-core/etc/zsh/zshrc > .zshrc.global 
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git .local/share/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-history-substring-search.git .local/share/zsh-history-substring-search
+git clone https://github.com/zsh-users/zsh-autosuggestions.git .local/share/zsh-autosuggestions
+```
+
 ## Keyboard configuration
 
 Persistent and sane keyboard configuration with a consistent experience should

@@ -1,3 +1,7 @@
+# Check if grml-zsh-config is installed locally
+
+[[ -f $HOME/.zshrc.global ]] && source $HOME/.zshrc.global
+
 # History
 HISTSIZE=1048576
 SAVEHIST=1048576
@@ -5,9 +9,14 @@ SAVEHIST=1048576
 # if not running interactively, stop here
 [[ $- != *i* ]] && return
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+prefix=/usr/share/zsh/plugins
+[[ -d "$prefix" ]] || prefix=$HOME/.local/share
+
+source $prefix/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $prefix/zsh-history-substring-search/zsh-history-substring-search.zsh
+source $prefix/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+unset prefix
 
 ZSH_AUTOSUGGEST_STRATEGY=match_prev_cmd
 
