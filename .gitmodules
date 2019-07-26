@@ -7,9 +7,6 @@
 [submodule ".config/base16-xresources"]
 	path = .config/base16-xresources
 	url = https://github.com/chriskempson/base16-xresources.git
-[submodule ".config/antigen"]
-	path = .config/antigen
-	url = https://github.com/zsh-users/antigen.git
 [submodule ".vim/colors/base16"]
 	path = .vim/base16
 	url = git://github.com/chriskempson/base16-vim.git
@@ -25,3 +22,12 @@
 [submodule ".config/i3line"]
 	path = .config/i3line
 	url = https://git.sr.ht/~jaan/i3line
+[submodule ".local/share/zsh-syntax-highlighting"]
+	path = .local/share/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule ".local/share/zsh-history-substring-search"]
+	path = .local/share/zsh-history-substring-search
+	url = https://github.com/zsh-users/zsh-history-substring-search.git
+[submodule ".local/share/zsh-autosuggestions"]
+	path = .local/share/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git
