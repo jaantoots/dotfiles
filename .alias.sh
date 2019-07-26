@@ -24,6 +24,21 @@ cpv() {
     tar -c "$1" | pv -pterb -s "$(du -bs "$1" | cut -f1)" | tar -C "$2" -xp
 }
 
+docker-tags() {
+    for item; do
+        token="$(curl -sG \
+            --data-urlencode service=registry.docker.io \
+            --data-urlencode scope=repository:$item:pull \
+            https://auth.docker.io/token |
+            jq -r '.token')"
+        curl -sG \
+            -H "Accept: application/json" \
+            -H "Authorization: Bearer $token" \
+            https://registry-1.docker.io/v2/$item/tags/list |
+            jq
+    done
+}
+
 exifdiff() {
     [ "$#" -eq 2 ] || {
         echo "usage: $0 OLD NEW" >&2 && return 2
