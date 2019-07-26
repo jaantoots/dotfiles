@@ -21,7 +21,7 @@
 	url = https://github.com/0xdec/base16-rofi.git
 [submodule ".config/i3line"]
 	path = .config/i3line
-	url = https://git.sr.ht/~jaan/i3line
+	url = https://github.com/jaantoots/i3line.git
 [submodule ".local/share/zsh-syntax-highlighting"]
 	path = .local/share/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
