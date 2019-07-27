@@ -4,13 +4,13 @@ This is a collection of my dotfiles and scripts. All configurations are
 maintained to work on Arch Linux hosts. Everything should fail gracefully, it
 is probably safe to check out this repository into a new home directory.
 
-## zsh configuration on non-Arch Linux hosts
+## zsh configuration
+
+[grml-zsh-config](https://grml.org/zsh/) is available in extra on Arch. On
+other hosts this can be put into `.zshrc.global`:
 
 ```
 curl -LSs https://git.grml.org/f/grml-etc-core/etc/zsh/zshrc > .zshrc.global 
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git .local/share/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-history-substring-search.git .local/share/zsh-history-substring-search
-git clone https://github.com/zsh-users/zsh-autosuggestions.git .local/share/zsh-autosuggestions
 ```
 
 ## Keyboard configuration
@@ -45,18 +45,6 @@ Categories=Network;
 MimeType=x-scheme-handler/magnet;
 ```
 
-## Dunst notifications
-
-Dunst is started automatically as a systemd service through dbus but it is
-useful to define an override for the position by `systemctl --user edit
-dunst.service`, for example:
-
-```
-[Service]
-ExecStart=
-ExecStart=/usr/bin/dunst -geometry "800x5-0-47"
-```
-
 ## Poor man's chsh
 
 On some annoying machines it is not possible to use `chsh` to change the login
@@ -64,8 +52,8 @@ shell to zsh. Then the following in `.profile.local` may be useful:
 
 ```shell
 # just run zsh if interactive
-[[ $- == *i* ]] && hash zsh >/dev/null 2>&1 && {
-    [ -z "$ZSH_VERSION" ] && export SHELL=$(which zsh) && exec $SHELL -l
+[[ $- == *i* ]] && command -v zsh >/dev/null 2>&1 && {
+    [ -z "$ZSH_VERSION" ] && export SHELL=$(command -v zsh) && exec $SHELL -l
 } || true
 ```
 
@@ -73,14 +61,17 @@ shell to zsh. Then the following in `.profile.local` may be useful:
 
 Occasionally updated list of used Firefox extensions.
 
-- browserpass-ce
+- Browserpass
+- CanvasBlocker
+- Cookie AutoDelete
+- Don't Fuck With Paste
 - Facebook Container
-- Greasemonkey
+- google-no-tracking-url
 - HTTPS Everywhere
-- Markdown Here
 - Privacy Badger
 - Proxy SwitchyOmega
 - uBlock Origin
+- User-Agent Switcher
 - uMatrix
 - Vimium
 
