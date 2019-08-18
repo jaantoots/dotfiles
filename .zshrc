@@ -5,6 +5,8 @@
 # History
 HISTSIZE=1048576
 SAVEHIST=1048576
+unsetopt histignorealldups
+setopt histignoredups
 
 # if not running interactively, stop here
 [[ $- != *i* ]] && return
