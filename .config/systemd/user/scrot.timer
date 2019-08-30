@@ -1,0 +1,9 @@
+[Unit]
+Description=Screenshot timer
+
+[Timer]
+OnBootSec=10m
+OnUnitInactiveSec=30m
+
+[Install]
+WantedBy=timers.target

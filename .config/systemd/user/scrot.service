@@ -1,0 +1,7 @@
+[Unit]
+Description=Screenshot
+Documentation=man:scrot(1)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/scrot %h/.shots/%%FT%%T.png
