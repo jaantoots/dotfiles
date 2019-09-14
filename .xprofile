@@ -1,6 +1,6 @@
 # vim: ft=sh
 # set variables
-export BROWSER=qutebrowser
+export BROWSER=firefox
 
 # additional keybindings
 xbindkeys
