@@ -14,6 +14,7 @@ OPTS=(
 command -v pacman &>/dev/null &&
     [[ $(pacman -Qqo i3lock) =~ ^i3lock-color ]] &&
     OPTS+=(
+        "--pass-media-keys"
         "--insidecolor=${base05}20"
         "--insidevercolor=${base0A}40"
         "--insidewrongcolor=${base08}40"
