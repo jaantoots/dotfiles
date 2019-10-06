@@ -4,7 +4,7 @@ alias ec="emacsclient -c"
 alias lsb="lsblk -oNAME,TYPE,MAJ:MIN,RM,SUBSYSTEMS,MODEL,SIZE,RO,FSTYPE,FSSIZE,FSUSE%,FSUSED,FSAVAIL,MOUNTPOINT"
 alias dg="dmenu-open"
 alias mpvd="mpv --screen=0 --fs-screen=1"
-alias ssh="TERM=${SSH_TERM:-$TERM} ssh"
+alias ssx="TERM=xterm-256color ssh"
 alias wgetu="wget -U 'Mozilla/5.0 (X11; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0'"
 alias zathura="zathura --fork"
 
