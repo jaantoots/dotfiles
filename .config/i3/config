@@ -185,8 +185,10 @@ bindsym $mod+p exec --no-startup-id passmenu --type
 bindsym $mod+Shift+p exec --no-startup-id passmenu-otp --type
 
 # screenshot
-bindsym $mod+Print exec --no-startup-id scrot
-bindsym $mod+Shift+Print exec --no-startup-id scrot -u
+bindsym Print exec --no-startup-id scrot
+bindsym Shift+Print exec --no-startup-id scrot -u
+bindsym $mod+Print exec --no-startup-id scrot -s -e 'xclip -selection clipboard -t image/png $f'
+bindsym $mod+Shift+Print exec --no-startup-id scrot -u -e 'xclip -selection clipboard -t image/png $f'
 bindsym $mod+s exec --no-startup-id "sleep 0.1; scrot -s"
 bindsym $mod+Shift+s exec --no-startup-id "sleep 0.1; scrot -s -e 'xclip -selection clipboard -t image/png $f'"
 
