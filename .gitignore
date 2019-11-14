@@ -48,6 +48,7 @@
 !/.config/systemd
 /.config/systemd/user/*.d
 /.config/systemd/user/*.wants
+!/.pam_environment
 
 # Mailcap
 !/.mailcap
