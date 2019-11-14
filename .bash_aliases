@@ -1,1 +1,1 @@
-.alias.sh
+.aliases

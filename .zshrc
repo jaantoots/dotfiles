@@ -40,4 +40,4 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 [[ $TERM = xterm-kitty ]] && source <(kitty +complete setup zsh)
 
 # aliases
-[[ -r $HOME/.alias.sh ]] && source $HOME/.alias.sh
+[[ -r $HOME/.aliases ]] && source $HOME/.aliases
