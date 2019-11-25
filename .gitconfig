@@ -17,10 +17,11 @@
 [credential]
     helper = store
 
+[diff]
+    tool = vimdiff
+
 [diff "pandoc"]
     textconv = pandoc --to=markdown
 
 [include]
     path = .gitconfig.local
-[diff]
-    tool = vimdiff
