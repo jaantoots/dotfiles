@@ -32,15 +32,16 @@ exec /usr/bin/X -nolisten tcp -ardelay 250 -arinterval 20 "$@"
 
 ## Transmission desktop entry
 
-The desktop entry is needed to open magnet links directly
-(`~/.local/share/applications/transmission.desktop`):
+The desktop entry is needed to open magnet links directly (authentication
+information can go into netrc).
+`~/.local/share/applications/transmission.desktop`:
 
 ```
 [Desktop Entry]
 Type=Application
 Name=Transmission (HOST)
 Comment=Add a magnet link on HOST
-Exec=transmission-remote HOST -ne -a %U
+Exec=transmission-remote HOST -a %U
 Categories=Network;
 MimeType=x-scheme-handler/magnet;
 ```
