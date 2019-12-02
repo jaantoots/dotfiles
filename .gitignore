@@ -36,6 +36,8 @@
 !/.config/kitty
 !/.config/libinput-gestures.conf
 !/.config/mimeapps.list
+!/.config/mpv
+/.config/mpv/watch_later
 !/.config/qutebrowser
 /.config/qutebrowser/autoconfig.yml
 /.config/qutebrowser/bookmarks
