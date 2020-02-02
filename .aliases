@@ -47,6 +47,16 @@ exifdiff() {
     diff <(exiftool "$1") <(exiftool "$2")
 }
 
+omniva-track() {
+    lynx -dump -width=100000 \
+        "https://www.omniva.ee/api/search.php?search_barcode=${1}&lang=est" |
+        iconv -f ISO88591 -t UTF8 |
+        sed -Ee 's/([0-9]{2}\.[0-9]{2}\.[0-9]{4} [0-9]{2}:[0-9]{2})/@\1@/' |
+        tail -n+4 |
+        column -ts@ |
+        tac
+}
+
 # get user entry for process
 whop() {
     ps --no-headers -p "$1"
