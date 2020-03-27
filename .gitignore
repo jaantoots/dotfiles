@@ -55,6 +55,9 @@
 # Mailcap
 !/.mailcap
 
+# Makefile
+!/Makefile
+
 # Neomutt
 !/.neomutt
 /.neomutt/alias
