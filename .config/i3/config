@@ -202,7 +202,7 @@ mode $launcher {
     bindsym f mode "default"; exec --no-startup-id firefox
     bindsym Shift+f mode "default"; exec --no-startup-id firejail --overlay-tmpfs --nodbus firefox --no-remote -P private
     bindsym r mode "default"; exec --no-startup-id riot-desktop
-    bindsym s mode "default"; exec --no-startup-id signal-desktop
+    bindsym s mode "default"; exec --no-startup-id signal-desktop --disable-gpu
     bindsym m mode "default"; exec --no-startup-id caprine
     bindsym z mode "default"; exec --no-startup-id zulip
     bindsym p mode "default"; exec --no-startup-id spotify --force-device-scale-factor=2
