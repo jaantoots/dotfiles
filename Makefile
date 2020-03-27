@@ -10,6 +10,7 @@ debian-gpu:
 	sudo apt-get -y install linux-headers-cloud-amd64
 	sudo apt-get -y -t buster-backports install nvidia-driver nvidia-smi nvidia-cuda-toolkit nvidia-cuda-dev
 ifdef DATA_DISK
+	sudo mkdir /data
 	echo "UUID=$(DATA_DISK) /data ext4 rw 0 0" | sudo tee -a /etc/fstab
 	sudo mount -a
 endif
