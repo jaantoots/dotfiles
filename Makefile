@@ -4,7 +4,7 @@ DATA_DISK ?=
 debian-gpu:
 	sudo apt-get -y update
 	sudo apt-get -y upgrade -V
-	sudo apt-get -y install htop zsh rsync wget pciutils unzip tmux jq awscli
+	sudo apt-get -y install htop zsh rsync wget pciutils unzip tmux jq awscli git
 	sudo sed -i 's/main$$/\0 contrib non-free/' /etc/apt/sources.list
 	sudo apt-get -y update
 	sudo apt-get -y install linux-headers-cloud-amd64
