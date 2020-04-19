@@ -23,6 +23,7 @@ if has("autocmd")
     autocmd FileType yaml set tabstop=2 shiftwidth=2
     autocmd FileType html set tabstop=2 shiftwidth=2
     autocmd FileType tf set tabstop=2 shiftwidth=2
+    autocmd FileType rst set tabstop=2 shiftwidth=2
 endif
 
 " use spaces instead of tabs
