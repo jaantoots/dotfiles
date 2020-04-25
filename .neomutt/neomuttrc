@@ -6,6 +6,7 @@ source ~/.neomutt/local.rc
 # Mail directories
 set folder = ~/.mail
 source ~/.neomutt/mailboxes
+set sidebar_short_path = yes
 set spoolfile = "+INBOX"
 set record = "+Sent"
 set postponed = "+Drafts"
