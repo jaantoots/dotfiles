@@ -32,6 +32,6 @@ fi
 xset dpms 600 600 600
 xset s 590 9
 xset r rate 250 50
-xss-lock -n "$HOME/bin/dim-screen.sh" -- "$HOME/bin/locker" &
+xss-lock -n "$HOME/.dim-screen" -- "$HOME/.locker" &
 # start i3
 exec i3
