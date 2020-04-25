@@ -22,12 +22,3 @@
 [submodule ".config/i3line"]
 	path = xorg/.config/i3line
 	url = https://github.com/jaantoots/i3line.git
-[submodule ".local/share/zsh-syntax-highlighting"]
-	path = shell/.local/share/zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule ".local/share/zsh-history-substring-search"]
-	path = shell/.local/share/zsh-history-substring-search
-	url = https://github.com/zsh-users/zsh-history-substring-search.git
-[submodule ".local/share/zsh-autosuggestions"]
-	path = shell/.local/share/zsh-autosuggestions
-	url = https://github.com/zsh-users/zsh-autosuggestions.git

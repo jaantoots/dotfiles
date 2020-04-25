@@ -1,5 +1,4 @@
 # Check if grml-zsh-config is installed locally
-
 [[ -f $HOME/.zshrc.global ]] && source $HOME/.zshrc.global
 
 # History
@@ -11,14 +10,20 @@ setopt histignoredups
 # if not running interactively, stop here
 [[ $- != *i* ]] && return
 
-prefix=/usr/share/zsh/plugins
-[[ -d "$prefix" ]] || prefix=$HOME/.local/share
+# Load plugins
+load_plugin() {
+    prefix=/usr/share/zsh/plugins
+    # Try the following if using Debian
+    [[ -d "$prefix" ]] || prefix=/usr/share
+    [[ -f "$prefix/$1/$1.zsh" ]] && source "$prefix/$1/$1.zsh"
+    unset prefix
+}
 
-source $prefix/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $prefix/zsh-history-substring-search/zsh-history-substring-search.zsh
-source $prefix/zsh-autosuggestions/zsh-autosuggestions.zsh
+load_plugin zsh-syntax-highlighting
+load_plugin zsh-history-substring-search
+load_plugin zsh-autosuggestions
 
-unset prefix
+unfunction load_plugin
 
 ZSH_AUTOSUGGEST_STRATEGY=match_prev_cmd
 
