@@ -1,8 +1,14 @@
 # Dotfiles
 
 This is a collection of my dotfiles and scripts. All configurations are
-maintained to work on Arch Linux hosts. Everything should fail gracefully, it
-is probably safe to check out this repository into a new home directory.
+maintained to work on Arch Linux hosts.
+
+```
+cd
+git clone git@github.com:jaantoots/dotfiles.git
+cd dotfiles
+stow desktop git neomutt shell systemd vim xorg
+```
 
 ## zsh configuration
 

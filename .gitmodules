@@ -1,33 +1,33 @@
 [submodule "config/bash-sensible"]
-	path = .config/bash-sensible
+	path = shell/.config/bash-sensible
 	url = https://github.com/mrzool/bash-sensible.git
 [submodule ".config/base16-shell"]
-	path = .config/base16-shell
+	path = shell/.config/base16-shell
 	url = https://github.com/chriskempson/base16-shell.git
 [submodule ".config/base16-xresources"]
-	path = .config/base16-xresources
+	path = xorg/.config/base16-xresources
 	url = https://github.com/chriskempson/base16-xresources.git
 [submodule ".vim/colors/base16"]
-	path = .vim/base16
+	path = vim/.vim/base16
 	url = git://github.com/chriskempson/base16-vim.git
 [submodule ".config/qutebrowser/base16-qutebrowser"]
-	path = .config/qutebrowser/base16-qutebrowser
+	path = desktop/.config/qutebrowser/base16-qutebrowser
 	url = https://github.com/theova/base16-qutebrowser.git
 [submodule ".config/kitty/base16-kitty"]
-	path = .config/kitty/base16-kitty
+	path = desktop/.config/kitty/base16-kitty
 	url = https://github.com/kdrag0n/base16-kitty.git
 [submodule ".config/rofi/base16-rofi"]
-	path = .config/rofi/base16-rofi
+	path = desktop/.config/rofi/base16-rofi
 	url = https://github.com/0xdec/base16-rofi.git
 [submodule ".config/i3line"]
-	path = .config/i3line
+	path = xorg/.config/i3line
 	url = https://github.com/jaantoots/i3line.git
 [submodule ".local/share/zsh-syntax-highlighting"]
-	path = .local/share/zsh-syntax-highlighting
+	path = shell/.local/share/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule ".local/share/zsh-history-substring-search"]
-	path = .local/share/zsh-history-substring-search
+	path = shell/.local/share/zsh-history-substring-search
 	url = https://github.com/zsh-users/zsh-history-substring-search.git
 [submodule ".local/share/zsh-autosuggestions"]
-	path = .local/share/zsh-autosuggestions
+	path = shell/.local/share/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git

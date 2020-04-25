@@ -1,7 +1,0 @@
-#!/bin/bash
-
-set -eu
-
-hostname='(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])'
-
-exec ssh "$(tac .zsh_history | cut -c 16- | grep -m 1 -E '^ssh '"$hostname"'$' | cut -c 5-)"

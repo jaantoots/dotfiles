@@ -63,6 +63,23 @@ whop() {
     getent passwd "$(ps --no-headers -o uid -p "$1")"
 }
 
+# open cropped pdf with zathura
+zathuracrop() {
+    [[ "$#" -eq 1 ]] || { echo "usage: $0 PDF" >&2 && exit; }
+    PDF="$1"
+
+    RIGHT="$(pdfinfo -box "$PDF" | grep -E "^MediaBox:" | awk '{print $4;}')"
+    BBOX="$(gs -dSAFER -dBATCH -dNOPAUSE -dQUIET -sDEVICE=bbox "$PDF" 2>&1 |
+        grep -E "^%%BoundingBox:")"
+    BOT="$(echo "$BBOX" | awk '{print $3;}' | sort -n | head -1)"
+    TOP="$(echo "$BBOX" | awk '{print $5;}' | sort -n | tail -1)"
+
+    CROP="$(mktemp --tmpdir --suffix=."$(basename "$PDF")" zathuracrop.XXXXXXXX)"
+    pdfcrop --bbox "0 $BOT $RIGHT $TOP" "$PDF" "$CROP"
+
+    zathura --fork "$CROP"
+}
+
 # open recent file with zathura
 zh() {
     sed -nE '/^\[.+\]$/h;/^time=[0-9]+$/{x;G;s/^\[(.+)\]\ntime=([0-9]+)$/\2 \1/p}' \
