@@ -1,6 +1,3 @@
-# Check if grml-zsh-config is installed locally
-[[ -f $HOME/.zshrc.global ]] && source $HOME/.zshrc.global
-
 # History
 HISTSIZE=1048576
 SAVEHIST=1048576
