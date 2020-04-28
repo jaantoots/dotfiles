@@ -1,11 +1,3 @@
 # vim: ft=sh
 # set variables
 export BROWSER=firefox
-
-# additional keybindings
-xbindkeys
-
-# touchpad gestures
-if command -v libinput-gestures &>/dev/null; then
-    libinput-gestures &
-fi
