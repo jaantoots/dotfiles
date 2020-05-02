@@ -239,6 +239,9 @@ hide_edge_borders smart
 # Wallpaper
 exec --no-startup-id ~/.fehbg
 
+# Autostart
+exec --no-startup-id dex -ae i3
+
 ## Base16 Default Dark
 # Author: Chris Kempson (http://chriskempson.com)
 #
