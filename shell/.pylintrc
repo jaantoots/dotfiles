@@ -5,8 +5,7 @@
 # run arbitrary code.
 extension-pkg-whitelist=numpy,
                         torch,
-                        cv2,
-                        Levenshtein
+                        cv2
 
 [MESSAGES CONTROL]
 
@@ -36,7 +35,7 @@ output-format=colorized
 expected-line-ending-format=LF
 
 # Maximum number of characters on a single line.
-max-line-length=79
+max-line-length=88
 
 # Allow the body of an if to be on the same line as the test if there is no
 # else.
