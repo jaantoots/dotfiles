@@ -1,3 +1,4 @@
 # vim: ft=sh
 # set variables
 export BROWSER=firefox
+export TERMINAL=kitty
