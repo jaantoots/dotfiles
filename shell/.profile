@@ -19,7 +19,7 @@ fi
 # set PATH so it includes user's private bin directories
 PATH="$HOME/bin:$PATH"
 
-export ALTERNATE_EDITOR=
+export ALTERNATE_EDITOR=vi
 export EDITOR=vim
 export SUDO_EDITOR=rvim
 export BROWSER=lynx
