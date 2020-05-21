@@ -4,7 +4,7 @@ alias e="emacsclient -t"
 alias ec="emacsclient -c"
 alias lsb="lsblk -oNAME,TYPE,MAJ:MIN,RM,SUBSYSTEMS,MODEL,SIZE,RO,FSTYPE,FSSIZE,FSUSE%,FSUSED,FSAVAIL,MOUNTPOINT"
 alias mpvd="mpv --screen=0 --fs-screen=1"
-alias ssh="TERM=${SSH_TERM:-$TERM} ssh"
+alias ssh='TERM=${SSH_TERM:-$TERM} ssh'
 alias v="vim"
 alias wgetu="wget -U 'Mozilla/5.0 (X11; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0'"
 
@@ -24,17 +24,17 @@ cpv() {
     tar -c "$1" | pv -pterb -s "$(du -bs "$1" | cut -f1)" | tar -C "$2" -xp
 }
 
-docker-tags() {
+docker_tags() {
     for item; do
         token="$(curl -sG \
             --data-urlencode service=registry.docker.io \
-            --data-urlencode scope=repository:$item:pull \
+            --data-urlencode scope=repository:"$item":pull \
             https://auth.docker.io/token |
             jq -r '.token')"
         curl -sG \
             -H "Accept: application/json" \
             -H "Authorization: Bearer $token" \
-            https://registry-1.docker.io/v2/$item/tags/list |
+            "https://registry-1.docker.io/v2/$item/tags/list" |
             jq
     done
 }
@@ -46,7 +46,7 @@ exifdiff() {
     diff <(exiftool "$1") <(exiftool "$2")
 }
 
-omniva-track() {
+omniva_track() {
     lynx -dump -width=100000 \
         "https://www.omniva.ee/api/search.php?search_barcode=${1}&lang=est" |
         iconv -f ISO88591 -t UTF8 |
@@ -64,7 +64,7 @@ whop() {
 
 # open cropped pdf with zathura
 zathuracrop() {
-    [[ "$#" -eq 1 ]] || { echo "usage: $0 PDF" >&2 && exit; }
+    [ "$#" -eq 1 ] || { echo "usage: $0 PDF" >&2 && exit; }
     PDF="$1"
 
     RIGHT="$(pdfinfo -box "$PDF" | grep -E "^MediaBox:" | awk '{print $4;}')"
@@ -82,6 +82,6 @@ zathuracrop() {
 # open recent file with zathura
 zh() {
     sed -nE '/^\[.+\]$/h;/^time=[0-9]+$/{x;G;s/^\[(.+)\]\ntime=([0-9]+)$/\2 \1/p}' \
-        $HOME/.local/share/zathura/history |
+        "$HOME/.local/share/zathura/history" |
         sort -nr | cut -d ' ' -f 2- | dmenu -p zathura | xargs -r zathura --fork
 }
