@@ -47,3 +47,5 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 # conda
 [[ -f $HOME/miniconda3/etc/profile.d/conda.sh ]] &&
     source "$HOME/miniconda3/etc/profile.d/conda.sh"
+
+true
