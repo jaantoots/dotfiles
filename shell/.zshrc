@@ -43,3 +43,7 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 
 # aliases
 [[ -r $HOME/.aliases ]] && source $HOME/.aliases
+
+# conda
+[[ -f $HOME/miniconda3/etc/profile.d/conda.sh ]] &&
+    source "$HOME/miniconda3/etc/profile.d/conda.sh"
