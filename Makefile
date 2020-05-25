@@ -14,7 +14,7 @@ graphical: default
 dotfiles:
 	git clone --recursive https://github.com/jaantoots/dotfiles.git
 
-.PHONY: debian debian-gpu
+.PHONY: debian debian-gpu conda
 debian:
 	sudo apt-get -y update
 	sudo apt-get -y upgrade -V
@@ -28,9 +28,9 @@ debian-gpu: debian
 	sudo apt-get -y install linux-headers-cloud-amd64
 	sudo apt-get -y -t buster-backports install nvidia-driver nvidia-smi nvidia-cuda-toolkit nvidia-cuda-dev
 
-.PHONY: ml
-ml: debian-gpu dotfiles
-	make -C dotfiles minimal
-	wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-	bash Miniconda3-latest-Linux-x86_64.sh -b
-	./miniconda3/condabin/conda init zsh
+CONDA_FILE = Miniconda3-py38_4.8.2-Linux-x86_64.sh
+CONDA_SHA256 = 5bbb193fd201ebe25f4aeb3c58ba83feced6a25982ef4afa86d5506c3656c142
+conda:
+	wget https://repo.anaconda.com/miniconda/$(CONDA_FILE)
+	echo "$(CONDA_SHA256)  $(CONDA_FILE)" | sha256sum -c
+	bash $(CONDA_FILE) -b
