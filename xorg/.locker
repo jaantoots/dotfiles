@@ -4,7 +4,20 @@ base08="ab4642"
 base0A="f7ca88"
 base0B="a1b56c"
 
+pre_lock() {
+    # Clear gpg-agent cache
+    killall -SIGHUP gpg-agent
+    # Pause notifications
+    killall -SIGUSR1 dunst
+}
+
+post_lock() {
+    # Resume notifications
+    killall -SIGUSR2 dunst
+}
+
 OPTS=(
+    # Non-forking as a new countdown starts as soon as the locker exits
     --nofork
     --ignore-empty-password
     --show-failed-attempts
@@ -42,8 +55,9 @@ command -v pacman &>/dev/null &&
 # Turn off the screen, if 'off' is given
 [ "$1" = "off" ] && (sleep 2 && xset dpms force off) &
 
-# Also clear gpg-agent cache
-pkill -SIGHUP gpg-agent
+pre_lock
+trap post_lock TERM INT
 
-# Non-forking as a new countdown starts as soon as the locker exits
 i3lock "${OPTS[@]}"
+
+post_lock
