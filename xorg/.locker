@@ -27,6 +27,7 @@ OPTS=(
 command -v pacman &>/dev/null &&
     [[ $(pacman -Qqo i3lock) =~ ^i3lock-color ]] &&
     OPTS+=(
+        "--composite"
         "--pass-media-keys"
         "--pass-screen-keys"
         "--pass-power-keys"
