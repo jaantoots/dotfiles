@@ -13,6 +13,9 @@
 [core]
     excludesfile = ~/.gitignore_global
 
+[commit]
+    verbose = true
+
 [pull]
     rebase = true
 
