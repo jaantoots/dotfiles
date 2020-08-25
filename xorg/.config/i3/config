@@ -217,15 +217,15 @@ mode $launcher {
 set $sysmenu "system: [l]ock [e]xit [s]uspend [h]ibernate [r]eboot [p]oweroff"
 bindsym $mod+Delete mode $sysmenu
 mode $sysmenu {
-     bindsym l mode "default"; exec --no-startup-id "loginctl lock-session; sleep 2; xset dpms force off"
-     bindsym e mode "default"; exit
-     bindsym s mode "default"; exec --no-startup-id systemctl suspend
-     bindsym h mode "default"; exec --no-startup-id systemctl hibernate
-     bindsym r mode "default"; exec --no-startup-id systemctl reboot
-     bindsym p mode "default"; exec --no-startup-id systemctl poweroff
+    bindsym l mode "default"; exec --no-startup-id "loginctl lock-session; sleep 2; xset dpms force off"
+    bindsym e mode "default"; exit
+    bindsym s mode "default"; exec --no-startup-id systemctl suspend
+    bindsym h mode "default"; exec --no-startup-id systemctl hibernate
+    bindsym r mode "default"; exec --no-startup-id systemctl reboot
+    bindsym p mode "default"; exec --no-startup-id systemctl poweroff
 
-     bindsym Esc mode "default"
-     bindsym Return mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 # Lock screen
