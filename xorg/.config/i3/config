@@ -192,6 +192,20 @@ bindsym $mod+Shift+Print exec --no-startup-id scrot -u -e 'xclip -selection clip
 bindsym $mod+s exec --no-startup-id "sleep 0.1; scrot -s"
 bindsym $mod+Shift+s exec --no-startup-id "sleep 0.1; scrot -s -e 'xclip -selection clipboard -t image/png $f'"
 
+# backlight
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -time 50 -dec 5
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -time 50 -inc 5
+
+# audio
+bindsym XF86AudioMute exec --no-startup-id amixer -q -D pulse set Master toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse set Master 5%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse set Master 5%-
+
+# playback
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+
 # launch faster
 set $launcher "Launch: [q]utebrowser [c]hromium [f]irefox mat[r]ix [s]ignal [m]essenger [z]ulip s[p]otify z[a]thura"
 bindsym $mod+x mode $launcher
