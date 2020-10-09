@@ -44,12 +44,6 @@
     always_run_script = true
     startup_notification = false
 
-[shortcuts]
-    close = mod4+period
-    close_all = mod4+shift+period
-    history = mod4+grave
-    context = mod4+slash
-
 [urgency_low]
     timeout = 10
 

@@ -192,6 +192,13 @@ bindsym $mod+Shift+Print exec --no-startup-id scrot -u -e 'xclip -selection clip
 bindsym $mod+s exec --no-startup-id "sleep 0.1; scrot -s"
 bindsym $mod+Shift+s exec --no-startup-id "sleep 0.1; scrot -s -e 'xclip -selection clipboard -t image/png $f'"
 
+# dunst notifications
+bindsym $mod+period exec --no-startup-id dunstctl close
+bindsym $mod+Shift+period exec --no-startup-id dunstctl close-all
+bindsym $mod+grave exec --no-startup-id dunstctl history-pop
+bindsym $mod+slash exec --no-startup-id dunstctl context
+bindsym $mod+Shift+slash exec --no-startup-id dunstctl set-paused toggle
+
 # backlight
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -time 50 -dec 5
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -time 50 -inc 5
