@@ -22,6 +22,7 @@ OPTS=(
     --ignore-empty-password
     --show-failed-attempts
     "--image=$HOME/.i3lockbg"
+    --centered
 )
 # Extra options for i3lock-color
 command -v pacman &>/dev/null &&
