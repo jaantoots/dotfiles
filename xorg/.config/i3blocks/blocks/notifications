@@ -1,0 +1,21 @@
+#!/bin/bash
+
+set -e
+
+DUNST_UNPAUSED_SYMBOL=${DUNST_UNPAUSED_SYMBOL:-''}
+DUNST_PAUSED_SYMBOL=${DUNST_PAUSED_SYMBOL:-''}
+DUNST_PAUSED_COLOR=${DUNST_PAUSED_COLOR:-$_base0A}
+
+case $button in
+    1) dunstctl set-paused true ;;
+    2) dunstctl set-paused toggle ;;
+    3) dunstctl set-paused false ;;
+esac
+
+is_paused=$(dunstctl is-paused)
+
+icon=$DUNST_UNPAUSED_SYMBOL
+color=
+[ "$is_paused" = "true" ] && icon=$DUNST_PAUSED_SYMBOL && color=$DUNST_PAUSED_COLOR
+
+printf '%s\n%s\n%s\n' "$icon" "" "$color"

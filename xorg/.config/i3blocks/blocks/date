@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+DATE_SYMBOL=${DATE_SYMBOL:-''}
+
+icon=$DATE_SYMBOL
+
+printf '%s\n%s\n%s\n' "$icon $(date '+%F %T')" "$(date '+%T')" ""

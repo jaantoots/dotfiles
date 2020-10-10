@@ -1,0 +1,28 @@
+#!/bin/bash
+
+set -e
+
+LOAD_SYMBOL=${LOAD_SYMBOL:-''}
+LOAD_HIGH_COLOR=${LOAD_HIGH_COLOR:-$_base0A}
+LOAD_CRITICAL_COLOR=${LOAD_CRITICAL_COLOR:-$_base08}
+
+_long=${_long:-0}
+case $button in
+    1) _long=$(((_long + 1) % 2 )) ;;
+    2) i3-msg -q "exec --no-startup-id i3-sensible-terminal -e htop" ;;
+esac
+
+loadavg=$(cat /proc/loadavg)
+_load_1=$(cut -d\  -f1 <<<"$loadavg")
+_nproc=$(nproc)
+
+icon=$LOAD_SYMBOL
+perl -e 'exit !($ARGV[0] > $ARGV[1]/2)' "$_load_1" "$_nproc" && color=$LOAD_HIGH_COLOR
+perl -e 'exit !($ARGV[0] > $ARGV[1])' "$_load_1" "$_nproc" && color=$LOAD_CRITICAL_COLOR
+urgent=false
+perl -e 'exit !($ARGV[0] > $ARGV[1]*2)' "$_load_1" "$_nproc" && urgent=true
+
+_load=$_load_1
+[ "$_long" -eq 0 ] || _load=$(cut -d\  -f1-3 <<<"$loadavg")
+
+printf '{"full_text":"%s","short_text":"%s","color":"%s","urgent":%s,"_long":%d}\n' "$icon $_load" "$_load_1" "$color" "$urgent" "$_long"

@@ -1,0 +1,117 @@
+# i3blocks config file
+#
+# List of valid properties:
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+command=$HOME/.config/i3blocks/blocks/$BLOCK_NAME
+interval=60
+
+### COLORS ###
+_base00=#181818
+_base01=#282828
+_base02=#383838
+_base03=#585858
+_base04=#b8b8b8
+_base05=#d8d8d8
+_base06=#e8e8e8
+_base07=#f8f8f8
+_base08=#ab4642
+_base09=#dc9656
+_base0A=#f7ca88
+_base0B=#a1b56c
+_base0C=#86c1b9
+_base0D=#7cafc2
+_base0E=#ba8baf
+_base0F=#a16946
+
+### BLOCKS ###
+
+# Generic media player support
+#
+# This displays "ARTIST - SONG" if a music is playing.
+# Supported players are: spotify, vlc, audacious, xmms2, mplayer, and others.
+#[mediaplayer]
+#instance=spotify
+#interval=5
+#signal=10
+#
+
+#[notmuch]
+
+## Network interface monitoring
+##
+## If the instance is not specified, use the interface used for default route.
+## The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
+#[iface]
+##IFACE=wlan0
+#color=#00FF00
+#interval=10
+#separator=false
+#
+#[wifi]
+##INTERFACE=wlp3s0
+#label=wifi:
+#interval=10
+#separator=false
+#
+#[bandwidth]
+##INTERFACE=eth0
+#interval=5
+#
+#
+[disk]
+interval=1
+instance=/
+
+[disk]
+interval=1
+
+[notifications]
+signal=1
+
+[notifications_update]
+_signal=1
+command=bash -c 'dbus-monitor --profile path=/org/freedesktop/Notifications,interface=org.freedesktop.DBus.Properties,member=Set | while read -r line; do [[ "$line" =~ ^mc ]] && pkill -SIGRTMIN+$_signal i3blocks; done'
+interval=persist
+
+[volume]
+signal=2
+
+[volume_update]
+_signal=2
+command=bash -c 'pactl subscribe | while read -r line; do [[ "$line" =~ sink ]] && pkill -SIGRTMIN+$_signal i3blocks; done'
+interval=persist
+
+#[mic]
+
+## Battery indicator
+##
+## The battery instance defaults to 0.
+#[battery]
+#label=BAT
+##label=⚡
+#interval=30
+
+[temperature]
+interval=1
+
+[loadavg]
+interval=1
+format=json
+
+[date]
+interval=1

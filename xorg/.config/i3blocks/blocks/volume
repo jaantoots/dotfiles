@@ -1,0 +1,46 @@
+#!/bin/bash
+
+set -e
+
+AUDIO_HIGH_SYMBOL=${AUDIO_HIGH_SYMBOL:-''}
+AUDIO_MED_SYMBOL=${AUDIO_MED_SYMBOL:-''}
+AUDIO_LOW_SYMBOL=${AUDIO_LOW_SYMBOL:-''}
+AUDIO_MUTED_SYMBOL=${AUDIO_MUTED_SYMBOL:-''}
+AUDIO_MUTED_COLOR=${AUDIO_MUTED_COLOR:-$_base0A}
+AUDIO_MED_THRESH=${AUDIO_MED_THRESH:-30}
+AUDIO_LOW_THRESH=${AUDIO_LOW_THRESH:-0}
+AUDIO_DELTA=${AUDIO_DELTA:-5}
+
+_get_dump() {
+    dump=$(pacmd dump)
+    sinks=$(grep "^set-sink-volume" <<<"$dump" | cut -d\  -f2)
+    default_sink=$(grep -m1 "^set-default-sink" <<<"$dump" | cut -d\  -f2)
+    next_sink=$(sed -n '/^'"$default_sink"'$/{n;p;q}' <<<"$sinks")
+    prev_sink=$(sed -n '/^'"$default_sink"'$/{x;p;q};h' <<<"$sinks")
+    volume=$(grep -m1 "^set-sink-volume $default_sink" <<<"$dump" | cut -d\  -f3)
+    volume=$(perl -e "printf('%.0f', 100*$volume/0x10000)")
+    mute=$(grep -m1 "^set-sink-mute $default_sink" <<<"$dump" | cut -d\  -f3)
+}
+
+_handle_click() {
+    case $button in
+        1) jq -r '.[]' <<<"$modifiers" | grep -q Mod4 && pacmd set-default-sink "${next_sink:-$(head -1 <<<"$sinks")}" ;;&
+        2) pactl set-sink-mute "$default_sink" toggle ;;&
+        3) jq -r '.[]' <<<"$modifiers" | grep -q Mod4 && pacmd set-default-sink "${prev_sink:-$(tail -1 <<<"$sinks")}" ;;&
+        4) pactl set-sink-volume "$default_sink" +"$AUDIO_DELTA"% ;;&
+        5) pactl set-sink-volume "$default_sink" -"$AUDIO_DELTA"% ;;&
+        ?) _get_dump ;;
+    esac
+}
+
+_get_dump
+_handle_click
+
+icon=$AUDIO_HIGH_SYMBOL
+color=
+[ "$volume" -le "$AUDIO_MED_THRESH" ] && icon=$AUDIO_MED_SYMBOL
+[ "$volume" -le "$AUDIO_LOW_THRESH" ] && icon=$AUDIO_LOW_SYMBOL
+[ "$mute" = "yes" ] && icon=$AUDIO_MUTED_SYMBOL && color=$AUDIO_MUTED_COLOR
+
+printf '%s\n%s\n%s\n' "$icon $volume%" "$volume%" "$color"
+#printf '{"full_text": "%s", "short_text": "%s", "color": "%s"}\n' "$icon $volume%" "$volume%" "$color"

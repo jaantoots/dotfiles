@@ -1,0 +1,29 @@
+#!/bin/bash
+
+set -e
+
+TEMP_00_SYMBOL=${TEMP_00_SYMBOL:-''}
+TEMP_40_SYMBOL=${TEMP_40_SYMBOL:-''}
+TEMP_60_SYMBOL=${TEMP_60_SYMBOL:-''}
+TEMP_80_SYMBOL=${TEMP_80_SYMBOL:-''}
+TEMP_90_SYMBOL=${TEMP_90_SYMBOL:-''}
+TEMP_HIGH_COLOR=${TEMP_HIGH_COLOR:-$_base0A}
+TEMP_CRITICAL_COLOR=${TEMP_CRITICAL_COLOR:-$_base08}
+TEMP_HIGH=${TEMP_HIGH:-70}
+TEMP_CRITICAL=${TEMP_CRITICAL:-85}
+TEMP_URGENT=${TEMP_URGENT:-95}
+
+temp=$(cat /sys/devices/platform/coretemp.0/hwmon/hwmon?/temp1_input | head -1)
+temp=$((temp/1000))
+
+icon=$TEMP_00_SYMBOL
+[ "$temp" -ge 40 ] && icon=$TEMP_40_SYMBOL
+[ "$temp" -ge 60 ] && icon=$TEMP_60_SYMBOL
+[ "$temp" -ge 80 ] && icon=$TEMP_80_SYMBOL
+[ "$temp" -ge 90 ] && icon=$TEMP_90_SYMBOL
+color=
+[ "$temp" -ge "$TEMP_HIGH" ] && color=$TEMP_HIGH_COLOR
+[ "$temp" -ge "$TEMP_CRITICAL" ] && color=$TEMP_CRITICAL
+
+printf '%s\n%s\n%s\n' "$icon $temp°C" "$temp°C" "$color"
+[ "$temp" -lt "$TEMP_URGENT" ] || exit 33

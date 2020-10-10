@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -e
+
+DISK_SYMBOL=${DISK_SYMBOL:-''}
+DISK_HOME_SYMBOL=${DISK_HOME_SYMBOL:-''}
+DISK_LOW_COLOR=${DISK_LOW_COLOR:-$_base0A}
+DISK_CRITICAL_COLOR=${DISK_CRITICAL_COLOR:-$_base08}
+DISK_LOW_THRESH=${DISK_LOW_THRESH:-10}
+DISK_CRITICAL_THRESH=${DISK_CRITICAL_THRESH:-5}
+
+instance=${instance:-$HOME}
+
+read -r size avail < <(df -B1 -l --output=size,avail "$instance" | tail -1)
+_avail=$(numfmt --to=iec --format=%.2f "$avail")
+_prop=$((100*avail/size))
+
+icon=$DISK_SYMBOL
+[ "$instance" = "$HOME" ] && icon=$DISK_HOME_SYMBOL
+color=
+[ "$_prop" -le "$DISK_LOW_THRESH" ] && color=$DISK_LOW_COLOR
+[ "$_prop" -le "$DISK_CRITICAL_THRESH" ] && color=$DISK_CRITICAL_COLOR
+
+printf '%s\n%s\n%s\n' "$icon $_avail" "$_avail" "$color"
+[ "$avail" -gt 0 ] || exit 33
