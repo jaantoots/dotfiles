@@ -17,6 +17,7 @@ _load_1=$(cut -d\  -f1 <<<"$loadavg")
 _nproc=$(nproc)
 
 icon=$LOAD_SYMBOL
+color=
 perl -e 'exit !($ARGV[0] > $ARGV[1]/2)' "$_load_1" "$_nproc" && color=$LOAD_HIGH_COLOR
 perl -e 'exit !($ARGV[0] > $ARGV[1])' "$_load_1" "$_nproc" && color=$LOAD_CRITICAL_COLOR
 urgent=false
