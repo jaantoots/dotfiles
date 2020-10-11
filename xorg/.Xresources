@@ -1,9 +1,4 @@
 !! Fix DPI
-#ifdef DPI
-Xft.dpi: DPI
-#else
-Xft.dpi: 192
-#endif
 Xft.autohint: 0
 Xft.lcdfilter: lcddefault
 Xft.hintstyle: hintfull
@@ -43,11 +38,7 @@ URxvt.secondaryScroll: false
 ! Perl extensions
 URxvt.perl-ext-common: default,matcher
 URxvt.matcher.button: 2
-#ifdef BROWSER
-URxvt.url-launcher: BROWSER
-#else
 URxvt.url-launcher: xdg-open
-#endif
 
 !! base16
 #include ".config/base16-xresources/xresources/base16-default-dark-256.Xresources"
