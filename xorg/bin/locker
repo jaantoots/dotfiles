@@ -54,12 +54,9 @@ command -v pacman &>/dev/null &&
         "--datestr=%a %e %b %Y"
     )
 
-# Turn off the screen, if 'off' is given
-[ "$1" = "off" ] && (sleep 2 && xset dpms force off) &
-
 pre_lock
 trap post_lock TERM INT
 
-i3lock "${OPTS[@]}"
+i3lock "${OPTS[@]}" "$@"
 
 post_lock

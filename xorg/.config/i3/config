@@ -260,6 +260,9 @@ hide_edge_borders smart
 # Wallpaper
 exec --no-startup-id ~/.fehbg
 
+# Screen locker
+exec --no-startup-id xss-lock -n dim-screen -- locker
+
 # Autostart
 exec --no-startup-id dex -ae i3
 
