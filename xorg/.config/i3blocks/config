@@ -18,7 +18,7 @@
 # urgent
 
 command=$HOME/.config/i3blocks/blocks/$BLOCK_NAME
-interval=60
+interval=1
 
 ### COLORS ###
 _base00=#181818
@@ -74,14 +74,13 @@ _base0F=#a16946
 #
 #
 [disk]
-interval=1
 instance=/
 
 [disk]
-interval=1
 
 [notifications]
 signal=1
+interval=60
 
 [notifications_update]
 _signal=1
@@ -90,6 +89,7 @@ interval=persist
 
 [volume]
 signal=2
+interval=60
 
 [volume_update]
 _signal=2
@@ -98,20 +98,13 @@ interval=persist
 
 #[mic]
 
-## Battery indicator
-##
-## The battery instance defaults to 0.
-#[battery]
-#label=BAT
-##label=⚡
-#interval=30
+[backlight]
+
+[battery]
 
 [temperature]
-interval=1
 
 [loadavg]
-interval=1
 format=json
 
 [date]
-interval=1

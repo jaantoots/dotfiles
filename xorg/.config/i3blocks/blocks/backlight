@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -e
+
+BACKLIGHT_SYMBOL=${BACKLIGHT_SYMBOL:-''}
+BACKLIGHT_DELTA=${BACKLIGHT_DELTA:-5}
+
+case $button in
+    2) if [ "$(xbacklight -get)" -lt 50 ]; then xbacklight -set 100; else xbacklight -set 20; fi ;;
+    4) xbacklight -inc "$BACKLIGHT_DELTA" ;;
+    5) xbacklight -dec "$BACKLIGHT_DELTA" ;;
+esac
+
+backlight=$(xbacklight -get)
+
+icon=$BACKLIGHT_SYMBOL
+
+printf '%s\n%s\n%s\n' "$icon $backlight%" "$backlight%" ""
+[ "$backlight" -gt 0 ] || exit 33

@@ -1,0 +1,59 @@
+#!/bin/bash
+
+set -e
+
+BAT_UNK_SYMBOL=${BAT_UNK_SYMBOL:-''}
+BAT_CHARGING_SYMBOL=${BAT_CHARGING_SYMBOL:-''}
+BAT_FULL_SYMBOL=${BAT_FULL_SYMBOL:-''}
+BAT_0_SYMBOL=${BAT_0_SYMBOL:-''}
+BAT_1_SYMBOL=${BAT_1_SYMBOL:-''}
+BAT_2_SYMBOL=${BAT_2_SYMBOL:-''}
+BAT_3_SYMBOL=${BAT_3_SYMBOL:-''}
+BAT_4_SYMBOL=${BAT_4_SYMBOL:-''}
+BAT_FULL_COLOR=${BAT_FULL_COLOR:-$_base0B}
+BAT_LOW_COLOR=${BAT_LOW_COLOR:-$_base0A}
+BAT_CRITICAL_COLOR=${BAT_CRITICAL_COLOR:-$_base08}
+BAT_LOW=${BAT_LOW:-25}
+BAT_CRITICAL=${BAT_CRITICAL:-15}
+BAT_URGENT=${BAT_URGENT:-10}
+
+instance=${instance:-BAT0}
+_path=/sys/class/power_supply/$instance
+
+status=$(cat "$_path/status")
+capacity=$(cat "$_path/capacity")
+charge_full=$(cat "$_path/charge_full" || cat "$_path/energy_full")
+charge_now=$(cat "$_path/charge_now" || cat "$_path/energy_now")
+if [ -f "$_path/current_now" ]; then
+    current_now=$(cat "$_path/current_now")
+    voltage_now=$(cat "$_path/voltage_now")
+else
+    current_now=$(cat "$_path/power_now" || echo 0)
+    voltage_now=1000000
+fi
+
+time=
+icon=$BAT_UNK_SYMBOL
+color=
+case $status in
+    Charging) [ "$current_now" -gt 0 ] && icon=$BAT_CHARGING_SYMBOL &&
+        time=$((3600*(charge_full-charge_now)/current_now)) ;;
+    Full) icon=$BAT_FULL_SYMBOL && color=$BAT_FULL_COLOR ;;
+    Discharging) [ "$current_now" -gt 0 ] &&
+        _icon=BAT_$(((capacity+12)/25))_SYMBOL && icon=${!_icon} &&
+        time=$((3600*charge_now/current_now)) &&
+        if [ "$capacity" -le "$BAT_CRITICAL" ]; then
+            color=$BAT_CRITICAL_COLOR
+        elif [ "$capacity" -le "$BAT_LOW" ]; then
+            color=$BAT_LOW_COLOR
+        fi ;;
+esac
+pcent=0
+[ "$charge_full" -gt 0 ] && pcent=$(bc -l <<<"100*$charge_now/$charge_full")
+power=$(bc -l <<<"$voltage_now*$current_now/1000000000000")
+
+_text=$(printf "%.2f%%" "$pcent")
+[ -n "$time" ] && _text=$(printf "%.2f%% %02d:%02d %.1fW" "$pcent" "$((time/3600))" "$(((time%3600)/60))" "$power") 
+
+printf '%s\n%.2f%%\n%s\n' "$icon $_text" "$pcent" "$color"
+[ "$capacity" -gt "$BAT_URGENT" ] || exit 33
