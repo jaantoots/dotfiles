@@ -1,21 +1,4 @@
 # i3blocks config file
-#
-# List of valid properties:
-#
-# align
-# color
-# command
-# full_text
-# instance
-# interval
-# label
-# min_width
-# name
-# separator
-# separator_block_width
-# short_text
-# signal
-# urgent
 
 command=$HOME/.config/i3blocks/blocks/$BLOCK_NAME
 interval=1
@@ -61,22 +44,17 @@ _base0F=#a16946
 #color=#00FF00
 #interval=10
 #separator=false
-#
-#[wifi]
-##INTERFACE=wlp3s0
-#label=wifi:
-#interval=10
-#separator=false
-#
+
 #[bandwidth]
 ##INTERFACE=eth0
 #interval=5
-#
-#
+
 [disk]
 instance=/
 
 [disk]
+
+[wifi]
 
 [notifications]
 signal=1

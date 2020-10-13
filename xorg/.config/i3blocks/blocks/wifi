@@ -1,0 +1,33 @@
+#!/bin/bash
+
+set -e
+shopt -s nullglob
+
+WIFI_SYMBOL=${WIFI_SYMBOL:-''}
+WIFI_DOWN_COLOR=${WIFI_DOWN_COLOR:-$_base08}
+WIFI_LOW_COLOR=${WIFI_LOW_COLOR:-$_base0A}
+WIFI_HIGH_COLOR=${WIFI_HIGH_COLOR:-$_base0B}
+WIFI_LOW=${WIFI_LOW:-100}
+WIFI_HIGH=${WIFI_HIGH:-300}
+
+instance=${instance:-$(echo /sys/class/net/wl*/wireless | head -1 | xargs -r dirname | xargs -r basename)}
+[ -n "$instance" ] || exit 1
+
+icon=$WIFI_SYMBOL
+color=$WIFI_DOWN_COLOR
+
+{
+    if read -r ssid && read -r freq && read -r sig && read -r bitr; then
+        host=$(ip addr show "$instance" | grep -m1 -oP '\s*inet6? \K[^/]+')
+        if [[ ! "$host" =~ ':' ]]; then
+            color=
+            [ "${bitr%%.*}" -lt "$WIFI_LOW" ] && color=$WIFI_LOW_COLOR
+            [ "${bitr%%.*}" -ge "$WIFI_HIGH" ] && color=$WIFI_HIGH_COLOR
+        fi
+        freq=$(printf '%.3gGHz' "$(bc -l <<<"$freq/1000")")
+        sig=$(printf '%ddBm' "$sig")
+        bitr=$(printf '%.3gMbps' "$bitr")
+    fi
+} < <(iw dev "$instance" link | sed -nE 's/^\s+SSID: //p;s/^\s+freq: //p;s/^\s+signal: (\S+) dBm/\1/p;s/^\s+rx bitrate: (\S+) MBit\/s.*/\1/p')
+
+printf "%s\n%s\n%s\n" "$icon${host:+ $host}${ssid:+ $ssid}${freq:+ $freq}${sig:+ $sig}${bitr:+ $bitr}" "$ssid" "$color"
