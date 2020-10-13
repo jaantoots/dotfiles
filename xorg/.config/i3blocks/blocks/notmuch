@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -e
+
+MAIL_SYMBOL=${MAIL_SYMBOL:-''}
+MAIL_HIGH_COLOR=${MAIL_HIGH_COLOR:-$_base0A}
+MAIL_CRITICAL_COLOR=${MAIL_CRITICAL_COLOR:-$_base08}
+MAIL_HIGH=${MAIL_HIGH:-8}
+MAIL_CRITICAL=${MAIL_CRITICAL:-16}
+
+case $button in
+    2) systemctl --user --no-block start mbsync.service ;;
+esac
+
+count=$(notmuch count folder:INBOX tag:unread)
+
+icon=$MAIL_SYMBOL
+color=
+[ "$count" -gt "$MAIL_HIGH" ] && color=$MAIL_HIGH_COLOR
+[ "$count" -gt "$MAIL_CRITICAL" ] && color=$MAIL_CRITICAL_COLOR
+
+printf "%s\n%s\n%s\n" "$icon $count" "$count" "$color"

@@ -33,7 +33,8 @@ _base0F=#a16946
 #signal=10
 #
 
-#[notmuch]
+[notmuch]
+interval=60
 
 ## Network interface monitoring
 ##
