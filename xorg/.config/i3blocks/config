@@ -34,7 +34,13 @@ _base0F=#a16946
 #
 
 [notmuch]
-interval=60
+signal=3
+interval=600
+
+[notmuch_update]
+_signal=3
+command=inotifywait -q -r -e modify "$(notmuch config get database.path)/.notmuch" >/dev/null && pkill -SIGRTMIN+$_signal i3blocks
+interval=repeat
 
 ## Network interface monitoring
 ##
@@ -63,7 +69,7 @@ interval=60
 
 [notifications_update]
 _signal=1
-command=bash -c 'dbus-monitor --profile path=/org/freedesktop/Notifications,interface=org.freedesktop.DBus.Properties,member=Set | while read -r line; do [[ "$line" =~ ^mc ]] && pkill -SIGRTMIN+$_signal i3blocks; done'
+command=dbus-monitor --profile path=/org/freedesktop/Notifications,interface=org.freedesktop.DBus.Properties,member=Set | while read -r line; do expr "$line" : mc >/dev/null && pkill -SIGRTMIN+$_signal i3blocks; done
 interval=persist
 
 [volume]
@@ -72,7 +78,7 @@ interval=60
 
 [volume_update]
 _signal=2
-command=bash -c 'pactl subscribe | while read -r line; do [[ "$line" =~ sink ]] && pkill -SIGRTMIN+$_signal i3blocks; done'
+command=pactl subscribe | while read -r line; do expr "$line" : ".*sink" >/dev/null && pkill -SIGRTMIN+$_signal i3blocks; done
 interval=persist
 
 #[mic]
