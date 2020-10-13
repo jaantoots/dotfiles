@@ -290,7 +290,7 @@ set $base0F #a16946
 
 # Basic bar configuration using the Base16 variables.
 bar {
-    status_command ~/.config/i3line/i3line
+    status_command i3blocks
 
     tray_output none
 
