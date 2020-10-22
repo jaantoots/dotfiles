@@ -29,8 +29,8 @@ fi
 [ -n "${DPI}" ] && xrandr --dpi "${DPI}"
 [ -n "${DPI}" ] && xrdb -merge <<<"Xft.dpi: ${DPI}"
 # screenlocker
-xset dpms 600 600 600
-xset s 590 9
+xset dpms ${_XSET_DPMS:-600} ${_XSET_DPMS:-600} ${_XSET_DPMS:-600}
+xset s ${_XSET_S:-590 9}
 xset r rate 250 50
 # start i3
 exec i3
