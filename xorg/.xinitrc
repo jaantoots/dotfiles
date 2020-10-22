@@ -27,7 +27,7 @@ fi
 
 # fix dpi
 [ -n "${DPI}" ] && xrandr --dpi "${DPI}"
-[ -n "${DPI}" ] && xrdb -merge <<<"Xft.dpi: ${DPI}"
+[ -n "${DPI}" ] && echo "Xft.dpi: ${DPI}" | xrdb -merge
 # screenlocker
 xset dpms ${_XSET_DPMS:-600} ${_XSET_DPMS:-600} ${_XSET_DPMS:-600}
 xset s ${_XSET_S:-590 9}
