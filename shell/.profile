@@ -22,6 +22,7 @@ PATH="$HOME/bin:$PATH"
 export ALTERNATE_EDITOR=vi
 export EDITOR=vim
 export SUDO_EDITOR=rvim
+export SYSTEMD_EDITOR=rvim
 export BROWSER=lynx
 export LESS=FRj4
 export SYSTEMD_LESS=${LESS}SMK
