@@ -1,8 +1,8 @@
 #!/bin/bash
-base05="d8d8d8"
-base08="ab4642"
-base0A="f7ca88"
-base0B="a1b56c"
+base05=d8d8d8
+base08=ab4642
+base0A=f7ca88
+base0B=a1b56c
 
 pre_lock() {
     # Clear gpg-agent cache
@@ -21,37 +21,36 @@ OPTS=(
     --nofork
     --ignore-empty-password
     --show-failed-attempts
-    "--image=$HOME/.i3lockbg"
-    --centered
+    --image="$HOME"/.i3lockbg
 )
 # Extra options for i3lock-color
-command -v pacman &>/dev/null &&
-    [[ $(pacman -Qqo i3lock) =~ ^i3lock-color ]] &&
+[[ $(i3lock -v 2>&1 | cut -d\  -f3) =~ \.c\. ]] &&
     OPTS+=(
-        "--composite"
-        "--pass-media-keys"
-        "--pass-screen-keys"
-        "--pass-power-keys"
-        "--insidecolor=${base05}20"
-        "--insidevercolor=${base0A}40"
-        "--insidewrongcolor=${base08}40"
-        "--ringcolor=${base05}ff"
-        "--ringvercolor=${base0A}ff"
-        "--ringwrongcolor=${base08}ff"
-        "--line-uses-inside"
-        "--keyhlcolor=${base0B}ff"
-        "--bshlcolor=${base08}ff"
-        --{separator,verif,wrong,time,date}color"=${base05}ff"
-        --{verif,wrong,time,date}-font"=mono"
-        --{verif,wrong}text"="
-        "--timesize=24"
-        "--datesize=16"
-        "--radius=128"
-        "--ring-width=4"
-        "--indicator"
-        "--clock"
-        "--datepos=tx:ty+20"
-        "--datestr=%a %e %b %Y"
+        --centered
+        --composite
+        --pass-media-keys
+        --pass-screen-keys
+        --pass-power-keys
+        --insidecolor="${base05}20"
+        --insidevercolor="${base0A}40"
+        --insidewrongcolor="${base08}40"
+        --ringcolor="${base05}ff"
+        --ringvercolor="${base0A}ff"
+        --ringwrongcolor="${base08}ff"
+        --line-uses-inside
+        --keyhlcolor="${base0B}ff"
+        --bshlcolor="${base08}ff"
+        --{separator,verif,wrong,time,date}color="${base05}ff"
+        --{verif,wrong,time,date}-font=mono
+        --{verif,wrong}text=
+        --timesize=24
+        --datesize=16
+        --radius=128
+        --ring-width=4
+        --indicator
+        --clock
+        --datepos=tx:ty+20
+        --datestr="%a %e %b %Y"
     )
 
 pre_lock
