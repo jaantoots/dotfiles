@@ -3,6 +3,9 @@ HISTSIZE=1048576
 SAVEHIST=1048576
 unsetopt histignorealldups
 setopt histignoredups
+setopt histreduceblanks
+unsetopt sharehistory
+setopt incappendhistorytime
 
 # if not running interactively, stop here
 [[ $- != *i* ]] && return
