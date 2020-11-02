@@ -40,7 +40,7 @@ read_value($capacity, "$path/capacity") or die;
 read_value($charge_full, "$path/charge_full")
     or read_value($charge_full, "$path/energy_full") or die;
 read_value($charge_now, "$path/charge_now")
-    or read_value($charge_full, "$path/energy_full") or die;
+    or read_value($charge_now, "$path/energy_now") or die;
 read_value($voltage_now, "$path/voltage_now") or die;
 unless (read_value($current_now, "$path/current_now")) {
     unless (read_value($current_now, "$path/power_now")) {
