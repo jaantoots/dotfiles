@@ -19,6 +19,3 @@
 [submodule ".config/rofi/base16-rofi"]
 	path = desktop/.config/rofi/base16-rofi
 	url = https://github.com/0xdec/base16-rofi.git
-[submodule ".config/i3line"]
-	path = xorg/.config/i3line
-	url = https://github.com/jaantoots/i3line.git
