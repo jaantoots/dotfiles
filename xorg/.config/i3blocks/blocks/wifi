@@ -24,7 +24,7 @@ color=$WIFI_DOWN_COLOR
             [ "${bitr%%.*}" -lt "$WIFI_LOW" ] && color=$WIFI_LOW_COLOR
             [ "${bitr%%.*}" -ge "$WIFI_HIGH" ] && color=$WIFI_HIGH_COLOR
         fi
-        freq=$(printf '%.3gGHz' "$(bc -l <<<"$freq/1000")")
+        freq=$(perl -e 'printf("%.3gGHz", $ARGV[0]/1000)' "$freq")
         sig=$(printf '%ddBm' "$sig")
         bitr=$(printf '%.3gMbps' "$bitr")
     fi
