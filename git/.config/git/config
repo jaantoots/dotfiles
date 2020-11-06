@@ -10,9 +10,6 @@
     mr = push -o merge_request.create
     mrrm = push -o merge_request.create -o merge_request.remove_source_branch
 
-[core]
-    excludesfile = ~/.gitignore_global
-
 [commit]
     verbose = true
 
@@ -30,6 +27,3 @@
 
 [diff "pandoc"]
     textconv = pandoc --to=markdown
-
-[include]
-    path = .gitconfig.local
