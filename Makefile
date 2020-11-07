@@ -4,7 +4,7 @@ minimal:
 	git checkout .
 
 default: minimal
-	stow -v --adopt neomutt systemd
+	stow -v --adopt mail systemd
 	git checkout .
 
 graphical: default

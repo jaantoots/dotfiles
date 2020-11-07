@@ -7,7 +7,7 @@ maintained to work on Arch Linux hosts.
 cd
 git clone git@github.com:jaantoots/dotfiles.git
 cd dotfiles
-stow desktop git neomutt shell systemd vim xorg
+make default
 ```
 
 ## zsh configuration
