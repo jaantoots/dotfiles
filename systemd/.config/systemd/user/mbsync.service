@@ -6,5 +6,4 @@ After=network-online.target
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/mbsync -Va
-ExecStartPost=/usr/bin/sh -c 'ls -1 %h/.mail | xargs -d"\\n" printf " \\"+%%s\\"" | xargs -d"\\n" printf "mailboxes%%s\\n" > %h/.neomutt/mailboxes'
 ExecStartPost=/usr/bin/notmuch new
