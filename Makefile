@@ -28,8 +28,8 @@ debian-gpu: debian
 	sudo apt-get -y install linux-headers-cloud-amd64
 	sudo apt-get -y -t buster-backports install nvidia-driver nvidia-smi nvidia-cuda-toolkit nvidia-cuda-dev
 
-CONDA_FILE = Miniconda3-py38_4.8.2-Linux-x86_64.sh
-CONDA_SHA256 = 5bbb193fd201ebe25f4aeb3c58ba83feced6a25982ef4afa86d5506c3656c142
+CONDA_FILE = Miniconda3-py38_4.8.3-Linux-x86_64.sh
+CONDA_SHA256 = 879457af6a0bf5b34b48c12de31d4df0ee2f06a8e68768e5758c3293b2daf688
 conda:
 	wget https://repo.anaconda.com/miniconda/$(CONDA_FILE)
 	echo "$(CONDA_SHA256)  $(CONDA_FILE)" | sha256sum -c
