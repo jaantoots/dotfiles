@@ -26,6 +26,7 @@ load_plugin zsh-autosuggestions
 unfunction load_plugin
 
 ZSH_AUTOSUGGEST_STRATEGY=match_prev_cmd
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
