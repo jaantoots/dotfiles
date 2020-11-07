@@ -1,19 +1,11 @@
-set header_cache = ~/.cache/neomutt
+set header_cache = `mkdir -p ~/.cache/neomutt/header && echo ~/.cache/neomutt/header`
 
 # Personal configuration
+source ~/.neomutt/personal.rc
+# Local configuration
 source ~/.neomutt/local.rc
 
-# Mail directories
-set folder = $MAILDIR
-mailboxes `ls -1 "$MAILDIR" | xargs -d"\n" printf "\"+%s\" "`
-set sidebar_short_path = yes
-set spoolfile = "+INBOX"
-set record = "+Sent"
-set postponed = "+Drafts"
-set trash = "+Trash"
-
 # Sending
-set sendmail = /usr/bin/msmtp
 set use_from = yes
 set use_envelope_from = yes
 set reverse_name = yes
@@ -33,28 +25,20 @@ source ~/.neomutt/gpg.rc
 
 # Contacts
 set alias_file = ~/.neomutt/alias
-source ~/.neomutt/alias
-set query_command = "khard email --parsable --search-in-source-files '%s'"
+source $alias_file
 bind editor <Tab> complete-query
 bind editor ^T complete
-macro index,pager A \
-    "<pipe-message>khard add-email<return>" \
-    "add the sender email address to khard"
-#set reverse_alias = yes
 
 # Archiving and syncing
 set delete = yes
 set confirmappend = no
+unbind editor <space>
 macro index,pager e \
-    "<save-message>=Archive<enter>" \
+    "<save-message>$my_archive<enter>" \
     "archive message"
 bind index,pager E edit-or-view-raw-message
-macro index S \
-    "<shell-escape>systemctl --user restart mbsync.service<return>" \
-    "sync mailboxes with mbsync"
 
 # Virtual mailboxes
-virtual-mailboxes "All Mail" "notmuch://?query=*"
 bind index,pager X change-vfolder
 bind index,pager x vfolder-from-query
 bind index,pager + entire-thread
@@ -98,7 +82,7 @@ bind attach,index g first-entry
 bind attach,index G last-entry
 bind index,pager a group-reply
 macro index i \
-    "<change-folder>=INBOX<enter>" \
+    "<change-folder>!<enter>" \
     "go to inbox"
 
 # History

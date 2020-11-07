@@ -1,0 +1,25 @@
+# vim: ft=neomuttrc
+
+# Maildir
+set folder = $MAILDIR
+mailboxes `ls -1 "$MAILDIR" | xargs -d"\n" printf "\"+%s\" "`
+set sidebar_short_path = yes
+set spoolfile = "+INBOX"
+set record = "+Sent"
+set postponed = "+Drafts"
+set trash = "+Trash"
+set my_archive = "+Archive"
+
+# Sendmail
+set sendmail = /usr/bin/msmtp
+
+# Contacts
+set query_command = "khard email --parsable --search-in-source-files '%s'"
+macro index,pager A \
+    "<pipe-message>khard add-email<return>" \
+    "add the sender email address to khard"
+
+# Sync
+macro index S \
+    "<shell-escape>systemctl --user restart mbsync.service<return>" \
+    "sync mailboxes with mbsync"

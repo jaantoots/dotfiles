@@ -1,0 +1,24 @@
+# vim: ft=neomuttrc
+set message_cachedir = `mkdir -p ~/.cache/neomutt/message && echo ~/.cache/neomutt/message`
+
+# IMAP
+set folder = imaps://imap.gmail.com/
+set imap_user = $from
+set imap_pass = `$HOME/bin/netrc imap.gmail.com $imap_user`
+set imap_check_subscribed
+set imap_idle = yes
+unset imap_passive
+
+# SMTP
+set smtp_user = $imap_user
+set smtp_pass = $imap_pass
+set smtp_url = smtps://$smtp_user@smtp.gmail.com/
+set ssl_force_tls = yes
+
+# Mail directories
+set sidebar_short_path = yes
+set spoolfile = "+INBOX"
+unset record # Gmail saves sent mail automatically
+set postponed = "+[Gmail]/Drafts"
+set trash = "+[Gmail]/Trash"
+set my_archive = "+[Gmail]/All Mail"
