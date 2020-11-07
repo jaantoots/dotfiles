@@ -4,7 +4,7 @@ minimal:
 	git checkout .
 
 default: minimal
-	stow -v --adopt mail systemd
+	stow -v --adopt mail gpg systemd
 	git checkout .
 
 graphical: default
