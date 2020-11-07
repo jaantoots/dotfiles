@@ -6,6 +6,9 @@ Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
 
+!! Sxiv
+Sxiv.font: sans:size=10
+
 !! UXTerm
 UXTerm.termName: xterm-256color
 UXTerm.vt100.metaSendsEscape: true
