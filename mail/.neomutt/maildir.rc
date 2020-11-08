@@ -1,8 +1,8 @@
 # vim: ft=neomuttrc
 
 # Maildir
-set folder = $MAILDIR
-mailboxes `ls -1 "$MAILDIR" | xargs -d"\n" printf "\"+%s\" "`
+set folder = $HOME/mail
+mailboxes `ls -1 $HOME/mail | xargs -d"\n" printf "\"+%s\" "`
 set sidebar_short_path = yes
 set spoolfile = "+INBOX"
 set record = "+Sent"

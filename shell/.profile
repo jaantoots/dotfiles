@@ -27,8 +27,6 @@ export BROWSER=lynx
 export LESS=FRj4
 export SYSTEMD_LESS=${LESS}SMK
 
-export MAILDIR=$HOME/mail
-
 # use the local file for private variables (e.g. API keys)
 if [ -f "$HOME/.profile.local" ]; then
     . "$HOME/.profile.local"
