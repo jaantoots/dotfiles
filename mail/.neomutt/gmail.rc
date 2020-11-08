@@ -22,3 +22,9 @@ unset record # Gmail saves sent mail automatically
 set postponed = "+[Gmail]/Drafts"
 set trash = "+[Gmail]/Trash"
 set my_archive = "+[Gmail]/All Mail"
+
+# Contacts
+set query_command = "goobook query %s"
+macro index,pager A \
+    "<pipe-message>goobook add<return>" \
+    "add the sender address to Google contacts"
