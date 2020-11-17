@@ -23,18 +23,6 @@ _base0F=#a16946
 
 ### BLOCKS ###
 
-[player]
-instance=firefox
-interval=5
-
-[player]
-instance=mpv
-interval=5
-
-[player]
-instance=spotify
-interval=5
-
 [notmuch]
 signal=3
 interval=600
