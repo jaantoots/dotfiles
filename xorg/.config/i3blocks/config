@@ -23,15 +23,17 @@ _base0F=#a16946
 
 ### BLOCKS ###
 
-# Generic media player support
-#
-# This displays "ARTIST - SONG" if a music is playing.
-# Supported players are: spotify, vlc, audacious, xmms2, mplayer, and others.
-#[mediaplayer]
-#instance=spotify
-#interval=5
-#signal=10
-#
+[player]
+instance=firefox
+interval=5
+
+[player]
+instance=mpv
+interval=5
+
+[player]
+instance=spotify
+interval=5
 
 [notmuch]
 signal=3

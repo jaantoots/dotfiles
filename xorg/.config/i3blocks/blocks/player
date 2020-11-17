@@ -1,0 +1,52 @@
+#!/bin/bash
+
+set -e
+
+PLAYER_SPOTIFY_SYMBOL=${PLAYER_SPOTIFY_SYMBOL:-''}
+PLAYER_MPV_SYMBOL=${PLAYER_MPV_SYMBOL:-''}
+PLAYER_FIREFOX_SYMBOL=${PLAYER_FIREFOX_SYMBOL:-''}
+PLAYER_PLAYING_SYMBOL=${PLAYER_PLAYING_SYMBOL:-''}
+PLAYER_PAUSED_SYMBOL=${PLAYER_PAUSED_SYMBOL:-''}
+PLAYER_STOPPED_SYMBOL=${PLAYER_STOPPED_SYMBOL:-''}
+PLAYER_PLAYING_COLOR=${PLAYER_PLAYING_COLOR:-$_base0B}
+PLAYER_STOPPED_COLOR=${PLAYER_STOPPED_COLOR:-$_base08}
+
+icon=
+player=$(playerctl -l | grep -m1 "$instance")
+[[ "$player" =~ spotify ]] && icon=$PLAYER_SPOTIFY_SYMBOL
+[[ "$player" =~ mpv ]] && icon=$PLAYER_MPV_SYMBOL
+[[ "$player" =~ firefox ]] && icon=$PLAYER_FIREFOX_SYMBOL
+
+case $button in
+    3) playerctl -p "$player" play-pause ;;
+esac
+
+metadata() {
+    title="$(playerctl -p "$player" metadata title)"
+    artist="$(playerctl -p "$player" metadata artist)"
+    echo "${title}${artist:+ — $artist}"
+}
+
+status_icon=
+status=
+color=
+case "$(playerctl -p "$player" status)" in
+    [Pp]laying)
+        status_icon=$PLAYER_PLAYING_SYMBOL
+        status=$(metadata)
+        color=$PLAYER_PLAYING_COLOR
+        ;;
+    [Pp]aused)
+        status_icon=$PLAYER_PAUSED_SYMBOL
+        status=$(metadata)
+        ;;
+    [Ss]topped)
+        status_icon=$PLAYER_STOPPED_SYMBOL
+        color=$PLAYER_STOPPED_COLOR
+        ;;
+    *)
+        exit 1
+        ;;
+esac
+
+printf '%s\n%s\n%s\n' "$icon $status_icon${status:+ $status}" "$status_icon" "$color"
