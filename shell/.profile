@@ -21,6 +21,11 @@ if [ -d "$HOME/bin" ]; then
     PATH="$HOME/bin:$PATH"
 fi
 
+# set ssh agent socket if not set by agent forwarding
+if [ -z "$SSH_AUTH_SOCK" ]; then
+    export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+fi
+
 export ALTERNATE_EDITOR=vi
 export EDITOR=vim
 export SUDO_EDITOR=rvim
