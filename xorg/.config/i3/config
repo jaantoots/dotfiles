@@ -215,7 +215,7 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # launch faster
-set $launcher "Launch: [q]utebrowser [c]hromium [f]irefox mat[r]ix [s]ignal [m]essenger [z]ulip s[p]otify z[a]thura"
+set $launcher "Launch: [q]utebrowser [c]hromium [f]irefox mat[r]ix s[l]ack [s]ignal [m]essenger [z]ulip s[p]otify z[a]thura"
 bindsym $mod+x mode $launcher
 mode $launcher {
     bindsym q mode "default"; exec --no-startup-id qutebrowser
@@ -224,6 +224,7 @@ mode $launcher {
     bindsym f mode "default"; exec --no-startup-id firefox
     bindsym Shift+f mode "default"; exec --no-startup-id firejail --overlay-tmpfs --nodbus firefox --no-remote -P private
     bindsym r mode "default"; exec --no-startup-id element-desktop
+    bindsym l mode "default"; exec --no-startup-id slack
     bindsym s mode "default"; exec --no-startup-id signal-desktop --disable-gpu
     bindsym m mode "default"; exec --no-startup-id caprine
     bindsym z mode "default"; exec --no-startup-id zulip
