@@ -16,6 +16,11 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
+# rust
+if [ -d "$HOME/.cargo/bin" ]; then
+    PATH="$HOME/.cargo/bin:$PATH"
+fi
+
 # set PATH so it includes user's private bin directories
 if [ -d "$HOME/bin" ]; then
     PATH="$HOME/bin:$PATH"
