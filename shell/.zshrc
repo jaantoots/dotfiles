@@ -45,11 +45,11 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 # kitty
 [[ $TERM = xterm-kitty ]] && source <(kitty +complete setup zsh)
 
-# aliases
-[[ -r $HOME/.aliases ]] && source "$HOME/.aliases"
-
 # conda
 [[ -f $HOME/miniconda3/etc/profile.d/conda.sh ]] &&
     source "$HOME/miniconda3/etc/profile.d/conda.sh"
+
+# aliases
+[[ -r $HOME/.aliases ]] && source "$HOME/.aliases"
 
 true
