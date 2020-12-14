@@ -9,7 +9,7 @@ if &t_Co > 2 || has("gui_running")
     set hlsearch
     nnoremap <leader><space> :nohlsearch<CR>
     " show line numbers and highlight current line
-    set number cursorline
+    set number relativenumber cursorline
 endif
 
 " copy indentation from previous line
