@@ -2,6 +2,7 @@
 alias aur_unneeded="bash -c \"grep -Fxvf <(pacsift --repo=aur <&- | expac -S '%E' - | xargs -n1 | sort -u) <(pacsift --repo=aur <&- | cut -d/ -f2)\""
 alias aur_missing="bash -c \"grep -Fxvf <(aur pkglist) <(pacsift --repo=aur <&- | cut -d/ -f2)\""
 alias clipboard_links="xclip -o -selection clipboard | lynx -stdin -dump -listonly | grep --color=never -Po '^\s*\d+\. \K.*'"
+alias cdg='cd "$(git rev-parse --show-cdup)"'
 alias dg="dmenu-open"
 alias e="emacsclient -t"
 alias ec="emacsclient -c"
