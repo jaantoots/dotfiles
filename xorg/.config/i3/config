@@ -168,7 +168,7 @@ mode "resize" {
 
 # start dmenu/rofi (a program launcher)
 bindsym $mod+Shift+d exec rofi -show run
-bindsym $mod+d exec rofi -show drun
+bindsym $mod+d exec rofi -show drun -show-icons
 bindsym $mod+q exec rofi -show window
 bindsym $mod+c exec rofi -show calc -modi "calc:qalc"
 bindsym $mod+g exec dmenu-open
