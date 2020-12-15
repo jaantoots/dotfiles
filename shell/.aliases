@@ -12,6 +12,8 @@ alias ssh='TERM=${SSH_TERM:-$TERM} ssh'
 alias v="vim"
 alias wgetu="wget -U 'Mozilla/5.0 (X11; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0'"
 
+alias fvg='vim "$(git ls-files -oc | fzf -0 --preview "bat --color=always --style=numbers {}")"'
+
 fzrg() {
     RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case --glob '!.git/**' --hidden "
     FZF_DEFAULT_COMMAND="$RG_PREFIX '$*'"
