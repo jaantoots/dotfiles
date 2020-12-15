@@ -22,6 +22,15 @@ fzg() {
     unset RG_PREFIX
 }
 
+fzgf() {
+    RG_PREFIX="rg --files-with-matches --color=always --smart-case --glob '!.git/**' --hidden "
+    FZF_DEFAULT_COMMAND="$RG_PREFIX '$*'" \
+        fzf --bind "change:reload:$RG_PREFIX {q} || true" \
+        --ansi --phony --query "$*" --height=50% --layout=reverse \
+        --preview "rg --column --line-number --no-heading --color=always --smart-case --glob '!.git/**' --hidden {q} {}"
+    unset RG_PREFIX
+}
+
 20to5f() {
     [ "$#" -ge 1 ] || {
         echo "usage: $0 FILE..." >&2 && return 1
