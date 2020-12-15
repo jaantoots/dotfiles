@@ -42,6 +42,11 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 [[ -n "$PS1" ]] && [[ -s "$BASE16_SHELL/profile_helper.sh" ]] &&
     eval "$("$BASE16_SHELL/profile_helper.sh")"
 
+# fzf
+[[ -f /usr/share/fzf/key-bindings.zsh ]] && source /usr/share/fzf/key-bindings.zsh
+[[ -f /usr/share/fzf/completion.zsh ]] && source /usr/share/fzf/completion.zsh
+export FZF_DEFAULT_COMMAND="fd -H -E .git --type f | sort"
+
 # kitty
 [[ $TERM = xterm-kitty ]] && source <(kitty +complete setup zsh)
 
