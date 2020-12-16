@@ -169,6 +169,7 @@ mode "resize" {
 # start dmenu/rofi (a program launcher)
 bindsym $mod+Shift+d exec rofi -show run
 bindsym $mod+d exec rofi -show drun -show-icons
+bindsym $mod+s exec rofi -show drun -show-icons -run-command 'firejail --private {cmd}' -run-shell-command '{terminal} -e firejail --private {cmd}'
 bindsym $mod+q exec rofi -show window
 bindsym $mod+c exec rofi -show calc -modi "calc:qalc"
 bindsym $mod+g exec dmenu-open
@@ -189,8 +190,7 @@ bindsym Print exec --no-startup-id scrot
 bindsym Shift+Print exec --no-startup-id scrot -u
 bindsym $mod+Print exec --no-startup-id scrot -s -e 'xclip -selection clipboard -t image/png $f'
 bindsym $mod+Shift+Print exec --no-startup-id scrot -u -e 'xclip -selection clipboard -t image/png $f'
-bindsym $mod+s exec --no-startup-id "sleep 0.1; scrot -s"
-bindsym $mod+Shift+s exec --no-startup-id "sleep 0.1; scrot -s -e 'xclip -selection clipboard -t image/png $f'"
+bindsym $mod+$alt+Print exec --no-startup-id "sleep 0.1; scrot -s -e 'xclip -selection clipboard -t image/png $f'"
 
 # dunst notifications
 bindsym $mod+period exec --no-startup-id dunstctl close
