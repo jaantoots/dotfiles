@@ -175,11 +175,10 @@ bindsym $mod+c exec rofi -show calc -modi "calc:qalc"
 bindsym $mod+g exec dmenu-open
 
 # start a terminal
-set $term kitty
-bindsym $mod+Return exec --no-startup-id $term
-bindsym $mod+$alt+Return exec --no-startup-id $term -d "$($HOME/.config/i3/shell-cwd)"
-bindsym $mod+Shift+Return exec --no-startup-id $term --name $term-float
-for_window [instance="$term-float"] floating enabled
+bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
+bindsym $mod+$alt+Return exec --no-startup-id alacritty --working-directory "$($HOME/.config/i3/shell-cwd)"
+bindsym $mod+Shift+Return exec --no-startup-id alacritty --class AlacrittyFloat -d 80 25
+for_window [instance="^AlacrittyFloat$"] floating enabled
 
 # passmenu
 bindsym $mod+p exec --no-startup-id passmenu --type
