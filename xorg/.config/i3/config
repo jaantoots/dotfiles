@@ -84,6 +84,7 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+Shift+q kill
 
 # switch to workspace
+bindsym $mod+BackSpace workspace 0
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
@@ -96,6 +97,7 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
+bindsym $mod+Shift+BackSpace move container to workspace 0
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
@@ -269,6 +271,14 @@ exec --no-startup-id xss-lock -n dim-screen -- locker
 
 # Autostart
 exec --no-startup-id dex -ae i3
+
+# Workspace 0
+assign [class="^Ferdi$"] 0
+assign [class="^Signal$"] 0
+assign [class="^Element$"] 0
+bindsym $mod+F1 [class="^Ferdi$"] focus
+bindsym $mod+F2 [class="^Signal$"] focus
+bindsym $mod+F3 [class="^Element$"] focus
 
 ## Base16 Default Dark
 # Author: Chris Kempson (http://chriskempson.com)
