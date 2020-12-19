@@ -68,6 +68,9 @@ bindsym $mod+space focus mode_toggle
 floating_modifier $mod
 floating_maximum_size 1920 x 1080
 
+# sticky
+bindsym $mod+equal sticky toggle
+
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
