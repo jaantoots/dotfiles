@@ -182,8 +182,8 @@ bindsym $mod+g exec dmenu-open
 # start a terminal
 bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 bindsym $mod+$alt+Return exec --no-startup-id "cd \\"$($HOME/.config/i3/shell-cwd)\\" && i3-sensible-terminal"
-bindsym $mod+Shift+Return exec --no-startup-id alacritty --class AlacrittyFloat -d 80 25
-for_window [instance="^AlacrittyFloat$"] floating enabled
+bindsym $mod+Shift+Return exec --no-startup-id kitty --name kitty-float
+for_window [instance="^kitty-float$"] floating enabled
 
 # passmenu
 bindsym $mod+p exec --no-startup-id passmenu --type
