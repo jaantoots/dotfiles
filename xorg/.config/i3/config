@@ -276,9 +276,11 @@ exec --no-startup-id dex -ae i3
 assign [class="^Ferdi$"] 0
 assign [class="^Signal$"] 0
 assign [class="^Element$"] 0
+assign [class="^Slack$"] 0
 bindsym $mod+F1 [class="^Ferdi$"] focus
 bindsym $mod+F2 [class="^Signal$"] focus
 bindsym $mod+F3 [class="^Element$"] focus
+bindsym $mod+F4 [class="^Slack$"] focus
 
 ## Base16 Default Dark
 # Author: Chris Kempson (http://chriskempson.com)
