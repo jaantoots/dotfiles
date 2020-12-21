@@ -84,7 +84,6 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+Shift+q kill
 
 # switch to workspace
-bindsym $mod+BackSpace workspace 0
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
@@ -95,9 +94,9 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+bindsym $mod+BackSpace workspace 0
 
 # move focused container to workspace
-bindsym $mod+Shift+BackSpace move container to workspace 0
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
@@ -108,6 +107,7 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+BackSpace move container to workspace 0
 
 # switch workspaces quickly
 bindsym $mod+Tab workspace back_and_forth
