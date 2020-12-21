@@ -174,7 +174,7 @@ mode "resize" {
 # start dmenu/rofi (a program launcher)
 bindsym $mod+Shift+d exec rofi -show run
 bindsym $mod+d exec rofi -show drun -show-icons
-bindsym $mod+s exec rofi -show drun -show-icons -run-command 'firejail --private {cmd}' -run-shell-command '{terminal} -e firejail --private {cmd}'
+bindsym $mod+s exec rofi -show drun -show-icons -display-drun private -run-command 'firejail --private {cmd}' -run-shell-command '{terminal} -e firejail --private {cmd}'
 bindsym $mod+q exec rofi -show window
 bindsym $mod+c exec rofi -show calc -modi "calc:qalc"
 bindsym $mod+g exec dmenu-open
