@@ -186,8 +186,8 @@ bindsym $mod+Shift+Return exec --no-startup-id kitty --name kitty-float
 for_window [instance="^kitty-float$"] floating enabled
 
 # passmenu
-bindsym $mod+p exec --no-startup-id passmenu --type
-bindsym $mod+Shift+p exec --no-startup-id passmenu-otp --type
+bindsym $mod+p exec --no-startup-id passmenu --type -p pwd
+bindsym $mod+Shift+p exec --no-startup-id passmenu-otp --type -p otp
 
 # screenshot
 bindsym Print exec --no-startup-id scrot
