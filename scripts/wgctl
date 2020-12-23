@@ -1,0 +1,51 @@
+#!/bin/sh
+
+set -e
+
+PROGRAM=${0##*/}
+
+cmd() {
+    echo "[#] $*" >&2
+    "$@"
+}
+
+die() {
+    echo "$PROGRAM: $*" >&2
+    exit 1
+}
+
+warn() {
+    echo "$PROGRAM: $*" >&2
+}
+
+get_all() {
+    for f in /etc/wireguard/*.conf; do
+        f=${f##*/}
+        echo "${f%.conf}"
+    done
+}
+
+get_active() {
+    systemctl --plain --no-legend --full list-units --state=active 'wg-quick@*.service' |
+        cut -d\  -f1 | cut -d. -f1 | cut -d@ -f2
+}
+
+get_new() {
+    all=$(get_all)
+    if [ -t 0 ] && command -V fzf >/dev/null; then
+        echo "$all" | fzf --prompt="$1> " --reverse --query="$1"
+    else
+        [ -t 0 ] && warn "fzf not found"
+        idx=$(echo "$all" | grep -n "$1" | cut -d: -f1)
+        echo "$all" | rofi -dmenu -p "$PROGRAM" -a "$((idx - 1))" -select "$1"
+    fi
+}
+
+active=$(get_active)
+[ "$(echo "$active" | wc -l)" -le 1 ] || die "more than one active service"
+new=$(get_new "$active")
+
+[ -z "$new" ] && exit
+[ -n "$active" ] && cmd systemctl stop wg-quick@"$active".service
+[ "$active" != "$new" ] && cmd systemctl start wg-quick@"$new".service
+true
