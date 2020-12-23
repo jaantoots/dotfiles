@@ -47,13 +47,6 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 [[ -f /usr/share/fzf/completion.zsh ]] && source /usr/share/fzf/completion.zsh
 export FZF_DEFAULT_COMMAND="fd -H -E .git --type f | sort"
 
-# kitty
-[[ $TERM = xterm-kitty ]] && source <(kitty +complete setup zsh)
-
-# conda
-[[ -f $HOME/miniconda3/etc/profile.d/conda.sh ]] &&
-    source "$HOME/miniconda3/etc/profile.d/conda.sh"
-
 # aliases
 [[ -r $HOME/.aliases ]] && source "$HOME/.aliases"
 
