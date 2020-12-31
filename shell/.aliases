@@ -11,6 +11,12 @@ alias mpvd="mpv --screen=0 --fs-screen=1"
 alias v="vim"
 alias wgetu="wget -U 'Mozilla/5.0 (X11; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0'"
 
+# npx
+alias netlify="npx --no-install netlify"
+alias serverless="npx --no-install serverless"
+alias sls="npx --no-install sls"
+
+# fzf
 alias fvg='vim "$(git ls-files -oc | fzf -0 --preview "bat --color=always --style=numbers {}")"'
 
 fzg() {
