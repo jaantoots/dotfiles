@@ -6,6 +6,7 @@ alias cdg='cd "$(git rev-parse --show-cdup)"'
 alias dg="dmenu-open"
 alias e="emacsclient -t"
 alias ec="emacsclient -c"
+alias ifco="curl -qSs ifconfig.co/json | jq"
 alias lsb="lsblk -oNAME,TYPE,MAJ:MIN,RM,SUBSYSTEMS,MODEL,SIZE,RO,FSTYPE,FSSIZE,FSUSE%,FSUSED,FSAVAIL,MOUNTPOINT"
 alias mpvd="mpv --screen=0 --fs-screen=1"
 alias v="vim"
