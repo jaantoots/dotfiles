@@ -12,6 +12,7 @@ alias v="vim"
 alias wgetu="wget -U 'Mozilla/5.0 (X11; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0'"
 
 # npx
+alias eslint="npx --no-install eslint"
 alias netlify="npx --no-install netlify"
 alias serverless="npx --no-install serverless"
 alias sls="npx --no-install sls"
