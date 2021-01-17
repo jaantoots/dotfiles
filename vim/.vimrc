@@ -25,6 +25,7 @@ if has("autocmd")
     autocmd FileType tf set tabstop=2 shiftwidth=2
     autocmd FileType rst set tabstop=2 shiftwidth=2
     autocmd FileType javascript set tabstop=2 shiftwidth=2
+    autocmd FileType json set tabstop=2 shiftwidth=2
 endif
 
 " use spaces instead of tabs
