@@ -220,13 +220,14 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # launch faster
-set $launcher "Launch: [q]utebrowser [c]hromium [f]irefox mat[r]ix s[l]ack [s]ignal [m]essenger f[e]rdi z[a]thura [w]gctl"
+set $launcher "Launch: [q]utebrowser [c]hromium [f]irefox [v]ivaldi mat[r]ix s[l]ack [s]ignal [m]essenger f[e]rdi z[a]thura [w]gctl"
 bindsym $mod+x mode $launcher
 mode $launcher {
     bindsym q mode "default"; exec --no-startup-id qutebrowser
     bindsym Shift+q mode "default"; exec --no-startup-id "qutebrowser ':open -p'"
     bindsym c mode "default"; exec --no-startup-id chromium
     bindsym f mode "default"; exec --no-startup-id firefox
+    bindsym v mode "default"; exec --no-startup-id vivaldi-stable
     bindsym r mode "default"; exec --no-startup-id flatpak run im.riot.Riot
     bindsym l mode "default"; exec --no-startup-id flatpak run com.slack.Slack
     bindsym s mode "default"; exec --no-startup-id flatpak run org.signal.Signal
