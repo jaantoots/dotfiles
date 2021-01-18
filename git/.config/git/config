@@ -11,6 +11,9 @@
     mr = push -o merge_request.create
     mrrm = push -o merge_request.create -o merge_request.remove_source_branch
 
+[init]
+    defaultBranch = master
+
 [commit]
     verbose = true
 
