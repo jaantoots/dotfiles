@@ -1,0 +1,327 @@
+# sway config file
+
+set $mod Mod4
+set $alt Mod1
+focus_follows_mouse no
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:Inconsolata, FontAwesome 12
+
+# use these keys for focus, movement, and resize directions when reaching for
+# the arrows is not convenient
+set $left h
+set $down j
+set $up k
+set $right l
+
+# change focus
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal/vertical orientation
+bindsym $mod+b split h
+bindsym $mod+v split v
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+Shift+w layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# focus the parent/child container
+bindsym $mod+a focus parent
+bindsym $mod+Shift+a focus child
+
+# mark and switch windows
+bindsym $mod+m mark --toggle quick
+bindsym $mod+comma [con_mark="quick"] focus
+bindsym $mod+n swap container with mark quick
+
+# floating windows
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+floating_modifier $mod
+floating_maximum_size 1920 x 1080
+
+# sticky
+bindsym $mod+equal sticky toggle
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+bindsym $mod+BackSpace workspace 0
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+BackSpace move container to workspace 0
+
+# switch workspaces quickly
+bindsym $mod+Tab workspace back_and_forth
+
+# move workspace to output
+bindsym $mod+$alt+$left move workspace to output left
+bindsym $mod+$alt+$down move workspace to output down
+bindsym $mod+$alt+$up move workspace to output up
+bindsym $mod+$alt+$right move workspace to output right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+$alt+Left move workspace to output left
+bindsym $mod+$alt+Down move workspace to output down
+bindsym $mod+$alt+Up move workspace to output up
+bindsym $mod+$alt+Right move workspace to output right
+
+# move container to output
+bindsym $mod+$alt+Shift+$left move container to output left
+bindsym $mod+$alt+Shift+$down move container to output down
+bindsym $mod+$alt+Shift+$up move container to output up
+bindsym $mod+$alt+Shift+$right move container to output right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+$alt+Shift+Left move container to output left
+bindsym $mod+$alt+Shift+Down move container to output down
+bindsym $mod+$alt+Shift+Up move container to output up
+bindsym $mod+$alt+Shift+Right move container to output right
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+# resize window (you can also use the mouse for that)
+bindsym $mod+r mode "resize"
+mode "resize" {
+    # These bindings trigger as soon as you enter the resize mode
+
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym $left       resize shrink width 20 px or 20 ppt
+    bindsym $down       resize grow height 20 px or 20 ppt
+    bindsym $up         resize shrink height 20 px or 20 ppt
+    bindsym $right      resize grow width 20 px or 20 ppt
+
+    # same bindings, but for the arrow keys
+    bindsym Left        resize shrink width 20 px or 20 ppt
+    bindsym Down        resize grow height 20 px or 20 ppt
+    bindsym Up          resize shrink height 20 px or 20 ppt
+    bindsym Right       resize grow width 20 px or 20 ppt
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# start dmenu/rofi (a program launcher)
+bindsym $mod+Shift+d exec rofi -show run
+bindsym $mod+d exec rofi -show drun -show-icons
+bindsym $mod+s exec rofi -show drun -show-icons -display-drun private -run-command 'firejail --private {cmd}' -run-shell-command '{terminal} -e firejail --private {cmd}'
+bindsym $mod+q exec rofi -show window
+bindsym $mod+c exec rofi -show calc -modi "calc:qalc"
+bindsym $mod+g exec dmenu-open
+
+# start a terminal
+set $term alacritty
+for_window [instance="^kitty-float$"] floating enabled
+set $floating_terminal kitty --name kitty-float
+bindsym $mod+Return exec $term
+bindsym $mod+$alt+Return exec --no-startup-id "cd \\"$($HOME/.config/i3/shell-cwd)\\" && i3-sensible-terminal"
+bindsym $mod+Shift+Return exec --no-startup-id $floating_terminal
+
+# passmenu
+bindsym $mod+p exec --no-startup-id passmenu --type -p pwd
+bindsym $mod+Shift+p exec --no-startup-id passmenu-otp --type -p otp
+
+# screenshot
+bindsym Print exec --no-startup-id scrot
+bindsym Shift+Print exec --no-startup-id scrot -u
+bindsym $mod+Print exec --no-startup-id scrot -s -e 'xclip -selection clipboard -t image/png $f'
+bindsym $mod+Shift+Print exec --no-startup-id scrot -u -e 'xclip -selection clipboard -t image/png $f'
+bindsym $mod+$alt+Print exec --no-startup-id "sleep 0.1; scrot -s -e 'xclip -selection clipboard -t image/png $f'"
+
+# dunst notifications
+bindsym $mod+period exec --no-startup-id dunstctl close
+bindsym $mod+Shift+period exec --no-startup-id dunstctl close-all
+bindsym $mod+grave exec --no-startup-id dunstctl history-pop
+bindsym $mod+slash exec --no-startup-id dunstctl context
+bindsym $mod+Shift+slash exec --no-startup-id dunstctl set-paused toggle
+
+# backlight
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
+
+# audio
+bindsym XF86AudioMute exec --no-startup-id pulsemixer --toggle-mute
+bindsym XF86AudioRaiseVolume exec --no-startup-id pulsemixer --change-volume +5
+bindsym XF86AudioLowerVolume exec --no-startup-id pulsemixer --change-volume -5
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute "$(pacmd dump | grep -m1 "^set-default-source" | cut -d\  -f2)" toggle
+
+# playback
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+
+# launch faster
+set $launcher "Launch: [q]utebrowser [c]hromium [f]irefox [v]ivaldi mat[r]ix s[l]ack [s]ignal [m]essenger f[e]rdi z[a]thura [w]gctl"
+bindsym $mod+x mode $launcher
+mode $launcher {
+    bindsym q mode "default"; exec --no-startup-id qutebrowser
+    bindsym Shift+q mode "default"; exec --no-startup-id "qutebrowser ':open -p'"
+    bindsym c mode "default"; exec --no-startup-id chromium
+    bindsym f mode "default"; exec --no-startup-id firefox
+    bindsym v mode "default"; exec --no-startup-id vivaldi-stable
+    bindsym r mode "default"; exec --no-startup-id flatpak run im.riot.Riot
+    bindsym l mode "default"; exec --no-startup-id flatpak run com.slack.Slack
+    bindsym s mode "default"; exec --no-startup-id flatpak run org.signal.Signal
+    bindsym m mode "default"; exec --no-startup-id caprine
+    bindsym e mode "default"; exec --no-startup-id flatpak run com.getferdi.Ferdi
+    bindsym a mode "default"; exec --no-startup-id "cat $HOME/.local/share/zathura/history | sed -nE '/^\[.+\]$/h;/^time=[0-9]+$/{x;G;s/^\[(.+)\]\ntime=([0-9]+)$/\2 \1/p}' | sort -nr | cut -d ' ' -f 2- | dmenu -p zathura | xargs -r zathura"
+    bindsym w mode "default"; exec --no-startup-id $floating_terminal sudo wgctl
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# system menu
+set $sysmenu "system: [l]ock [e]xit [s]uspend [h]ibernate [r]eboot [p]oweroff"
+bindsym $mod+Delete mode $sysmenu
+mode $sysmenu {
+    bindsym l mode "default"; exec --no-startup-id "loginctl lock-session; sleep 2; xset dpms force off"
+    bindsym e mode "default"; exit
+    bindsym s mode "default"; exec --no-startup-id systemctl suspend
+    bindsym h mode "default"; exec --no-startup-id systemctl hibernate
+    bindsym r mode "default"; exec --no-startup-id systemctl reboot
+    bindsym p mode "default"; exec --no-startup-id systemctl poweroff
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# Lock screen
+bindsym $mod+Shift+z exec --no-startup-id loginctl lock-session
+
+# window edges
+default_border pixel 1
+default_floating_border pixel 1
+smart_borders on
+
+# Wallpaper
+
+# Screen locker
+
+# Autostart
+#exec --no-startup-id dex -ae i3
+
+# Workspace 0
+assign [class="^Element$"] 0
+assign [class="^Signal$"] 0
+assign [class="^Caprine$"] 0
+assign [class="^Slack$"] 0
+assign [class="^Ferdi$"] 0
+bindsym $mod+F1 [class="^Element$"] focus
+bindsym $mod+F2 [class="^Signal$"] focus
+bindsym $mod+F3 [class="^Caprine$"] focus
+bindsym $mod+F4 [class="^Slack$"] focus
+
+## Base16 Default Dark
+# Author: Chris Kempson (http://chriskempson.com)
+#
+# You can use these variables anywhere in the i3 configuration file.
+
+set $base00 #181818
+set $base01 #282828
+set $base02 #383838
+set $base03 #585858
+set $base04 #b8b8b8
+set $base05 #d8d8d8
+set $base06 #e8e8e8
+set $base07 #f8f8f8
+set $base08 #ab4642
+set $base09 #dc9656
+set $base0A #f7ca88
+set $base0B #a1b56c
+set $base0C #86c1b9
+set $base0D #7cafc2
+set $base0E #ba8baf
+set $base0F #a16946
+
+# Basic bar configuration using the Base16 variables.
+bar {
+    status_command i3blocks
+
+    tray_output none
+
+    colors {
+        background $base00
+        separator  $base01
+        statusline $base04
+
+        # State             Border  BG      Text
+        focused_workspace   $base05 $base0D $base00
+        active_workspace    $base05 $base03 $base00
+        inactive_workspace  $base03 $base01 $base05
+        urgent_workspace    $base08 $base08 $base00
+        binding_mode        $base00 $base0A $base00
+    }
+}
+
+# Basic color configuration using the Base16 variables for windows and borders.
+# Property Name         Border  BG      Text    Indicator Child Border
+client.focused          $base05 $base0D $base00 $base0D $base0D
+client.focused_inactive $base01 $base01 $base05 $base03 $base01
+client.unfocused        $base01 $base00 $base05 $base01 $base01
+client.urgent           $base08 $base08 $base00 $base08 $base08
+client.placeholder      $base00 $base00 $base05 $base00 $base00
+client.background       $base07
+
+include /etc/sway/config.d/*
