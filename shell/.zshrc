@@ -46,6 +46,7 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 [[ -f /usr/share/fzf/key-bindings.zsh ]] && source /usr/share/fzf/key-bindings.zsh
 [[ -f /usr/share/fzf/completion.zsh ]] && source /usr/share/fzf/completion.zsh
 export FZF_DEFAULT_COMMAND="fd -H -E .git --type f | sort"
+export FZF_CTRL_T_COMMAND="fd -H -E .git | sort"
 
 # aliases
 [[ -r $HOME/.aliases ]] && source "$HOME/.aliases"
