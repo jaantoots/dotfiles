@@ -35,7 +35,6 @@ export ALTERNATE_EDITOR=vi
 export EDITOR=vim
 export SUDO_EDITOR=rvim
 export SYSTEMD_EDITOR=rvim
-export BROWSER=lynx
 export LESS=R
 
 # use the local file for private variables (e.g. API keys)
