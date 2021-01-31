@@ -270,10 +270,7 @@ exec --no-startup-id ~/.fehbg
 # Screen locker
 exec --no-startup-id xss-lock -n dim-screen -- locker
 
-# Autostart
-exec --no-startup-id dex -ae i3
-
-# systemd
+# systemd integration and autostart
 exec --no-startup-id systemctl --user start i3-session.target
 
 # Workspace 0
