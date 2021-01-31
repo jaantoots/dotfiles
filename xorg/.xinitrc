@@ -26,8 +26,7 @@ if [ -f "$userresources" ]; then
 fi
 
 # fix dpi
-[ -n "${DPI}" ] && xrandr --dpi "${DPI}"
-[ -n "${DPI}" ] && echo "?.dpi: ${DPI}" | xrdb -merge
+set-dpi
 # screenlocker
 xset dpms ${_XSET_DPMS:-600} ${_XSET_DPMS:-600} ${_XSET_DPMS:-600}
 xset s ${_XSET_S:-590 9}

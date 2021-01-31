@@ -1,0 +1,12 @@
+[Unit]
+Description=xsettingsd
+Documentation=man:xsettingsd(1)
+PartOf=graphical-session.target
+ConditionPathExists=%t/xsettingsd
+
+[Service]
+ExecStart=/usr/bin/xsettingsd -c %t/xsettingsd
+ExecReload=kill -HUP $MAINPID
+
+[Install]
+WantedBy=graphical-session.target

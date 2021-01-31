@@ -1,0 +1,18 @@
+#!/bin/bash
+
+dpi=${1:-$DPI}
+dpi=${dpi:-192}
+
+echo "DPI: $dpi"
+#xrandr --dpi $dpi
+
+{
+    cat $HOME/.xsettingsd
+    echo Xft/DPI $(( $dpi*1024 ))
+    #echo Gdk/WindowScalingFactor $(( $dpi/96 ))
+    #echo Gdk/UnscaledDPI $(( $dpi*1024/($dpi/96) ))
+} > $XDG_RUNTIME_DIR/xsettingsd
+
+systemctl --user try-reload-or-restart xsettingsd.service
+
+echo ?.dpi: $dpi | xrdb -merge
