@@ -139,13 +139,6 @@ bindsym $mod+$alt+Shift+Right move container to output right
 # change xrandr configuration
 bindsym $mod+$alt+r exec --no-startup-id "xrandr --auto"
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
 # resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
 mode "resize" {
@@ -241,12 +234,19 @@ mode $launcher {
     bindsym Escape mode "default"
 }
 
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
 # system menu
 set $sysmenu "system: [l]ock [e]xit [s]uspend [h]ibernate [r]eboot [p]oweroff"
 bindsym $mod+Delete mode $sysmenu
 mode $sysmenu {
     bindsym l mode "default"; exec --no-startup-id "loginctl lock-session; sleep 2; xset dpms force off"
-    bindsym e mode "default"; exit
+    bindsym e mode "default"; exec --no-startup-id systemctl --user stop i3-session.target; exit
     bindsym s mode "default"; exec --no-startup-id systemctl suspend
     bindsym h mode "default"; exec --no-startup-id systemctl hibernate
     bindsym r mode "default"; exec --no-startup-id systemctl reboot
