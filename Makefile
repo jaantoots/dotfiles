@@ -1,10 +1,10 @@
-.PHONY: minimal default graphical
-minimal:
-	stow -v --adopt git shell vim
+.PHONY: base default graphical
+base:
+	stow -v --adopt base
 	git checkout .
 
-default: minimal
-	stow -v --adopt mail gpg systemd
+default: base
+	stow -v --adopt mail
 	git checkout .
 
 graphical: default
