@@ -184,12 +184,12 @@ bindsym $mod+p exec --no-startup-id passmenu --type -p pwd
 bindsym $mod+Shift+p exec --no-startup-id passmenu-otp --type -p otp
 
 # screenshot
-bindsym Print exec --no-startup-id shotgun
-bindsym Shift+Print exec --no-startup-id shotgun -i "$(hacksaw -f %i)"
-bindsym Ctrl+Print exec --no-startup-id shotgun -g "$(hacksaw -f %g)"
-bindsym $mod+Print exec --no-startup-id shotgun - | xclip -selection clipboard -t image/png
-bindsym $mod+Shift+Print exec --no-startup-id shotgun -i "$(hacksaw -f %i)" - | xclip -selection clipboard -t image/png
-bindsym $mod+Ctrl+Print exec --no-startup-id shotgun -g "$(hacksaw -f %g)" - | xclip -selection clipboard -t image/png
+bindsym Print exec --no-startup-id shotgun - | xclip -selection clipboard -t image/png
+bindsym Shift+Print exec --no-startup-id shotgun -i "$(hacksaw -f %i)" - | xclip -selection clipboard -t image/png
+bindsym Ctrl+Print exec --no-startup-id shotgun -g "$(hacksaw -f %g)" - | xclip -selection clipboard -t image/png
+bindsym $mod+Print exec --no-startup-id shotgun
+bindsym $mod+Shift+Print exec --no-startup-id shotgun -i "$(hacksaw -f %i)"
+bindsym $mod+Ctrl+Print exec --no-startup-id shotgun -g "$(hacksaw -f %g)"
 
 # dunst notifications
 bindsym $mod+period exec --no-startup-id dunstctl close
