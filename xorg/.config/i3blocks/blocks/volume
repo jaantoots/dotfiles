@@ -12,23 +12,22 @@ AUDIO_LOW_THRESH=${AUDIO_LOW_THRESH:-0}
 AUDIO_DELTA=${AUDIO_DELTA:-5}
 
 _get_dump() {
-    dump=$(pacmd dump)
-    sinks=$(grep "^set-sink-volume" <<<"$dump" | cut -d\  -f2)
-    default_sink=$(grep -m1 "^set-default-sink" <<<"$dump" | cut -d\  -f2)
+    default_sink=$(pactl info | grep -m1 -Po "^Default Sink: \K\S+")
+    sinks=$(pactl list short sinks | cut -f2)
     next_sink=$(sed -n '/^'"$default_sink"'$/{n;p;q}' <<<"$sinks")
     prev_sink=$(sed -n '/^'"$default_sink"'$/{x;p;q};h' <<<"$sinks")
-    volume=$(grep -m1 "^set-sink-volume $default_sink" <<<"$dump" | cut -d\  -f3)
-    volume=$(perl -e "printf('%.0f', 100*$volume/0x10000)")
-    mute=$(grep -m1 "^set-sink-mute $default_sink" <<<"$dump" | cut -d\  -f3)
+    default_sink_info=$(pactl list sinks | grep -Po "^\s+(Name|Mute|Volume): \K.*" | grep -A2 -xF "$default_sink" | tail +2)
+    mute=$(head -1 <<<"$default_sink_info")
+    volume=$(tail +2 <<<"$default_sink_info" | grep -Po '\d+%' | head -1 | tr -d '%')
 }
 
 _handle_click() {
     case $button in
-        1) jq -r '.[]' <<<"$modifiers" | grep -q Mod4 && pacmd set-default-sink "${next_sink:-$(head -1 <<<"$sinks")}" ;;&
+        1) jq -r '.[]' <<<"$modifiers" | grep -q Mod4 && pactl set-default-sink "${next_sink:-$(head -1 <<<"$sinks")}" ;;&
         2) pactl set-sink-mute "$default_sink" toggle ;;&
-        3) jq -r '.[]' <<<"$modifiers" | grep -q Mod4 && pacmd set-default-sink "${prev_sink:-$(tail -1 <<<"$sinks")}" ;;&
-        4) pactl set-sink-volume "$default_sink" +"$AUDIO_DELTA"% ;;&
-        5) pactl set-sink-volume "$default_sink" -"$AUDIO_DELTA"% ;;&
+        3) jq -r '.[]' <<<"$modifiers" | grep -q Mod4 && pactl set-default-sink "${prev_sink:-$(tail -1 <<<"$sinks")}" ;;&
+        4) pactl set-sink-volume "$default_sink" -"$AUDIO_DELTA"% ;;&
+        5) pactl set-sink-volume "$default_sink" +"$AUDIO_DELTA"% ;;&
         ?) _get_dump ;;
     esac
 }
