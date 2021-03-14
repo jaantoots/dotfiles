@@ -34,6 +34,9 @@ set tabstop=4 shiftwidth=4 expandtab smarttab
 " change case in Insert mode
 map! <C-F> <Esc>gUiw`]a
 
+" ctrlp
+let g:ctrlp_show_hidden = 1
+
 " show diff between buffer and file
 nnoremap <leader>i :w !git diff --no-index -- % -<CR>
 
