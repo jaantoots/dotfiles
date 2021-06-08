@@ -31,26 +31,26 @@ OPTS=(
         --pass-media-keys
         --pass-screen-keys
         --pass-power-keys
-        --insidecolor="${base05}20"
-        --insidevercolor="${base0A}40"
-        --insidewrongcolor="${base08}40"
-        --ringcolor="${base05}ff"
-        --ringvercolor="${base0A}ff"
-        --ringwrongcolor="${base08}ff"
+        --inside-color="${base05}20"
+        --insidever-color="${base0A}40"
+        --insidewrong-color="${base08}40"
+        --ring-color="${base05}ff"
+        --ringver-color="${base0A}ff"
+        --ringwrong-color="${base08}ff"
         --line-uses-inside
-        --keyhlcolor="${base0B}ff"
-        --bshlcolor="${base08}ff"
-        --{separator,verif,wrong,time,date}color="${base05}ff"
+        --keyhl-color="${base0B}ff"
+        --bshl-color="${base08}ff"
+        --{separator,verif,wrong,time,date}-color="${base05}ff"
         --{verif,wrong,time,date}-font=mono
-        --{verif,wrong}text=
-        --timesize=24
-        --datesize=16
+        --{verif,wrong}-text=
+        --time-size=24
+        --date-size=16
         --radius=128
         --ring-width=4
         --indicator
         --clock
-        --datepos=tx:ty+20
-        --datestr="%a %e %b %Y"
+        --date-pos=tx:ty+20
+        --date-str="%a %e %b %Y"
     )
 
 pre_lock
