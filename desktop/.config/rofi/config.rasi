@@ -1,0 +1,9 @@
+configuration {
+    dpi: 1;
+    scroll-method: 1;
+    modi: "window,drun,run,ssh";
+    sort: true;
+    matching: "fuzzy";
+}
+
+@theme "base16-rofi/themes/base16-default-dark"
