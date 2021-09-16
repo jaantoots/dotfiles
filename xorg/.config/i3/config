@@ -226,7 +226,7 @@ mode $launcher {
     bindsym r mode "default"; exec --no-startup-id flatpak run im.riot.Riot
     bindsym l mode "default"; exec --no-startup-id flatpak run com.slack.Slack
     bindsym s mode "default"; exec --no-startup-id flatpak run org.signal.Signal
-    bindsym m mode "default"; exec --no-startup-id caprine
+    bindsym m mode "default"; exec --no-startup-id flatpak run com.sindresorhus.Caprine
     bindsym e mode "default"; exec --no-startup-id flatpak run com.getferdi.Ferdi
     bindsym a mode "default"; exec --no-startup-id "cat $HOME/.local/share/zathura/history | sed -nE '/^\[.+\]$/h;/^time=[0-9]+$/{x;G;s/^\[(.+)\]\ntime=([0-9]+)$/\2 \1/p}' | sort -nr | cut -d ' ' -f 2- | dmenu -p zathura | xargs -r zathura"
     bindsym w mode "default"; exec --no-startup-id $floating_terminal sudo wgctl
