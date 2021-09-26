@@ -19,3 +19,18 @@
 [submodule ".config/rofi/base16-rofi"]
 	path = desktop/.config/rofi/base16-rofi
 	url = https://github.com/0xdec/base16-rofi.git
+[submodule "base/.vim/pack/ctrlp/start/ctrlp.vim"]
+	path = base/.vim/pack/ctrlp/start/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
+[submodule "base/.vim/pack/supertab/start/supertab"]
+	path = base/.vim/pack/supertab/start/supertab
+	url = https://github.com/ervandew/supertab.git
+[submodule "base/.vim/pack/easymotion/start/easymotion"]
+	path = base/.vim/pack/easymotion/start/easymotion
+	url = https://github.com/easymotion/vim-easymotion.git
+[submodule "base/.vim/pack/jedi/start/jedi"]
+	path = base/.vim/pack/jedi/start/jedi
+	url = https://github.com/davidhalter/jedi-vim.git
+[submodule "base/.vim/pack/gitgutter/start/gitgutter"]
+	path = base/.vim/pack/gitgutter/start/gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
