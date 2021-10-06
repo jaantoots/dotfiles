@@ -1,17 +1,32 @@
 #!/bin/bash
 
 dpi=${1:-$DPI}
+
+function real_dpi() {
+    xrandr -q |
+        sed -nE '/primary/s/.* ([0-9]+)x([0-9]+).* ([0-9]+)mm x ([0-9]+)mm.*/\1 \2 \3 \4/p' |
+        awk '{print sprintf("%d", $1*25.4/$3)};'
+    xrandr -q |
+        sed -nE '/connected/s/.* ([0-9]+)x([0-9]+).* ([0-9]+)mm x ([0-9]+)mm.*/\1 \2 \3 \4/p' |
+        awk '{print sprintf("%d", $1*25.4/$3)};'
+}
+if [ "$dpi" = "auto" ]; then
+    dpi=$(( $(real_dpi | head -1)/48*48 ))
+    [ "$dpi" -gt 192 ] && dpi=192
+fi
+
+# Fallback
 dpi=${dpi:-192}
 
 echo "DPI: $dpi"
 #xrandr --dpi $dpi
 
 {
-    cat $HOME/.xsettingsd
-    echo Xft/DPI $(( $dpi*1024 ))
+    cat "$HOME/.xsettingsd"
+    echo Xft/DPI $(( dpi*1024 ))
     #echo Gdk/WindowScalingFactor $(( $dpi/96 ))
     #echo Gdk/UnscaledDPI $(( $dpi*1024/($dpi/96) ))
-} > $XDG_RUNTIME_DIR/xsettingsd
+} > "$XDG_RUNTIME_DIR/xsettingsd"
 
 systemctl --user try-reload-or-restart xsettingsd.service
 

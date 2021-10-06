@@ -150,6 +150,7 @@ bindsym $mod+$alt+Shift+Right move container to output right
 # change xrandr configuration
 bindsym $mod+$alt+r exec --no-startup-id autorandr --change --default default
 bindsym $mod+$alt+Shift+r exec --no-startup-id xrandr --auto
+bindsym $mod+$alt+d exec --no-startup-id set-dpi auto
 
 # resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
