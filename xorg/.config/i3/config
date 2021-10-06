@@ -112,6 +112,17 @@ bindsym $mod+Shift+BackSpace move container to workspace 0
 # switch workspaces quickly
 bindsym $mod+Tab workspace back_and_forth
 
+# assign workspaces
+workspace 1 output primary
+workspace 2 output primary
+workspace 3 output primary
+workspace 4 output primary
+workspace 5 output primary
+workspace 6 output primary
+workspace 7 output primary
+workspace 8 output primary
+workspace 0 output primary
+
 # move workspace to output
 bindsym $mod+$alt+$left move workspace to output left
 bindsym $mod+$alt+$down move workspace to output down
