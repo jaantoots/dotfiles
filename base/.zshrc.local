@@ -8,26 +8,13 @@ unsetopt sharehistory
 setopt incappendhistorytime
 
 # Load plugins
-function load_plugin() {
-    local prefix
-
-    # Arch or something else
-    prefix=/usr/share/zsh/plugins
-    [[ -d "$prefix" ]] || prefix=/usr/share
-
-    xsource "$prefix/$1/$1.zsh"
-}
-
-load_plugin zsh-syntax-highlighting
-load_plugin zsh-autosuggestions
-
-unfunction load_plugin
+xsource /usr/share/{,zsh/plugins/}{zsh-syntax-highlighting/zsh-syntax-highlighting.zsh,zsh-autosuggestions/zsh-autosuggestions.zsh}
 
 ZSH_AUTOSUGGEST_STRATEGY=match_prev_cmd
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
 # fzf
-xsource /usr/share/fzf/key-bindings.zsh /usr/share/fzf/completion.zsh
+xsource /usr/share/fzf/{,shell/}key-bindings.zsh /usr/share/fzf/completion.zsh
 export FZF_DEFAULT_COMMAND="fd -H -E .git --type f | sort"
 export FZF_CTRL_T_COMMAND="fd -H -E .git | sort"
 
