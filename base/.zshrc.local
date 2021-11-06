@@ -8,7 +8,7 @@ unsetopt sharehistory
 setopt incappendhistorytime
 
 # Load plugins
-xsource /usr/share/{,zsh/plugins/}{zsh-syntax-highlighting/zsh-syntax-highlighting.zsh,zsh-autosuggestions/zsh-autosuggestions.zsh}
+xsource {/usr,/opt/homebrew}/share/{,zsh/plugins/}{zsh-syntax-highlighting/zsh-syntax-highlighting.zsh,zsh-autosuggestions/zsh-autosuggestions.zsh}
 
 ZSH_AUTOSUGGEST_STRATEGY=match_prev_cmd
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
