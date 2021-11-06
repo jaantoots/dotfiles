@@ -42,3 +42,7 @@ nnoremap <leader>i :w !git diff --no-index -- % -<CR>
 
 " rg
 nnoremap <leader>w :!rg --color=always --glob '\!.git/**' --hidden <C-R><C-W><CR>
+
+" colors
+colorscheme base16-default-dark
+set termguicolors
