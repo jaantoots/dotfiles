@@ -21,4 +21,7 @@ export FZF_CTRL_T_COMMAND="fd -H -E .git | sort"
 # aliases
 xsource "$HOME/.aliases"
 
+# docker-compose
+export DOCKER_HOST=unix:///run/user/$UID/podman/podman.sock
+
 true
