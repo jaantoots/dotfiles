@@ -13,6 +13,15 @@ xsource {/usr,/opt/homebrew}/share/{,zsh/plugins/}{zsh-syntax-highlighting/zsh-s
 ZSH_AUTOSUGGEST_STRATEGY=match_prev_cmd
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
+# Load completions if using Homebrew
+if command -V brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+    autoload -Uz compinit
+    compinit
+fi
+
 # fzf
 xsource /usr/share/fzf/{,shell/}key-bindings.zsh /usr/share/fzf/completion.zsh
 export FZF_DEFAULT_COMMAND="fd -H -E .git --type f | sort"
