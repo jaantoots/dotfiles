@@ -7,25 +7,32 @@ setopt histreduceblanks
 unsetopt sharehistory
 setopt incappendhistorytime
 
-# Load plugins
-xsource {/usr,/opt/homebrew}/share/{,zsh/plugins/}{zsh-syntax-highlighting/zsh-syntax-highlighting.zsh,zsh-autosuggestions/zsh-autosuggestions.zsh}
+prefix=/usr
 
-ZSH_AUTOSUGGEST_STRATEGY=match_prev_cmd
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-
-# Load completions if using Homebrew
+# Homebrew specifics
 if command -V brew &>/dev/null; then
-    FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+    prefix=$(brew --prefix)
+
+    # Load completions
+    FPATH=$prefix/share/zsh/site-functions:$FPATH
+    FPATH=$prefix/share/zsh-completions:$FPATH
 
     autoload -Uz compinit
     compinit
 fi
 
+# Load plugins
+xsource $prefix/share/{,zsh/plugins/}{zsh-syntax-highlighting/zsh-syntax-highlighting.zsh,zsh-autosuggestions/zsh-autosuggestions.zsh}
+
+ZSH_AUTOSUGGEST_STRATEGY=match_prev_cmd
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+
 # fzf
-xsource /usr/share/fzf/{,shell/}key-bindings.zsh /usr/share/fzf/completion.zsh
+xsource $prefix/{share/,opt/}fzf/{,shell/}{key-bindings.zsh,completion.zsh}
 export FZF_DEFAULT_COMMAND="fd -H -E .git --type f | sort"
 export FZF_CTRL_T_COMMAND="fd -H -E .git | sort"
+
+unset prefix
 
 # aliases
 xsource "$HOME/.aliases"
