@@ -12,6 +12,9 @@ if &t_Co > 2 || has("gui_running")
     set number relativenumber cursorline
 endif
 
+" use mouse
+set mouse=a
+
 " copy indentation from previous line
 set autoindent
 
