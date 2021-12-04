@@ -19,8 +19,9 @@ set mouse=a
 set autoindent
 
 if has("autocmd")
-    " Makefiles need actual tabs
+    " actual tabs
     autocmd FileType make set tabstop=8 shiftwidth=8 noexpandtab
+    autocmd FileType go set tabstop=4 shiftwidth=4 noexpandtab
     " smaller tab widths
     autocmd FileType tex set tabstop=2 shiftwidth=2
     autocmd FileType yaml set tabstop=2 shiftwidth=2
