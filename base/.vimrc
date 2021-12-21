@@ -4,12 +4,32 @@ set encoding=utf-8
 " allow buffers to become hidden
 set hidden
 
+" try to use vim-plug
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+" https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+if !empty(glob("~/.vim/autoload/plug.vim"))
+    call plug#begin("~/.vim/plugged")
+    Plug 'chriskempson/base16-vim'
+    Plug 'ctrlpvim/ctrlp.vim'
+    Plug 'davidhalter/jedi-vim'
+    Plug 'ervandew/supertab'
+    Plug 'easymotion/vim-easymotion'
+    Plug 'airblade/vim-gitgutter'
+    call plug#end()
+endif
+
 if &t_Co > 2 || has("gui_running")
     " highlight search pattern
     set hlsearch
     nnoremap <leader><space> :nohlsearch<CR>
     " show line numbers and highlight current line
     set number relativenumber cursorline
+    " colors
+    colorscheme default
+    if filereadable(expand("~/.vimrc_background"))
+        let base16colorspace=256
+        source ~/.vimrc_background
+    endif
 endif
 
 " use mouse
@@ -46,7 +66,3 @@ nnoremap <leader>i :w !git diff --no-index -- % -<CR>
 
 " rg
 nnoremap <leader>w :!rg --color=always --glob '\!.git/**' --hidden <C-R><C-W><CR>
-
-" colors
-colorscheme base16-default-dark
-set termguicolors
