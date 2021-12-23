@@ -14,6 +14,11 @@ graphical: default
 dotfiles:
 	git clone --recursive https://github.com/jaantoots/dotfiles.git
 
+.PHONY: vim-plug
+vim-plug:
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 .PHONY: debian debian-gpu conda
 debian:
 	sudo apt-get -y update

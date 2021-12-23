@@ -26,8 +26,11 @@ if &t_Co > 2 || has("gui_running")
     set number relativenumber cursorline
     " colors
     colorscheme default
+    let base16colorspace=256
+    if !exists('g:colors_name') || g:colors_name != 'base16-default-dark'
+        colorscheme base16-default-dark
+    endif
     if filereadable(expand("~/.vimrc_background"))
-        let base16colorspace=256
         source ~/.vimrc_background
     endif
 endif
