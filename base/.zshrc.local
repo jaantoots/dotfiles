@@ -43,7 +43,4 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 # aliases
 xsource "$HOME/.aliases"
 
-# docker-compose
-export DOCKER_HOST=unix:///run/user/$UID/podman/podman.sock
-
 true
