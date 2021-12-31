@@ -112,6 +112,17 @@ bindsym $mod+Shift+BackSpace move container to workspace 0
 # switch workspaces quickly
 bindsym $mod+Tab workspace back_and_forth
 
+# assign workspaces
+workspace 1 output primary
+workspace 2 output primary
+workspace 3 output primary
+workspace 4 output primary
+workspace 5 output primary
+workspace 6 output primary
+workspace 7 output primary
+workspace 8 output primary
+workspace 0 output primary
+
 # move workspace to output
 bindsym $mod+$alt+$left move workspace to output left
 bindsym $mod+$alt+$down move workspace to output down
@@ -139,6 +150,7 @@ bindsym $mod+$alt+Shift+Right move container to output right
 # change xrandr configuration
 bindsym $mod+$alt+r exec --no-startup-id autorandr --change --default default
 bindsym $mod+$alt+Shift+r exec --no-startup-id xrandr --auto
+bindsym $mod+$alt+d exec --no-startup-id set-dpi auto
 
 # resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
@@ -215,20 +227,16 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # launch faster
-set $launcher "Launch: [q]utebrowser [c]hromium [f]irefox [v]ivaldi mat[r]ix s[l]ack [s]ignal [m]essenger f[e]rdi z[a]thura [w]gctl"
+set $launcher "Launch: [c]hromium [o]1password mat[r]ix [s]ignal [m]essenger s[l]ack s[p]otify [w]gctl"
 bindsym $mod+x mode $launcher
 mode $launcher {
-    bindsym q mode "default"; exec --no-startup-id qutebrowser
-    bindsym Shift+q mode "default"; exec --no-startup-id "qutebrowser ':open -p'"
     bindsym c mode "default"; exec --no-startup-id chromium
-    bindsym f mode "default"; exec --no-startup-id firefox
-    bindsym v mode "default"; exec --no-startup-id vivaldi-stable
+    bindsym o mode "default"; exec --no-startup-id 1password
     bindsym r mode "default"; exec --no-startup-id flatpak run im.riot.Riot
-    bindsym l mode "default"; exec --no-startup-id flatpak run com.slack.Slack
     bindsym s mode "default"; exec --no-startup-id flatpak run org.signal.Signal
     bindsym m mode "default"; exec --no-startup-id flatpak run com.sindresorhus.Caprine
-    bindsym e mode "default"; exec --no-startup-id flatpak run com.getferdi.Ferdi
-    bindsym a mode "default"; exec --no-startup-id "cat $HOME/.local/share/zathura/history | sed -nE '/^\[.+\]$/h;/^time=[0-9]+$/{x;G;s/^\[(.+)\]\ntime=([0-9]+)$/\2 \1/p}' | sort -nr | cut -d ' ' -f 2- | dmenu -p zathura | xargs -r zathura"
+    bindsym l mode "default"; exec --no-startup-id flatpak run com.slack.Slack
+    bindsym p mode "default"; exec --no-startup-id flatpak run com.spotify.Client
     bindsym w mode "default"; exec --no-startup-id $floating_terminal sudo wgctl
 
     # back to normal: Enter or Escape
