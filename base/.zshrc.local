@@ -43,4 +43,6 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 # aliases
 xsource "$HOME/.aliases"
 
+export PATH="$HOME/.local/bin:$PATH"
+
 true
