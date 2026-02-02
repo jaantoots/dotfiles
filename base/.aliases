@@ -1,6 +1,7 @@
 # vim: ft=sh
 alias aur_unneeded="bash -c \"grep -Fxvf <(pacsift --repo=aur <&- | expac -S '%E' - | xargs -n1 | sort -u) <(pacsift --repo=aur <&- | cut -d/ -f2)\""
 alias aur_missing="bash -c \"grep -Fxvf <(aur pkglist) <(pacsift --repo=aur <&- | cut -d/ -f2)\""
+alias clanker="claude --allow-dangerously-skip-permissions"
 alias clipboard_links="xclip -o -selection clipboard | lynx -stdin -dump -listonly | grep --color=never -Po '^\s*\d+\. \K.*'"
 alias cdg='cd "$(git rev-parse --show-cdup)"'
 alias dg="dmenu-open"
@@ -26,6 +27,30 @@ alias sls="npx --no-install sls"
 
 # fzf
 alias fvg='vim "$(git ls-files -oc | fzf -0 --preview "bat --color=always --style=numbers {}")"'
+
+# git worktrees
+gwd() {
+    local toplevel
+    toplevel="$(git rev-parse --show-toplevel)" || return 1
+    echo "$HOME/.worktrees/$(basename "$toplevel")"
+}
+
+gwt() {
+    [ "$#" -ge 1 ] || {
+        echo "usage: $0 BRANCH" >&2 && return 1
+    }
+    local toplevel
+    toplevel="$(git rev-parse --show-toplevel)" || return 1
+    local dir="$HOME/.worktrees/$(basename "$toplevel")/$1"
+    git worktree add "$dir" && cd "$dir"
+}
+
+gwtl() {
+    local list dir
+    list="$(git worktree list)" || return 1
+    dir="$(echo "$list" | fzf --height=40% | awk '{print $1}')"
+    [ -n "$dir" ] && cd "$dir"
+}
 
 fzg() {
     RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case --glob '!.git/**' --hidden "
