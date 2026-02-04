@@ -35,17 +35,15 @@ gwd() {
     echo "$HOME/.worktrees/$(basename "$toplevel")"
 }
 
-gwt() {
+gwa() {
     [ "$#" -ge 1 ] || {
         echo "usage: $0 BRANCH" >&2 && return 1
     }
-    local toplevel
-    toplevel="$(git rev-parse --show-toplevel)" || return 1
-    local dir="$HOME/.worktrees/$(basename "$toplevel")/$1"
+    local dir="$(gwd)/$1"
     git worktree add "$dir" && cd "$dir"
 }
 
-gwtl() {
+gwl() {
     local list dir
     list="$(git worktree list)" || return 1
     dir="$(echo "$list" | fzf --height=40% | awk '{print $1}')"
