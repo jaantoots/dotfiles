@@ -7,15 +7,10 @@ setopt histreduceblanks
 unsetopt sharehistory
 setopt incappendhistorytime
 
-() {
-    local prefix="${HOMEBREW_PREFIX:-/usr}"
-
-    # Load plugins
-    xsource $prefix/share/{,zsh/plugins/}{zsh-syntax-highlighting/zsh-syntax-highlighting.zsh,zsh-autosuggestions/zsh-autosuggestions.zsh}
-}
-
-ZSH_AUTOSUGGEST_STRATEGY=match_prev_cmd
+# Load plugins
+xsource "${HOMEBREW_PREFIX:-/usr}"/share/{,zsh/plugins/}{zsh-syntax-highlighting/zsh-syntax-highlighting.zsh,zsh-autosuggestions/zsh-autosuggestions.zsh}
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+ZSH_AUTOSUGGEST_STRATEGY=match_prev_cmd
 
 export FZF_DEFAULT_COMMAND="fd -H -E .git --type f | sort"
 export FZF_CTRL_T_COMMAND="fd -H -E .git | sort"
