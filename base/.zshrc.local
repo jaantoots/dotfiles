@@ -28,6 +28,7 @@ export FZF_CTRL_T_COMMAND="fd -H -E .git | sort"
 unset prefix
 
 eval "$(direnv hook zsh)"
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
