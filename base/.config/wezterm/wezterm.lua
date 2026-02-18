@@ -13,6 +13,7 @@ config.keys = {
       cwd = wezterm.home_dir,
     },
   },
+  {key="Enter", mods="SHIFT", action=wezterm.action{SendString="\x1b\r"}},
 }
 
 return config
