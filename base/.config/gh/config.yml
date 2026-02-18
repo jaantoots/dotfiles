@@ -10,4 +10,5 @@ pager:
 aliases:
     co: pr checkout
     repos: |
-      !gh api --paginate $([ -n "$1" ] && echo "orgs/$1/repos" || echo user/repos) | jq -r '.[] | .full_name' | sort
+        !gh api --paginate $([ -n "$1" ] && echo "orgs/$1/repos" || echo user/repos) | jq -r '.[] | .full_name' | sort
+version: "1"
