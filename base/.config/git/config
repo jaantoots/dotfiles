@@ -36,10 +36,7 @@
     helper = store
 
 [diff]
-    tool = vimdiff
-
-[diff "pandoc"]
-    textconv = pandoc --to=markdown
+    tool = nvimdiff
 
 [diff "jupyternotebook"]
     command = git-nbdiffdriver diff
