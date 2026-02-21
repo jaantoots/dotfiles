@@ -14,10 +14,10 @@ ZSH_AUTOSUGGEST_STRATEGY=match_prev_cmd
 
 export FZF_DEFAULT_COMMAND="fd -H -E .git --type f | sort"
 export FZF_CTRL_T_COMMAND="fd -H -E .git | sort"
-source <(fzf --zsh)
+command -v fzf &>/dev/null && source <(fzf --zsh)
 
-eval "$(direnv hook zsh)"
-eval "$(fnm env --use-on-cd --shell zsh)"
+command -v direnv &>/dev/null && eval "$(direnv hook zsh)"
+command -v fnm &>/dev/null && eval "$(fnm env --use-on-cd --shell zsh)"
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
