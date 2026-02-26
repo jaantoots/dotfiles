@@ -2,6 +2,8 @@
 alias aur_unneeded="bash -c \"grep -Fxvf <(pacsift --repo=aur <&- | expac -S '%E' - | xargs -n1 | sort -u) <(pacsift --repo=aur <&- | cut -d/ -f2)\""
 alias aur_missing="bash -c \"grep -Fxvf <(aur pkglist) <(pacsift --repo=aur <&- | cut -d/ -f2)\""
 alias clanker="claude --allow-dangerously-skip-permissions"
+alias cla="claude --allow-dangerously-skip-permissions"
+alias clr="claude --allow-dangerously-skip-permissions --resume"
 alias clipboard_links="xclip -o -selection clipboard | lynx -stdin -dump -listonly | grep --color=never -Po '^\s*\d+\. \K.*'"
 alias cdg='cd "$(git rev-parse --show-cdup)"'
 alias dg="dmenu-open"
