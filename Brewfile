@@ -13,6 +13,7 @@ brew "pure"
 brew "fzf"
 brew "fd"
 brew "ripgrep"
+brew "ast-grep"
 brew "direnv"
 
 # Modern CLI
