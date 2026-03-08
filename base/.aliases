@@ -33,117 +33,117 @@ alias fvg='vim "$(git ls-files -oc | fzf -0 --preview "bat --color=always --styl
 
 # git worktrees
 gwd() {
-    local toplevel
-    toplevel="$(git rev-parse --show-toplevel)" || return 1
-    echo "$HOME/.worktrees/$(basename "$toplevel")"
+  local toplevel
+  toplevel="$(git rev-parse --show-toplevel)" || return 1
+  echo "$HOME/.worktrees/$(basename "$toplevel")"
 }
 
 gwa() {
-    [ "$#" -ge 1 ] || {
-        echo "usage: $0 BRANCH" >&2 && return 1
-    }
-    local dir="$(gwd)/$1"
-    git worktree add "$dir" && cd "$dir"
+  [ "$#" -ge 1 ] || {
+    echo "usage: $0 BRANCH" >&2 && return 1
+  }
+  local dir="$(gwd)/$1"
+  git worktree add "$dir" && cd "$dir"
 }
 
 gwl() {
-    local list dir
-    list="$(git worktree list)" || return 1
-    dir="$(echo "$list" | fzf --height=40% | awk '{print $1}')"
-    [ -n "$dir" ] && cd "$dir"
+  local list dir
+  list="$(git worktree list)" || return 1
+  dir="$(echo "$list" | fzf --height=40% | awk '{print $1}')"
+  [ -n "$dir" ] && cd "$dir"
 }
 
 fzg() {
-    RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case --glob '!.git/**' --hidden "
-    FZF_DEFAULT_COMMAND="$RG_PREFIX '$*'" \
-        fzf --bind "change:reload:$RG_PREFIX {q} || true" \
-        --ansi --phony --query "$*" --height=50% --layout=reverse
-    unset RG_PREFIX
+  RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case --glob '!.git/**' --hidden "
+  FZF_DEFAULT_COMMAND="$RG_PREFIX '$*'" \
+    fzf --bind "change:reload:$RG_PREFIX {q} || true" \
+    --ansi --phony --query "$*" --height=50% --layout=reverse
+  unset RG_PREFIX
 }
 
 fzgf() {
-    RG_PREFIX="rg --files-with-matches --color=always --smart-case --glob '!.git/**' --hidden "
-    FZF_DEFAULT_COMMAND="$RG_PREFIX '$*'" \
-        fzf --bind "change:reload:$RG_PREFIX {q} || true" \
-        --ansi --phony --query "$*" --height=50% --layout=reverse \
-        --preview "rg --column --line-number --no-heading --color=always --smart-case --glob '!.git/**' --hidden {q} {}"
-    unset RG_PREFIX
+  RG_PREFIX="rg --files-with-matches --color=always --smart-case --glob '!.git/**' --hidden "
+  FZF_DEFAULT_COMMAND="$RG_PREFIX '$*'" \
+    fzf --bind "change:reload:$RG_PREFIX {q} || true" \
+    --ansi --phony --query "$*" --height=50% --layout=reverse \
+    --preview "rg --column --line-number --no-heading --color=always --smart-case --glob '!.git/**' --hidden {q} {}"
+  unset RG_PREFIX
 }
 
 20to5f() {
-    [ "$#" -ge 1 ] || {
-        echo "usage: $0 FILE..." >&2 && return 1
-    }
-    for f in "$@"; do
-        mv -iv "$f" "${f// /_}"
-    done
+  [ "$#" -ge 1 ] || {
+    echo "usage: $0 FILE..." >&2 && return 1
+  }
+  for f in "$@"; do
+    mv -iv "$f" "${f// /_}"
+  done
 }
 
 cpv() {
-    [ "$#" -eq 2 ] || {
-        echo "usage: $0 SRC DEST" >&2 && return 1
-    }
-    tar -c "$1" | pv -pterb -s "$(du -bs "$1" | cut -f1)" | tar -C "$2" -xp
+  [ "$#" -eq 2 ] || {
+    echo "usage: $0 SRC DEST" >&2 && return 1
+  }
+  tar -c "$1" | pv -pterb -s "$(du -bs "$1" | cut -f1)" | tar -C "$2" -xp
 }
 
 docker_tags() {
-    for item; do
-        token="$(curl -sG \
-            --data-urlencode service=registry.docker.io \
-            --data-urlencode scope=repository:"$item":pull \
-            https://auth.docker.io/token |
-            jq -r '.token')"
-        curl -sG \
-            -H "Accept: application/json" \
-            -H "Authorization: Bearer $token" \
-            "https://registry-1.docker.io/v2/$item/tags/list" |
-            jq
-    done
+  for item; do
+    token="$(curl -sG \
+      --data-urlencode service=registry.docker.io \
+      --data-urlencode scope=repository:"$item":pull \
+      https://auth.docker.io/token |
+      jq -r '.token')"
+    curl -sG \
+      -H "Accept: application/json" \
+      -H "Authorization: Bearer $token" \
+      "https://registry-1.docker.io/v2/$item/tags/list" |
+      jq
+  done
 }
 
 exifdiff() {
-    [ "$#" -eq 2 ] || {
-        echo "usage: $0 OLD NEW" >&2 && return 2
-    }
-    diff <(exiftool "$1") <(exiftool "$2")
+  [ "$#" -eq 2 ] || {
+    echo "usage: $0 OLD NEW" >&2 && return 2
+  }
+  diff <(exiftool "$1") <(exiftool "$2")
 }
 
 omniva_track() {
-    lynx -dump -width=100000 \
-        "https://www.omniva.ee/api/search.php?search_barcode=${1}&lang=est" |
-        iconv -f ISO88591 -t UTF8 |
-        sed -Ee 's/([0-9]{2}\.[0-9]{2}\.[0-9]{4} [0-9]{2}:[0-9]{2})/@\1@/' |
-        tail -n+4 |
-        column -ts@ |
-        tac
+  lynx -dump -width=100000 \
+    "https://www.omniva.ee/api/search.php?search_barcode=${1}&lang=est" |
+    iconv -f ISO88591 -t UTF8 |
+    sed -Ee 's/([0-9]{2}\.[0-9]{2}\.[0-9]{4} [0-9]{2}:[0-9]{2})/@\1@/' |
+    tail -n+4 |
+    column -ts@ |
+    tac
 }
 
 # get user entry for process
 whop() {
-    ps --no-headers -p "$1"
-    getent passwd "$(ps --no-headers -o uid -p "$1")"
+  ps --no-headers -p "$1"
+  getent passwd "$(ps --no-headers -o uid -p "$1")"
 }
 
 # open cropped pdf with zathura
 zathuracrop() {
-    [ "$#" -eq 1 ] || { echo "usage: $0 PDF" >&2 && exit; }
-    PDF="$1"
+  [ "$#" -eq 1 ] || { echo "usage: $0 PDF" >&2 && exit; }
+  PDF="$1"
 
-    RIGHT="$(pdfinfo -box "$PDF" | grep -E "^MediaBox:" | awk '{print $4;}')"
-    BBOX="$(gs -dSAFER -dBATCH -dNOPAUSE -dQUIET -sDEVICE=bbox "$PDF" 2>&1 |
-        grep -E "^%%BoundingBox:")"
-    BOT="$(echo "$BBOX" | awk '{print $3;}' | sort -n | head -1)"
-    TOP="$(echo "$BBOX" | awk '{print $5;}' | sort -n | tail -1)"
+  RIGHT="$(pdfinfo -box "$PDF" | grep -E "^MediaBox:" | awk '{print $4;}')"
+  BBOX="$(gs -dSAFER -dBATCH -dNOPAUSE -dQUIET -sDEVICE=bbox "$PDF" 2>&1 |
+    grep -E "^%%BoundingBox:")"
+  BOT="$(echo "$BBOX" | awk '{print $3;}' | sort -n | head -1)"
+  TOP="$(echo "$BBOX" | awk '{print $5;}' | sort -n | tail -1)"
 
-    CROP="$(mktemp --tmpdir --suffix=."$(basename "$PDF")" zathuracrop.XXXXXXXX)"
-    pdfcrop --bbox "0 $BOT $RIGHT $TOP" "$PDF" "$CROP"
+  CROP="$(mktemp --tmpdir --suffix=."$(basename "$PDF")" zathuracrop.XXXXXXXX)"
+  pdfcrop --bbox "0 $BOT $RIGHT $TOP" "$PDF" "$CROP"
 
-    zathura "$CROP" && rm "$CROP"
+  zathura "$CROP" && rm "$CROP"
 }
 
 # open recent file with zathura
 zh() {
-    sed -nE '/^\[.+\]$/h;/^time=[0-9]+$/{x;G;s/^\[(.+)\]\ntime=([0-9]+)$/\2 \1/p}' \
-        "$HOME/.local/share/zathura/history" |
-        sort -nr | cut -d ' ' -f 2- | dmenu -p zathura | xargs -r zathura --fork
+  sed -nE '/^\[.+\]$/h;/^time=[0-9]+$/{x;G;s/^\[(.+)\]\ntime=([0-9]+)$/\2 \1/p}' \
+    "$HOME/.local/share/zathura/history" |
+    sort -nr | cut -d ' ' -f 2- | dmenu -p zathura | xargs -r zathura --fork
 }
