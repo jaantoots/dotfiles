@@ -20,10 +20,12 @@ brew "direnv"
 brew "bat"
 brew "eza"
 brew "jq"
+brew "git-delta"
 
 # Editors & multiplexer
 brew "neovim"
 brew "tmux"
+brew "lazygit"
 
 # Development
 brew "gh"
