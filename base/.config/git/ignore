@@ -48,4 +48,8 @@ tags
 # Persistent undo
 [._]*.un~
 
+# IDEs
+.vscode
+.idea
+
 **/.claude/settings.local.json

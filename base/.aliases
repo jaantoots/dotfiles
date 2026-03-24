@@ -6,9 +6,12 @@ alias cla="claude --allow-dangerously-skip-permissions"
 alias clr="claude --allow-dangerously-skip-permissions --resume"
 alias clipboard_links="xclip -o -selection clipboard | lynx -stdin -dump -listonly | grep --color=never -Po '^\s*\d+\. \K.*'"
 alias cdg='cd "$(git rev-parse --show-cdup)"'
+alias cg='cd "$({ git rev-parse 2>/dev/null && fd --hidden --prune --max-depth=2 --format "{//}" "^\.git$" "$(git rev-parse --show-cdup).." || fd --hidden --prune --max-depth=3 --format "{//}" "^\.git$" } | fzf)"'
+alias cr="cd -P"
 alias dg="dmenu-open"
 alias e="emacsclient -t"
 alias ec="emacsclient -c"
+alias g="git"
 alias ifco="curl -qSs ifconfig.co/json | jq"
 alias la="eza --long --all --git"
 alias ll="eza --long --git"
