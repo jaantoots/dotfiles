@@ -24,6 +24,13 @@ zle -N sudo-command-line
 bindkey '^os' sudo-command-line
 # Space expands history (!! !$)
 bindkey ' ' magic-space
+# Alt-Backspace kills to / boundary
+slash-backward-kill-word() {
+  local WORDCHARS="${WORDCHARS:s@/@}"
+  zle backward-kill-word
+}
+zle -N slash-backward-kill-word
+bindkey '\e^?' slash-backward-kill-word
 # Home/End/Delete
 [[ -n "${terminfo[khome]}" ]] && bindkey "${terminfo[khome]}" beginning-of-line
 [[ -n "${terminfo[kend]}" ]] && bindkey "${terminfo[kend]}" end-of-line
