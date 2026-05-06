@@ -14,6 +14,10 @@ config.keys = {
 		}),
 	},
 	{ key = "Enter", mods = "SHIFT", action = wezterm.action({ SendString = "\x1b\r" }) },
+	{ key = "-", mods = "CTRL", action = wezterm.action.DisableDefaultAssignment },
+	{ key = "=", mods = "CTRL", action = wezterm.action.DisableDefaultAssignment },
+	{ key = "+", mods = "CTRL", action = wezterm.action.DisableDefaultAssignment },
+	{ key = "0", mods = "CTRL", action = wezterm.action.DisableDefaultAssignment },
 }
 
 -- Use the defaults as a base
