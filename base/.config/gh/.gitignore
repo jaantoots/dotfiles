@@ -1,0 +1,3 @@
+# stow folds this dir into ~/.config/gh, so gh writes hosts.yml (auth
+# tokens) straight into the repo. Ignore it; everything else stays visible.
+hosts.yml
