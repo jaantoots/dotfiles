@@ -55,6 +55,13 @@ autoload -Uz compinit && compinit
 zmodload zsh/complist
 [[ -n "${terminfo[kcbt]}" ]] && bindkey -M menuselect "${terminfo[kcbt]}" reverse-menu-complete
 
+# Smart run-help (Alt-h, bound by default): replaces the `run-help=man` alias so
+# it understands subcommands, e.g. `git commit` -> git-commit(1) instead of git(1)
+(( ${+aliases[run-help]} )) && unalias run-help
+autoload -Uz run-help
+autoload -Uz run-help-btrfs run-help-git run-help-ip run-help-openssl \
+  run-help-p4 run-help-sudo run-help-svk run-help-svn
+
 # Helper
 xsource() { for f in "$@"; do [[ -r "$f" ]] && source "$f"; done }
 ZSH_PLUGIN_DIRS=("${HOMEBREW_PREFIX:-/usr}"/share /usr/share/zsh/plugins)
