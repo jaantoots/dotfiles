@@ -35,6 +35,12 @@ bindkey '\e^?' slash-backward-kill-word
 [[ -n "${terminfo[khome]}" ]] && bindkey "${terminfo[khome]}" beginning-of-line
 [[ -n "${terminfo[kend]}" ]] && bindkey "${terminfo[kend]}" end-of-line
 [[ -n "${terminfo[kdch1]}" ]] && bindkey "${terminfo[kdch1]}" delete-char
+# Up/Down: search history for entries starting with what's already typed
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey '^[[A' up-line-or-beginning-search '^[OA' up-line-or-beginning-search
+bindkey '^[[B' down-line-or-beginning-search '^[OB' down-line-or-beginning-search
 
 # Completion
 zstyle ':completion:*' menu select
