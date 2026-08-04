@@ -5,6 +5,7 @@ alias claude="claude --allow-dangerously-skip-permissions"
 alias cla="claude"
 alias clr="claude --resume"
 alias fable="claude --model fable"
+alias sonnet="claude --model sonnet"
 alias agents="claude agents"
 alias clipboard_links="xclip -o -selection clipboard | lynx -stdin -dump -listonly | grep --color=never -Po '^\s*\d+\. \K.*'"
 alias cdg='cd "$(git rev-parse --show-cdup)"'
