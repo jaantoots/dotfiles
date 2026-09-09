@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""PreToolUse guard: subagents never inherit the session model.
+"""PreToolUse guard: Workflow agents never inherit the session model.
 
-Applies to the Workflow tool (every agent() call in the script must set an
-explicit opts.model) and the Agent tool (the model parameter must be set).
-Ceiling is opus — allowed families: opus, sonnet, haiku. Anything else
-(including inheriting the session model by omission) is denied with an
-actionable reason so the caller fixes the spawn instead of working around it.
+Every agent() call in a Workflow script must set an explicit opts.model.
+Direct Agent subagents are intentionally exempt. Ceiling is opus — allowed
+families: opus, sonnet, haiku. Anything else (including inheriting the session
+model by omission) is denied with an actionable reason so the caller fixes the
+spawn instead of working around it.
 """
 import json
 import os
@@ -114,22 +114,6 @@ def check_workflow(tool_input):
         )
 
 
-def check_agent(tool_input):
-    if tool_input.get("subagent_type") == "fork":
-        return  # forks always inherit the parent by design
-    model = tool_input.get("model")
-    if not model:
-        deny(
-            "Agent spawn has no model override — subagents must never inherit the session "
-            "model. Pass model: 'opus' for hard tasks, 'sonnet'/'haiku' for mechanical ones "
-            "(even if the agent definition pins its own model, pass it explicitly)."
-        )
-    elif not model_allowed(model):
-        deny(
-            f"Agent model '{model}' is above the opus ceiling — allowed: opus, sonnet, haiku."
-        )
-
-
 def main():
     try:
         data = json.load(sys.stdin)
@@ -139,8 +123,6 @@ def main():
     tool_name = data.get("tool_name")
     if tool_name == "Workflow":
         check_workflow(tool_input)
-    elif tool_name == "Agent":
-        check_agent(tool_input)
 
 
 if __name__ == "__main__":
