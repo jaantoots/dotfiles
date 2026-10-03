@@ -1,0 +1,7 @@
+macos-titlebar-style = tabs
+macos-option-as-alt = true
+macos-icon = holographic
+
+keybind = global:ctrl+backquote=toggle_quick_terminal
+
+theme = dark:Catppuccin Mocha,light:Catppuccin Latte
