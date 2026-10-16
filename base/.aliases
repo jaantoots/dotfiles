@@ -1,19 +1,13 @@
 # vim: ft=sh
-alias aur_unneeded="bash -c \"grep -Fxvf <(pacsift --repo=aur <&- | expac -S '%E' - | xargs -n1 | sort -u) <(pacsift --repo=aur <&- | cut -d/ -f2)\""
-alias aur_missing="bash -c \"grep -Fxvf <(aur pkglist) <(pacsift --repo=aur <&- | cut -d/ -f2)\""
 alias claude="claude --allow-dangerously-skip-permissions"
 alias cla="claude"
 alias clr="claude --resume"
 alias fable="claude --model fable"
 alias sonnet="claude --model sonnet"
 alias agents="claude agents"
-alias clipboard_links="xclip -o -selection clipboard | lynx -stdin -dump -listonly | grep --color=never -Po '^\s*\d+\. \K.*'"
 alias cdg='cd "$(git rev-parse --show-cdup)"'
 alias cg='cd "$({ git rev-parse 2>/dev/null && fd --hidden --prune --max-depth=2 --format "{//}" "^\.git$" "$(git rev-parse --show-cdup).." || fd --hidden --prune --max-depth=3 --format "{//}" "^\.git$" } | fzf)"'
 alias cr="cd -P"
-alias dg="dmenu-open"
-alias e="emacsclient -t"
-alias ec="emacsclient -c"
 alias g="git"
 alias ifco="curl -qSs ifconfig.co/json | jq"
 alias l="eza --long"
@@ -24,17 +18,12 @@ alias ls="eza"
 alias lt="eza --long --all --git --git-ignore --tree"
 alias lg="lazygit"
 alias lsb="lsblk -oNAME,TYPE,MAJ:MIN,RM,SUBSYSTEMS,MODEL,SIZE,RO,FSTYPE,FSSIZE,FSUSE%,FSUSED,FSAVAIL,MOUNTPOINT"
-alias mpvd="mpv --screen=0 --fs-screen=1"
-alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 alias v="nvim"
-alias wgetu="wget -U 'Mozilla/5.0 (X11; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0'"
 alias ui="uv run --with ipython ipython"
 
-# npx
-alias eslint="npx --no-install eslint"
-alias netlify="npx --no-install netlify"
-alias serverless="npx --no-install serverless"
-alias sls="npx --no-install sls"
+# macOS app bundle CLI, only where the app is installed
+[ -x /Applications/Tailscale.app/Contents/MacOS/Tailscale ] &&
+  alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 
 # fzf
 alias fvg='vim "$(git ls-files -oc | fzf -0 --preview "bat --color=always --style=numbers {}")"'
@@ -99,64 +88,9 @@ cpv() {
   tar -c "$1" | pv -pterb -s "$(du -bs "$1" | cut -f1)" | tar -C "$2" -xp
 }
 
-docker_tags() {
-  for item; do
-    token="$(curl -sG \
-      --data-urlencode service=registry.docker.io \
-      --data-urlencode scope=repository:"$item":pull \
-      https://auth.docker.io/token |
-      jq -r '.token')"
-    curl -sG \
-      -H "Accept: application/json" \
-      -H "Authorization: Bearer $token" \
-      "https://registry-1.docker.io/v2/$item/tags/list" |
-      jq
-  done
-}
-
 exifdiff() {
   [ "$#" -eq 2 ] || {
     echo "usage: $0 OLD NEW" >&2 && return 2
   }
   diff <(exiftool "$1") <(exiftool "$2")
-}
-
-omniva_track() {
-  lynx -dump -width=100000 \
-    "https://www.omniva.ee/api/search.php?search_barcode=${1}&lang=est" |
-    iconv -f ISO88591 -t UTF8 |
-    sed -Ee 's/([0-9]{2}\.[0-9]{2}\.[0-9]{4} [0-9]{2}:[0-9]{2})/@\1@/' |
-    tail -n+4 |
-    column -ts@ |
-    tac
-}
-
-# get user entry for process
-whop() {
-  ps --no-headers -p "$1"
-  getent passwd "$(ps --no-headers -o uid -p "$1")"
-}
-
-# open cropped pdf with zathura
-zathuracrop() {
-  [ "$#" -eq 1 ] || { echo "usage: $0 PDF" >&2 && exit; }
-  PDF="$1"
-
-  RIGHT="$(pdfinfo -box "$PDF" | grep -E "^MediaBox:" | awk '{print $4;}')"
-  BBOX="$(gs -dSAFER -dBATCH -dNOPAUSE -dQUIET -sDEVICE=bbox "$PDF" 2>&1 |
-    grep -E "^%%BoundingBox:")"
-  BOT="$(echo "$BBOX" | awk '{print $3;}' | sort -n | head -1)"
-  TOP="$(echo "$BBOX" | awk '{print $5;}' | sort -n | tail -1)"
-
-  CROP="$(mktemp --tmpdir --suffix=."$(basename "$PDF")" zathuracrop.XXXXXXXX)"
-  pdfcrop --bbox "0 $BOT $RIGHT $TOP" "$PDF" "$CROP"
-
-  zathura "$CROP" && rm "$CROP"
-}
-
-# open recent file with zathura
-zh() {
-  sed -nE '/^\[.+\]$/h;/^time=[0-9]+$/{x;G;s/^\[(.+)\]\ntime=([0-9]+)$/\2 \1/p}' \
-    "$HOME/.local/share/zathura/history" |
-    sort -nr | cut -d ' ' -f 2- | dmenu -p zathura | xargs -r zathura --fork
 }
