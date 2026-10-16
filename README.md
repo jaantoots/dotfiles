@@ -67,6 +67,12 @@ release, create a fresh toolbox, run the script and `toolbox rm` the old one.
 - `~/.zshenv` is not tracked: use it for machine-specific environment.
 - `~/.gitconfig` takes precedence over the tracked `~/.config/git/config`, e.g.
   for a different email.
+- `~/.claude/CLAUDE.md` is local too, since it picks up machine-specific
+  instructions. Seed it from the template and update it by hand from there:
+
+  ```
+  cp claude/CLAUDE.template.md ~/.claude/CLAUDE.md
+  ```
 
 ## Poor man's chsh
 
