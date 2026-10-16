@@ -96,9 +96,10 @@ command -v fzf &>/dev/null && source <(fzf --zsh)
 command -v direnv &>/dev/null && eval "$(direnv hook zsh)"
 command -v fnm &>/dev/null && eval "$(fnm env --use-on-cd --shell zsh)"
 
-# Prompt
+# Prompt: pure from brew, or git clone https://github.com/sindresorhus/pure ~/.local/share/zsh/pure
+fpath+=(~/.local/share/zsh/pure(N/))
 autoload -U promptinit; promptinit
-prompt pure
+if (( $prompt_themes[(Ie)pure] )); then prompt pure; else prompt adam1; fi
 
 # Utilities from grml
 mkcd() { mkdir -p "$@" && cd "${@[-1]}" }
