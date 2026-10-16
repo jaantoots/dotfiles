@@ -34,10 +34,10 @@ third-party repositories, and [1Password's repo](https://support.1password.com/i
 
 ```
 rpm-ostree override remove nano-default-editor --install vim-default-editor
-rpm-ostree install 1password akmod-nvidia arm-image-installer eza kmod-nvidia \
-    langpacks-en_GB lshw nodejs open-eid smartmontools sshfs syncthing \
-    tailscale vim xorg-x11-drv-nvidia xorg-x11-drv-nvidia-cuda zsh \
-    zsh-autosuggestions zsh-syntax-highlighting
+rpm-ostree install 1password akmod-nvidia eza kmod-nvidia langpacks-en_GB \
+    lshw open-eid smartmontools sshfs syncthing tailscale vim \
+    xorg-x11-drv-nvidia xorg-x11-drv-nvidia-cuda zsh zsh-autosuggestions \
+    zsh-syntax-highlighting
 rpm-ostree kargs --append=rd.driver.blacklist=nouveau \
     --append=modprobe.blacklist=nouveau --append=nvidia-drm.modeset=1
 ```

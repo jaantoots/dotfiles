@@ -29,7 +29,6 @@ git-delta
 # Editors & multiplexer
 neovim
 vim-enhanced
-vim-default-editor
 tmux
 lazygit             # dejan/lazygit COPR
 
@@ -57,8 +56,7 @@ EOF
 )
 
 sudo dnf copr enable -y dejan/lazygit
-# --allowerasing: vim-default-editor replaces nano-default-editor
-sudo dnf install -y --allowerasing $packages
+sudo dnf install -y $packages
 
 # pure prompt isn't packaged in Fedora; the clone lands in the shared home
 [ -d ~/.local/share/zsh/pure ] ||
