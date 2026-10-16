@@ -9,7 +9,6 @@ set hidden
 " https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 if !empty(glob("~/.vim/autoload/plug.vim"))
     call plug#begin("~/.vim/plugged")
-    Plug 'chriskempson/base16-vim'
     Plug 'ctrlpvim/ctrlp.vim'
     Plug 'davidhalter/jedi-vim'
     Plug 'ervandew/supertab'
@@ -26,12 +25,6 @@ if &t_Co > 2 || has("gui_running")
     set number relativenumber cursorline
     " colors
     colorscheme default
-    if !exists('g:colors_name') || g:colors_name != 'base16-default-dark'
-        colorscheme base16-default-dark
-    endif
-    if filereadable(expand("~/.vimrc_background"))
-        source ~/.vimrc_background
-    endif
 endif
 
 " use mouse
