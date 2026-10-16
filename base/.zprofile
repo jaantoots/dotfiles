@@ -1,9 +1,12 @@
 export EDITOR=nvim
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
-fpath[1,0]="$HOMEBREW_PREFIX/share/zsh-completions";
+# Homebrew (macOS)
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  fpath[1,0]="$HOMEBREW_PREFIX/share/zsh-completions"
+  path=("$HOMEBREW_PREFIX/opt/libpq/bin" $path)
+fi
 
-export PATH="$HOME/.docker/bin:$PATH"
-export PATH="$HOMEBREW_PREFIX/opt/libpq/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
+# User bin dirs, each only if it exists on this machine
+typeset -U path
+path=(~/.cargo/bin(N/) ~/.local/bin(N/) ~/.docker/bin(N/) $path)
