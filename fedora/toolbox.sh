@@ -60,7 +60,6 @@ sudo dnf copr enable -y dejan/lazygit
 # --allowerasing: vim-default-editor replaces nano-default-editor
 sudo dnf install -y --allowerasing $packages
 
-# Not packaged in Fedora; these land in the shared home, so the host gets them too
-uv tool install ast-grep-cli
+# pure prompt isn't packaged in Fedora; the clone lands in the shared home
 [ -d ~/.local/share/zsh/pure ] ||
   git clone https://github.com/sindresorhus/pure.git ~/.local/share/zsh/pure
