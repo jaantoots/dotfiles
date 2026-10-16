@@ -1,56 +1,72 @@
 # Dotfiles
 
-This is a collection of my dotfiles and scripts. All configurations are
-maintained to work on Arch Linux hosts.
+My dotfiles, used on macOS and on Fedora Silverblue (with a toolbox for CLI
+work). `base/` is the only [stow](https://www.gnu.org/software/stow/) package.
 
 ```
-cd
-git clone git@github.com:jaantoots/dotfiles.git
-cd dotfiles
-make default
+git clone git@github.com:jaantoots/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+stow base
 ```
 
-## zsh configuration
+Stow refuses to replace existing files: move them out of the way first, or
+`stow --adopt base` and review what got pulled in with `git diff`.
 
-[grml-zsh-config](https://grml.org/zsh/) is available in extra on Arch. On
-other hosts this can be put into `.zshrc.global`:
-
-```
-curl -LSs https://git.grml.org/f/grml-etc-core/etc/zsh/zshrc > .zshrc.global 
-```
-
-## Keyboard configuration
-
-Persistent and sane keyboard configuration with a consistent experience should
-be done on the system level.
+## macOS
 
 ```
-sudo localectl set-x11-keymap us,ee pc105 ,us grp_led:caps,grp:ctrls_toggle,caps:escape,compose:menu,shift:both_shiftlock
+brew bundle
 ```
 
-Typematic delay and rate need to be set as Xserver options, e.g. in
-`/etc/X11/xinit/xserverrc`:
+## Fedora Silverblue
+
+The host and toolboxes share `$HOME`, so everything in `base/` runs in both
+places. The host only has a minimal set of tools, so configs have to cope with
+missing commands (guard with `command -v`).
+
+`toolbox enter` starts a login shell like macOS terminals do, so `.zprofile`
+is read there. Plain host terminals are non-login shells.
+
+### Host
+
+Layered packages (needs RPM Fusion's NVIDIA driver repo, from GNOME Software's
+third-party repositories, and [1Password's repo](https://support.1password.com/install-linux/)):
 
 ```
-#!/bin/sh
-exec /usr/bin/X -nolisten tcp -ardelay 250 -arinterval 20 "$@"
+rpm-ostree override remove nano-default-editor --install vim-default-editor
+rpm-ostree install 1password akmod-nvidia arm-image-installer eza kmod-nvidia \
+    langpacks-en_GB lshw nodejs open-eid smartmontools sshfs syncthing \
+    tailscale vim xorg-x11-drv-nvidia xorg-x11-drv-nvidia-cuda zsh \
+    zsh-autosuggestions zsh-syntax-highlighting
+rpm-ostree kargs --append=rd.driver.blacklist=nouveau \
+    --append=modprobe.blacklist=nouveau --append=nvidia-drm.modeset=1
 ```
 
-## Transmission desktop entry
-
-The desktop entry is needed to open magnet links directly (authentication
-information can go into netrc).
-`~/.local/share/applications/transmission.desktop`:
+Flatpaks from Flathub:
 
 ```
-[Desktop Entry]
-Type=Application
-Name=Transmission (HOST)
-Comment=Add a magnet link on HOST
-Exec=transmission-remote HOST -a %U
-Categories=Network;
-MimeType=x-scheme-handler/magnet;
+flatpak install flathub com.github.tchx84.Flatseal com.google.Chrome \
+    com.slack.Slack com.spotify.Client com.usebottles.bottles \
+    com.valvesoftware.Steam im.riot.Riot io.github.TransmissionRemoteGtk \
+    io.github.celluloid_player.Celluloid io.mpv.Mpv net.ankiweb.Anki \
+    net.davidotek.pupgui2 net.lutris.Lutris org.signal.Signal org.videolan.VLC
 ```
+
+### Toolbox
+
+```
+toolbox create
+toolbox run ~/dotfiles/fedora/toolbox.sh
+```
+
+The script is safe to re-run after adding packages to it. On a new Fedora
+release, create a fresh toolbox, run the script and `toolbox rm` the old one.
+
+## Machine-local config
+
+- `~/.zshenv` is not tracked: use it for machine-specific environment.
+- `~/.gitconfig` takes precedence over the tracked `~/.config/git/config`, e.g.
+  for a different email.
 
 ## Poor man's chsh
 
@@ -63,46 +79,3 @@ shell to zsh. Then the following in `.profile.local` may be useful:
     [ -z "$ZSH_VERSION" ] && export SHELL=$(command -v zsh) && exec $SHELL -l
 } || true
 ```
-
-## Browser extensions
-
-Occasionally updated list of used Firefox extensions.
-
-- Browserpass
-- CanvasBlocker
-- Cookie AutoDelete
-- Don't Fuck With Paste
-- Facebook Container
-- google-no-tracking-url
-- HTTPS Everywhere
-- Privacy Badger
-- Proxy SwitchyOmega
-- uBlock Origin
-- User-Agent Switcher
-- uMatrix
-- Vimium
-
-## License
-
-MIT License
-
-Copyright (c) 2017 Jaan Toots
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
