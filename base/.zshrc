@@ -92,6 +92,12 @@ export FZF_DEFAULT_COMMAND="fd -H -E .git --type f | sort"
 export FZF_CTRL_T_COMMAND="fd -H -E .git | sort"
 command -v fzf &>/dev/null && source <(fzf --zsh)
 
+# git: without delta, replace it as pager and as the `add -p` diff filter
+if ! command -v delta &>/dev/null; then
+  export GIT_PAGER=less
+  export GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=interactive.diffFilter GIT_CONFIG_VALUE_0=cat
+fi
+
 # Tools
 command -v direnv &>/dev/null && eval "$(direnv hook zsh)"
 command -v fnm &>/dev/null && eval "$(fnm env --use-on-cd --shell zsh)"
