@@ -1,4 +1,4 @@
-macos-titlebar-style = tabs
+#macos-titlebar-style = tabs
 macos-option-as-alt = true
 macos-icon = holographic
 
