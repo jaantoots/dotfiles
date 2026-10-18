@@ -35,4 +35,4 @@ brew "pv"
 brew "wget"
 
 # GUI
-cask "wezterm"
+cask "ghostty"

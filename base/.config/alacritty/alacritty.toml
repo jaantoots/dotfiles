@@ -1,0 +1,50 @@
+# Thin renderer: tabs, panes and sessions live in tmux (~/.tmux.conf)
+
+[terminal.shell]
+# Login shell so macOS gets Homebrew's PATH; every window attaches to the same
+# session, and a plain shell is the fallback where tmux isn't installed
+program = "/bin/zsh"
+args = ["-lc", "command -v tmux >/dev/null && exec tmux new-session -A -s main; exec zsh"]
+
+[window]
+option_as_alt = "Both"
+padding = { x = 4, y = 2 }
+
+[keyboard]
+bindings = [
+  # Shift+Enter sends Alt+Enter: newline in Claude Code and in zsh
+  { key = "Return", mods = "Shift", chars = "\u001b\r" },
+]
+
+# Catppuccin Mocha
+[colors.primary]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+
+[colors.cursor]
+text = "#1e1e2e"
+cursor = "#f5e0dc"
+
+[colors.selection]
+text = "#1e1e2e"
+background = "#f5e0dc"
+
+[colors.normal]
+black = "#45475a"
+red = "#f38ba8"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+blue = "#89b4fa"
+magenta = "#f5c2e7"
+cyan = "#94e2d5"
+white = "#bac2de"
+
+[colors.bright]
+black = "#585b70"
+red = "#f38ba8"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+blue = "#89b4fa"
+magenta = "#f5c2e7"
+cyan = "#94e2d5"
+white = "#a6adc8"

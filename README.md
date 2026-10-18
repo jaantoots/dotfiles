@@ -25,7 +25,8 @@ places. The host only has a minimal set of tools, so configs have to cope with
 missing commands (guard with `command -v`).
 
 `toolbox enter` starts a login shell like macOS terminals do, so `.zprofile`
-is read there. Plain host terminals are non-login shells.
+is read there. Plain host terminals are non-login shells, but shells started by
+tmux are login shells.
 
 ### Host
 
@@ -34,9 +35,9 @@ third-party repositories, and [1Password's repo](https://support.1password.com/i
 
 ```
 rpm-ostree override remove nano-default-editor --install vim-default-editor
-rpm-ostree install 1password akmod-nvidia eza kmod-nvidia langpacks-en_GB \
-    lshw open-eid smartmontools sshfs syncthing tailscale vim \
-    xorg-x11-drv-nvidia xorg-x11-drv-nvidia-cuda zsh zsh-autosuggestions \
+rpm-ostree install 1password akmod-nvidia alacritty eza kmod-nvidia \
+    langpacks-en_GB lshw open-eid smartmontools sshfs syncthing tailscale tmux \
+    vim xorg-x11-drv-nvidia xorg-x11-drv-nvidia-cuda zsh zsh-autosuggestions \
     zsh-syntax-highlighting
 rpm-ostree kargs --append=rd.driver.blacklist=nouveau \
     --append=modprobe.blacklist=nouveau --append=nvidia-drm.modeset=1
@@ -61,6 +62,14 @@ toolbox run ~/dotfiles/fedora/toolbox.sh
 
 The script is safe to re-run after adding packages to it. On a new Fedora
 release, create a fresh toolbox, run the script and `toolbox rm` the old one.
+
+## Terminal
+
+Alacritty is only the renderer: each window attaches to the tmux session
+`main`, which holds the tabs and panes. Claude Code signals with the terminal
+bell, which tmux flags on the window and passes on so Alacritty marks itself
+urgent. Set this once per machine in Claude Code's `/config`: Notifications →
+Terminal Bell.
 
 ## Machine-local config
 
