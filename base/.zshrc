@@ -101,6 +101,7 @@ fi
 # Tools
 command -v direnv &>/dev/null && eval "$(direnv hook zsh)"
 command -v fnm &>/dev/null && eval "$(fnm env --use-on-cd --shell zsh)"
+[[ -f ~/.claude/fnm-env.zsh ]] && export CLAUDE_ENV_FILE=~/.claude/fnm-env.zsh
 
 # Prompt: pure from brew, or git clone https://github.com/sindresorhus/pure ~/.local/share/zsh/pure
 fpath+=(~/.local/share/zsh/pure(N/))
